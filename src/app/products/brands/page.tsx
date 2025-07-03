@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -29,154 +29,226 @@ import {
   Search, 
   Edit,
   Trash2,
-  Tag
+  Tag,
+  Loader2,
+  CheckCircle2,
+  XCircle,
+  AlertCircle
 } from 'lucide-react';
 import { useAppStore } from '@/stores/app-store';
-
-interface Brand {
-  id: string;
-  brandName: string;
-  brandCode: string;
-  description?: string;
-  productCount: number;
-  isActive: boolean;
-  createdAt: string;
-}
+import { brandsApi, Brand, BrandCreate, BrandUpdate } from '@/services/api/brands';
 
 function BrandsContent() {
   const { addNotification } = useAppStore();
   const [searchTerm, setSearchTerm] = useState('');
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
+  const [isErrorDialogOpen, setIsErrorDialogOpen] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
+  const [brands, setBrands] = useState<Brand[]>([]);
+  const [totalBrands, setTotalBrands] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState('');
   
   // Form states
   const [brandName, setBrandName] = useState('');
   const [brandCode, setBrandCode] = useState('');
   const [description, setDescription] = useState('');
+  const [formErrors, setFormErrors] = useState<{[key: string]: string}>({});
 
-  // Mock data - replace with API call
-  const brands: Brand[] = [
-    {
-      id: '1',
-      brandName: 'Canon',
-      brandCode: 'CANON',
-      description: 'Japanese multinational corporation specializing in optical, imaging, and industrial products',
-      productCount: 45,
-      isActive: true,
-      createdAt: '2024-01-01',
-    },
-    {
-      id: '2',
-      brandName: 'Nikon',
-      brandCode: 'NIKON',
-      description: 'Japanese multinational corporation specializing in optics and imaging products',
-      productCount: 38,
-      isActive: true,
-      createdAt: '2024-01-02',
-    },
-    {
-      id: '3',
-      brandName: 'Sony',
-      brandCode: 'SONY',
-      description: 'Japanese multinational conglomerate corporation',
-      productCount: 52,
-      isActive: true,
-      createdAt: '2024-01-03',
-    },
-    {
-      id: '4',
-      brandName: 'Godox',
-      brandCode: 'GODOX',
-      description: 'Professional photography lighting equipment manufacturer',
-      productCount: 28,
-      isActive: true,
-      createdAt: '2024-01-04',
-    },
-    {
-      id: '5',
-      brandName: 'DJI',
-      brandCode: 'DJI',
-      description: 'Chinese technology company known for drones and camera stabilizers',
-      productCount: 18,
-      isActive: true,
-      createdAt: '2024-01-05',
-    },
-  ];
+  // Load brands on component mount and when search changes
+  useEffect(() => {
+    loadBrands();
+  }, [searchTerm]);
 
-  const filteredBrands = brands.filter(brand =>
-    brand.brandName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    brand.brandCode.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleAddBrand = () => {
-    // Validate
-    if (!brandName || !brandCode) {
+  const loadBrands = async () => {
+    try {
+      setLoading(true);
+      const response = await brandsApi.list({
+        limit: 1000, // Get all brands for now
+        search: searchTerm || undefined,
+        is_active: true
+      });
+      setBrands(response.items);
+      setTotalBrands(response.total);
+    } catch (error: any) {
+      console.error('Failed to load brands:', error);
       addNotification({
         type: 'error',
-        title: 'Validation Error',
-        message: 'Brand name and code are required',
+        title: 'Error Loading Brands',
+        message: 'Failed to load brands. Please try again.',
       });
-      return;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const errors: {[key: string]: string} = {};
+
+    if (!brandName.trim()) {
+      errors.brandName = 'Brand name is required';
     }
 
-    // Here you would make API call to create brand
-    addNotification({
-      type: 'success',
-      title: 'Brand Created',
-      message: `Brand "${brandName}" has been created successfully`,
-    });
+    if (brandCode && !/^[A-Z0-9_-]+$/.test(brandCode)) {
+      errors.brandCode = 'Brand code can only contain letters, numbers, hyphens, and underscores';
+    }
 
-    // Reset form and close dialog
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const resetForm = () => {
     setBrandName('');
     setBrandCode('');
     setDescription('');
-    setIsAddDialogOpen(false);
+    setFormErrors({});
+    setError(null);
   };
 
-  const handleEditBrand = () => {
-    if (!selectedBrand) return;
-
-    // Here you would make API call to update brand
-    addNotification({
-      type: 'success',
-      title: 'Brand Updated',
-      message: `Brand "${brandName}" has been updated successfully`,
-    });
-
-    // Reset form and close dialog
-    setSelectedBrand(null);
-    setBrandName('');
-    setBrandCode('');
-    setDescription('');
-    setIsEditDialogOpen(false);
-  };
-
-  const handleDeleteBrand = (brand: Brand) => {
-    if (brand.productCount > 0) {
-      addNotification({
-        type: 'error',
-        title: 'Cannot Delete Brand',
-        message: `Brand "${brand.brandName}" has ${brand.productCount} products associated with it`,
-      });
+  const handleAddBrand = async () => {
+    if (!validateForm()) {
       return;
     }
 
-    // Here you would make API call to delete brand
-    addNotification({
-      type: 'success',
-      title: 'Brand Deleted',
-      message: `Brand "${brand.brandName}" has been deleted`,
-    });
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const brandData: BrandCreate = {
+        brand_name: brandName.trim(),
+        brand_code: brandCode.trim() || undefined,
+        description: description.trim() || undefined,
+      };
+
+      await brandsApi.create(brandData);
+      
+      setSuccessMessage(`Brand "${brandName}" has been created successfully`);
+      setIsSuccessDialogOpen(true);
+      setIsAddDialogOpen(false);
+      resetForm();
+      
+      // Reload brands list
+      loadBrands();
+    } catch (error: any) {
+      console.error('Failed to create brand:', error);
+      let errorMessage = 'Failed to create brand. Please try again.';
+      
+      // Handle different types of errors
+      if (error.response?.data?.detail) {
+        errorMessage = error.response.data.detail;
+      } else if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      setError(errorMessage);
+      setIsErrorDialogOpen(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleEditBrand = async () => {
+    if (!selectedBrand || !validateForm()) {
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const brandData: BrandUpdate = {
+        brand_name: brandName.trim(),
+        brand_code: brandCode.trim() || undefined,
+        description: description.trim() || undefined,
+      };
+
+      await brandsApi.update(selectedBrand.id, brandData);
+      
+      setSuccessMessage(`Brand "${brandName}" has been updated successfully`);
+      setIsSuccessDialogOpen(true);
+      setIsEditDialogOpen(false);
+      resetForm();
+      setSelectedBrand(null);
+      
+      // Reload brands list
+      loadBrands();
+    } catch (error: any) {
+      console.error('Failed to update brand:', error);
+      let errorMessage = 'Failed to update brand. Please try again.';
+      
+      if (error.response?.data?.detail) {
+        errorMessage = error.response.data.detail;
+      } else if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      setError(errorMessage);
+      setIsErrorDialogOpen(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleDeleteBrand = async (brand: Brand) => {
+    try {
+      await brandsApi.delete(brand.id);
+      
+      setSuccessMessage(`Brand "${brand.brand_name}" has been deleted successfully`);
+      setIsSuccessDialogOpen(true);
+      
+      // Reload brands list
+      loadBrands();
+    } catch (error: any) {
+      console.error('Failed to delete brand:', error);
+      let errorMessage = 'Failed to delete brand. Please try again.';
+      
+      if (error.response?.data?.detail) {
+        errorMessage = error.response.data.detail;
+      } else if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      addNotification({
+        type: 'error',
+        title: 'Error Deleting Brand',
+        message: errorMessage,
+      });
+    }
   };
 
   const openEditDialog = (brand: Brand) => {
     setSelectedBrand(brand);
-    setBrandName(brand.brandName);
-    setBrandCode(brand.brandCode);
+    setBrandName(brand.brand_name);
+    setBrandCode(brand.brand_code || '');
     setDescription(brand.description || '');
+    setFormErrors({});
+    setError(null);
     setIsEditDialogOpen(true);
   };
+
+  const filteredBrands = brands.filter(brand =>
+    brand.brand_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (brand.brand_code && brand.brand_code.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  // Calculate stats
+  const activeBrands = brands.filter(b => b.is_active).length;
+  const recentBrands = brands.filter(b => {
+    const createdDate = new Date(b.created_at);
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    return createdDate > thirtyDaysAgo;
+  }).length;
 
   return (
     <div className="p-6 space-y-6">
@@ -190,7 +262,13 @@ function BrandsContent() {
             Manage product brands and manufacturers
           </p>
         </div>
-        <Button onClick={() => setIsAddDialogOpen(true)}>
+        <Button 
+          onClick={() => {
+            resetForm();
+            setIsAddDialogOpen(true);
+          }}
+          disabled={loading}
+        >
           <Plus className="mr-2 h-4 w-4" />
           Add Brand
         </Button>
@@ -203,8 +281,10 @@ function BrandsContent() {
             <CardTitle className="text-sm font-medium">Total Brands</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">54</div>
-            <p className="text-xs text-muted-foreground">+3 this month</p>
+            <div className="text-2xl font-bold">
+              {loading ? <Loader2 className="h-6 w-6 animate-spin" /> : totalBrands}
+            </div>
+            <p className="text-xs text-muted-foreground">All registered brands</p>
           </CardContent>
         </Card>
         <Card>
@@ -212,8 +292,12 @@ function BrandsContent() {
             <CardTitle className="text-sm font-medium">Active Brands</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">52</div>
-            <p className="text-xs text-muted-foreground">96% active</p>
+            <div className="text-2xl font-bold">
+              {loading ? <Loader2 className="h-6 w-6 animate-spin" /> : activeBrands}
+            </div>
+            <p className="text-xs text-muted-foreground">
+              {totalBrands > 0 ? Math.round((activeBrands / totalBrands) * 100) : 0}% active
+            </p>
           </CardContent>
         </Card>
         <Card>
@@ -221,8 +305,10 @@ function BrandsContent() {
             <CardTitle className="text-sm font-medium">Top Brand</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">Sony</div>
-            <p className="text-xs text-muted-foreground">52 products</p>
+            <div className="text-2xl font-bold">
+              {loading ? <Loader2 className="h-6 w-6 animate-spin" /> : (brands[0]?.brand_name || '-')}
+            </div>
+            <p className="text-xs text-muted-foreground">Most recent brand</p>
           </CardContent>
         </Card>
         <Card>
@@ -230,7 +316,9 @@ function BrandsContent() {
             <CardTitle className="text-sm font-medium">New This Month</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">3</div>
+            <div className="text-2xl font-bold">
+              {loading ? <Loader2 className="h-6 w-6 animate-spin" /> : recentBrands}
+            </div>
             <p className="text-xs text-muted-foreground">Latest additions</p>
           </CardContent>
         </Card>
@@ -248,70 +336,89 @@ function BrandsContent() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-8 w-64"
+                disabled={loading}
               />
             </div>
           </div>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Brand Name</TableHead>
-                <TableHead>Brand Code</TableHead>
-                <TableHead>Description</TableHead>
-                <TableHead>Products</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Created</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredBrands.map((brand) => (
-                <TableRow key={brand.id}>
-                  <TableCell className="font-medium">
-                    <div className="flex items-center">
-                      <Tag className="h-4 w-4 mr-2 text-gray-400" />
-                      {brand.brandName}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <code className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                      {brand.brandCode}
-                    </code>
-                  </TableCell>
-                  <TableCell className="max-w-xs truncate">
-                    {brand.description || '-'}
-                  </TableCell>
-                  <TableCell>{brand.productCount}</TableCell>
-                  <TableCell>
-                    <Badge variant={brand.isActive ? 'default' : 'secondary'}>
-                      {brand.isActive ? 'Active' : 'Inactive'}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>{brand.createdAt}</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => openEditDialog(brand)}
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDeleteBrand(brand)}
-                        disabled={brand.productCount > 0}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
+          {loading ? (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="h-8 w-8 animate-spin" />
+              <span className="ml-2">Loading brands...</span>
+            </div>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Brand Name</TableHead>
+                  <TableHead>Brand Code</TableHead>
+                  <TableHead>Description</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Created</TableHead>
+                  <TableHead>Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {filteredBrands.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
+                      {searchTerm ? 'No brands found matching your search.' : 'No brands found. Add your first brand to get started.'}
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  filteredBrands.map((brand) => (
+                    <TableRow key={brand.id}>
+                      <TableCell className="font-medium">
+                        <div className="flex items-center">
+                          <Tag className="h-4 w-4 mr-2 text-gray-400" />
+                          {brand.brand_name}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        {brand.brand_code ? (
+                          <code className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                            {brand.brand_code}
+                          </code>
+                        ) : (
+                          <span className="text-muted-foreground">-</span>
+                        )}
+                      </TableCell>
+                      <TableCell className="max-w-xs truncate">
+                        {brand.description || '-'}
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={brand.is_active ? 'default' : 'secondary'}>
+                          {brand.is_active ? 'Active' : 'Inactive'}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        {new Date(brand.created_at).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => openEditDialog(brand)}
+                          >
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDeleteBrand(brand)}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          )}
         </CardContent>
       </Card>
 
@@ -332,20 +439,27 @@ function BrandsContent() {
                 value={brandName}
                 onChange={(e) => setBrandName(e.target.value)}
                 placeholder="e.g., Canon"
+                className={formErrors.brandName ? 'border-red-500' : ''}
               />
+              {formErrors.brandName && (
+                <p className="text-sm text-red-600 mt-1">{formErrors.brandName}</p>
+              )}
             </div>
             <div>
-              <Label htmlFor="brand-code">Brand Code*</Label>
+              <Label htmlFor="brand-code">Brand Code</Label>
               <Input
                 id="brand-code"
                 value={brandCode}
                 onChange={(e) => setBrandCode(e.target.value.toUpperCase())}
                 placeholder="e.g., CANON"
-                className="uppercase"
+                className={`uppercase ${formErrors.brandCode ? 'border-red-500' : ''}`}
               />
               <p className="text-sm text-gray-500 mt-1">
-                Alphanumeric code, hyphens and underscores allowed
+                Optional. Alphanumeric code, hyphens and underscores allowed
               </p>
+              {formErrors.brandCode && (
+                <p className="text-sm text-red-600 mt-1">{formErrors.brandCode}</p>
+              )}
             </div>
             <div>
               <Label htmlFor="description">Description</Label>
@@ -359,11 +473,22 @@ function BrandsContent() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
+            <Button 
+              variant="outline" 
+              onClick={() => setIsAddDialogOpen(false)}
+              disabled={submitting}
+            >
               Cancel
             </Button>
-            <Button onClick={handleAddBrand}>
-              Create Brand
+            <Button onClick={handleAddBrand} disabled={submitting}>
+              {submitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Creating...
+                </>
+              ) : (
+                'Create Brand'
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -385,16 +510,23 @@ function BrandsContent() {
                 id="edit-brand-name"
                 value={brandName}
                 onChange={(e) => setBrandName(e.target.value)}
+                className={formErrors.brandName ? 'border-red-500' : ''}
               />
+              {formErrors.brandName && (
+                <p className="text-sm text-red-600 mt-1">{formErrors.brandName}</p>
+              )}
             </div>
             <div>
-              <Label htmlFor="edit-brand-code">Brand Code*</Label>
+              <Label htmlFor="edit-brand-code">Brand Code</Label>
               <Input
                 id="edit-brand-code"
                 value={brandCode}
                 onChange={(e) => setBrandCode(e.target.value.toUpperCase())}
-                className="uppercase"
+                className={`uppercase ${formErrors.brandCode ? 'border-red-500' : ''}`}
               />
+              {formErrors.brandCode && (
+                <p className="text-sm text-red-600 mt-1">{formErrors.brandCode}</p>
+              )}
             </div>
             <div>
               <Label htmlFor="edit-description">Description</Label>
@@ -407,11 +539,81 @@ function BrandsContent() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+            <Button 
+              variant="outline" 
+              onClick={() => setIsEditDialogOpen(false)}
+              disabled={submitting}
+            >
               Cancel
             </Button>
-            <Button onClick={handleEditBrand}>
-              Update Brand
+            <Button onClick={handleEditBrand} disabled={submitting}>
+              {submitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Updating...
+                </>
+              ) : (
+                'Update Brand'
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Success Dialog */}
+      <Dialog open={isSuccessDialogOpen} onOpenChange={setIsSuccessDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center space-x-2">
+              <div className="flex-shrink-0">
+                <CheckCircle2 className="h-6 w-6 text-green-500" />
+              </div>
+              <DialogTitle className="text-green-900 dark:text-green-100">
+                Success
+              </DialogTitle>
+            </div>
+          </DialogHeader>
+          <DialogDescription className="text-green-700 dark:text-green-300">
+            {successMessage}
+          </DialogDescription>
+          <DialogFooter>
+            <Button onClick={() => setIsSuccessDialogOpen(false)}>
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Error Dialog */}
+      <Dialog open={isErrorDialogOpen} onOpenChange={setIsErrorDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center space-x-2">
+              <div className="flex-shrink-0">
+                <XCircle className="h-6 w-6 text-red-500" />
+              </div>
+              <DialogTitle className="text-red-900 dark:text-red-100">
+                Error
+              </DialogTitle>
+            </div>
+          </DialogHeader>
+          <DialogDescription className="text-red-700 dark:text-red-300">
+            {error}
+          </DialogDescription>
+          <DialogFooter>
+            <Button 
+              onClick={() => setIsErrorDialogOpen(false)}
+              variant="outline"
+            >
+              Close
+            </Button>
+            <Button 
+              onClick={() => {
+                setIsErrorDialogOpen(false);
+                setError(null);
+              }}
+            >
+              Try Again
             </Button>
           </DialogFooter>
         </DialogContent>

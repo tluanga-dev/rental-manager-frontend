@@ -126,8 +126,9 @@ api.interceptors.response.use(
     }
 
     // Transform error response to match our API format
-    const errorMessage = error.response?.data && typeof error.response.data === 'object' && 'message' in error.response.data
-      ? (error.response.data as any).message
+    // FastAPI uses 'detail' for validation errors, while some APIs use 'message'
+    const errorMessage = error.response?.data && typeof error.response.data === 'object'
+      ? (error.response.data as any).detail || (error.response.data as any).message || (error as any).message || 'An error occurred'
       : (error as any).message || 'An error occurred';
     
     const errorErrors = error.response?.data && typeof error.response.data === 'object' && 'errors' in error.response.data
@@ -141,13 +142,19 @@ api.interceptors.response.use(
       errors: errorErrors
     };
 
-    return Promise.reject({
+    // Preserve original error response while also providing transformed version
+    const preservedError = {
       ...error,
       response: {
         ...error.response,
-        data: errorData
+        data: {
+          ...error.response?.data, // Preserve original data (including detail field)
+          ...errorData // Add our transformed data
+        }
       }
-    });
+    };
+
+    return Promise.reject(preservedError);
   }
 );
 
