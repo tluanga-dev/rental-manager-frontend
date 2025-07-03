@@ -15,7 +15,11 @@ function NewRentalContent() {
         </p>
       </div>
       
-      <TransactionWizard transactionType="RENTAL" />
+      <TransactionWizard 
+        transactionType="RENTAL" 
+        onComplete={() => {}}
+        onCancel={() => {}}
+      />
     </div>
   );
 }

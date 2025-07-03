@@ -37,35 +37,36 @@ export interface CategoryMove {
 export interface PaginatedCategories {
   items: CategoryResponse[];
   total: number;
-  page: number;
-  size: number;
-  pages: number;
+  skip: number;
+  limit: number;
 }
 
 export const categoriesApi = {
   // Create a new category
   create: async (data: CategoryCreate): Promise<CategoryResponse> => {
     const response = await apiClient.post('/categories/', data);
-    return response.data;
+    // Handle wrapped response from API client
+    return response.data.success ? response.data.data : response.data;
   },
 
   // Get all categories with optional filters
   list: async (params?: {
-    page?: number;
-    size?: number;
+    skip?: number;
+    limit?: number;
     search?: string;
     parent_id?: string;
     is_leaf?: boolean;
     is_active?: boolean;
   }): Promise<PaginatedCategories> => {
     const response = await apiClient.get('/categories/', { params });
-    return response.data;
+    // Handle wrapped response from API client
+    return response.data.success ? response.data.data : response.data;
   },
 
   // Get category by ID
   getById: async (id: string): Promise<CategoryResponse> => {
     const response = await apiClient.get(`/categories/${id}`);
-    return response.data;
+    return response.data.success ? response.data.data : response.data;
   },
 
   // Get category by path

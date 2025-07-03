@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { 
   Package, 
   MapPin, 
@@ -18,24 +20,16 @@ import {
   RefreshCw,
   BarChart3,
   PieChart,
-  Activity
+  Activity,
+  AlertCircle
 } from 'lucide-react';
-import { 
-  InventoryDashboardSummary, 
+import { inventoryDashboardApi, inventoryUnitsApi } from '@/services/api/inventory';
+import { useInventoryStore } from '@/stores/inventory-store';
+import type { 
   InventoryStatus, 
-  ConditionGrade, 
-  AlertSeverity,
+  ConditionGrade,
   InventoryAlert 
 } from '@/types/inventory';
-
-interface InventoryDashboardProps {
-  summary: InventoryDashboardSummary;
-  onRefresh: () => void;
-  onViewLocation: (locationId: string) => void;
-  onViewAlert: (alert: InventoryAlert) => void;
-  onAcknowledgeAlert: (alertId: string) => void;
-  isLoading?: boolean;
-}
 
 const statusIcons = {
   AVAILABLE: CheckCircle,
@@ -75,15 +69,67 @@ const alertSeverityColors = {
   CRITICAL: 'bg-red-100 text-red-800',
 };
 
+interface InventoryDashboardProps {
+  onViewLocation?: (locationId: string) => void;
+  onViewAlert?: (alert: InventoryAlert) => void;
+  onAcknowledgeAlert?: (alertId: string) => void;
+}
+
 export function InventoryDashboard({
-  summary,
-  onRefresh,
   onViewLocation,
   onViewAlert,
   onAcknowledgeAlert,
-  isLoading,
-}: InventoryDashboardProps) {
+}: InventoryDashboardProps = {}) {
   const [activeTab, setActiveTab] = useState<'overview' | 'alerts' | 'movements'>('overview');
+  
+  const {
+    selectedLocation,
+    setDashboardSummary,
+    setStatusCounts,
+    setConditionCounts,
+    setLoadingState,
+  } = useInventoryStore();
+
+  // Fetch dashboard summary
+  const { data: summary, isLoading, refetch } = useQuery({
+    queryKey: ['inventory-dashboard', selectedLocation],
+    queryFn: () => inventoryDashboardApi.getSummary(selectedLocation || undefined),
+  });
+
+  // Fetch status counts
+  const { data: statusCounts } = useQuery({
+    queryKey: ['inventory-status-counts', selectedLocation],
+    queryFn: () => inventoryUnitsApi.getStatusCount(selectedLocation || undefined),
+  });
+
+  // Fetch condition counts
+  const { data: conditionCounts } = useQuery({
+    queryKey: ['inventory-condition-counts', selectedLocation],
+    queryFn: () => inventoryUnitsApi.getConditionCount(selectedLocation || undefined),
+  });
+
+  // Update store with fetched data
+  useEffect(() => {
+    if (summary) {
+      setDashboardSummary(summary);
+    }
+  }, [summary, setDashboardSummary]);
+
+  useEffect(() => {
+    if (statusCounts) {
+      setStatusCounts(statusCounts);
+    }
+  }, [statusCounts, setStatusCounts]);
+
+  useEffect(() => {
+    if (conditionCounts) {
+      setConditionCounts(conditionCounts);
+    }
+  }, [conditionCounts, setConditionCounts]);
+
+  useEffect(() => {
+    setLoadingState('dashboard', isLoading);
+  }, [isLoading, setLoadingState]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -101,6 +147,26 @@ export function InventoryDashboard({
     const Icon = statusIcons[status];
     return <Icon className={`h-4 w-4 ${statusColors[status]}`} />;
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
+
+  if (!summary) {
+    return (
+      <Alert>
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>No Data</AlertTitle>
+        <AlertDescription>
+          Unable to load inventory dashboard data. Please try again later.
+        </AlertDescription>
+      </Alert>
+    );
+  }
 
   const unacknowledgedAlerts = summary.alerts.filter(alert => !alert.is_acknowledged);
   const criticalAlerts = unacknowledgedAlerts.filter(alert => alert.severity === 'CRITICAL');
@@ -121,7 +187,7 @@ export function InventoryDashboard({
               {criticalAlerts.length} Critical Alert{criticalAlerts.length !== 1 ? 's' : ''}
             </Badge>
           )}
-          <Button variant="outline" onClick={onRefresh} disabled={isLoading}>
+          <Button variant="outline" onClick={() => refetch()} disabled={isLoading}>
             <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
@@ -192,7 +258,7 @@ export function InventoryDashboard({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {summary.locations.map((location) => (
               <Card key={location.location_id} className="cursor-pointer hover:shadow-md transition-shadow"
-                    onClick={() => onViewLocation(location.location_id)}>
+                    onClick={() => onViewLocation?.(location.location_id)}>
                 <CardContent className="p-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
@@ -359,14 +425,14 @@ export function InventoryDashboard({
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => onViewAlert(alert)}
+                              onClick={() => onViewAlert?.(alert)}
                             >
                               <Eye className="h-4 w-4" />
                             </Button>
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => onAcknowledgeAlert(alert.id)}
+                              onClick={() => onAcknowledgeAlert?.(alert.id)}
                             >
                               Acknowledge
                             </Button>

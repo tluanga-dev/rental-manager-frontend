@@ -292,7 +292,7 @@ function PurchasesContent() {
 
 export default function PurchasesPage() {
   return (
-    <ProtectedRoute requiredPermissions={['INVENTORY_MANAGE', 'PURCHASE_VIEW']}>
+    <ProtectedRoute requiredPermissions={['INVENTORY_CREATE', 'INVENTORY_VIEW']}>
       <PurchasesContent />
     </ProtectedRoute>
   );

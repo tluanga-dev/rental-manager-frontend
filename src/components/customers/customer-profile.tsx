@@ -24,8 +24,9 @@ import {
   Clock,
   FileText
 } from 'lucide-react';
-import { Customer } from '@/types/api';
+import { Customer, TransactionHeader } from '@/types/api';
 import { ContactMethodManager } from './contact-method-manager';
+import { usePaginatedQuery } from '@/hooks/use-api';
 
 interface CustomerProfileProps {
   customer: Customer;
@@ -37,55 +38,6 @@ interface CustomerProfileProps {
   isLoading?: boolean;
 }
 
-// Mock data for demonstration
-const mockTransactionHistory = [
-  {
-    id: '1',
-    date: '2024-01-15',
-    type: 'RENTAL',
-    amount: 5000,
-    status: 'COMPLETED',
-    items: ['Camera Kit', 'Lighting Equipment'],
-  },
-  {
-    id: '2',
-    date: '2024-01-10',
-    type: 'SALE',
-    amount: 15000,
-    status: 'COMPLETED',
-    items: ['Microphone'],
-  },
-  {
-    id: '3',
-    date: '2024-01-05',
-    type: 'RENTAL',
-    amount: 8000,
-    status: 'RETURNED',
-    items: ['Video Equipment'],
-  },
-];
-
-const mockRentalHistory = [
-  {
-    id: '1',
-    rental_date: '2024-01-15',
-    return_date: '2024-01-20',
-    status: 'ACTIVE',
-    items: ['Camera Kit', 'Lighting Equipment'],
-    total_amount: 5000,
-    deposit_amount: 2000,
-  },
-  {
-    id: '2',
-    rental_date: '2024-01-05',
-    return_date: '2024-01-08',
-    status: 'RETURNED',
-    items: ['Video Equipment'],
-    total_amount: 8000,
-    deposit_amount: 3000,
-  },
-];
-
 export function CustomerProfile({
   customer,
   onEdit,
@@ -96,6 +48,27 @@ export function CustomerProfile({
   isLoading,
 }: CustomerProfileProps) {
   const [activeTab, setActiveTab] = useState('overview');
+
+  const { data: transactionHistoryData, isLoading: isLoadingTransactions } = 
+    usePaginatedQuery<TransactionHeader>(
+      ['transactions', customer.id],
+      `/transactions?customer_id=${customer.id}`,
+      1,
+      10,
+      { enabled: activeTab === 'transactions' || activeTab === 'overview' }
+    );
+
+  const { data: rentalHistoryData, isLoading: isLoadingRentals } =
+    usePaginatedQuery<TransactionHeader>(
+      ['rentals', customer.id],
+      `/transactions?customer_id=${customer.id}&transaction_type=RENTAL`,
+      1,
+      10,
+      { enabled: activeTab === 'rentals' || activeTab === 'overview' }
+    );
+
+  const transactions = transactionHistoryData?.items ?? [];
+  const rentals = rentalHistoryData?.items ?? [];
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -336,7 +309,7 @@ export function CustomerProfile({
                     <ShoppingCart className="h-4 w-4 text-blue-500" />
                     <span>Total Transactions</span>
                   </div>
-                  <span className="font-semibold">{mockTransactionHistory.length}</span>
+                  <span className="font-semibold">{transactionHistoryData?.total ?? 0}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -345,7 +318,7 @@ export function CustomerProfile({
                     <span>Active Rentals</span>
                   </div>
                   <span className="font-semibold">
-                    {mockRentalHistory.filter(r => r.status === 'ACTIVE').length}
+                    {rentals.filter(r => r.status === 'IN_PROGRESS').length}
                   </span>
                 </div>
 
@@ -354,7 +327,7 @@ export function CustomerProfile({
                     <FileText className="h-4 w-4 text-purple-500" />
                     <span>Total Rentals</span>
                   </div>
-                  <span className="font-semibold">{mockRentalHistory.length}</span>
+                  <span className="font-semibold">{rentalHistoryData?.total ?? 0}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -363,7 +336,7 @@ export function CustomerProfile({
                     <span>Avg Transaction</span>
                   </div>
                   <span className="font-semibold">
-                    {formatCurrency(customer.lifetime_value / mockTransactionHistory.length || 0)}
+                    {formatCurrency(customer.lifetime_value / (transactionHistoryData?.total || 1))}
                   </span>
                 </div>
               </CardContent>
@@ -450,27 +423,30 @@ export function CustomerProfile({
                   <TableRow>
                     <TableHead>Date</TableHead>
                     <TableHead>Type</TableHead>
-                    <TableHead>Items</TableHead>
                     <TableHead>Amount</TableHead>
                     <TableHead>Status</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {mockTransactionHistory.map((transaction) => (
+                  {isLoadingTransactions ? (
+                    <TableRow><TableCell colSpan={4} className="text-center">Loading...</TableCell></TableRow>
+                  ) : transactions.length === 0 ? (
+                    <TableRow><TableCell colSpan={4} className="text-center">No transactions found.</TableCell></TableRow>
+                  ) : (
+                    transactions.map((transaction) => (
                     <TableRow key={transaction.id}>
-                      <TableCell>{formatDate(transaction.date)}</TableCell>
+                      <TableCell>{formatDate(transaction.transaction_date)}</TableCell>
                       <TableCell>
-                        <Badge variant="outline">{transaction.type}</Badge>
+                        <Badge variant="outline">{transaction.transaction_type}</Badge>
                       </TableCell>
-                      <TableCell>{transaction.items.join(', ')}</TableCell>
-                      <TableCell>{formatCurrency(transaction.amount)}</TableCell>
+                      <TableCell>{formatCurrency(transaction.total_amount)}</TableCell>
                       <TableCell>
                         <Badge className={getStatusColor(transaction.status)}>
                           {transaction.status}
                         </Badge>
                       </TableCell>
                     </TableRow>
-                  ))}
+                  )))}
                 </TableBody>
               </Table>
             </CardContent>
@@ -487,28 +463,31 @@ export function CustomerProfile({
                 <TableHeader>
                   <TableRow>
                     <TableHead>Rental Date</TableHead>
-                    <TableHead>Return Date</TableHead>
-                    <TableHead>Items</TableHead>
+                    <TableHead>Due Date</TableHead>
                     <TableHead>Amount</TableHead>
                     <TableHead>Deposit</TableHead>
                     <TableHead>Status</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {mockRentalHistory.map((rental) => (
+                  {isLoadingRentals ? (
+                     <TableRow><TableCell colSpan={5} className="text-center">Loading...</TableCell></TableRow>
+                  ) : rentals.length === 0 ? (
+                    <TableRow><TableCell colSpan={5} className="text-center">No rentals found.</TableCell></TableRow>
+                  ) : (
+                    rentals.map((rental) => (
                     <TableRow key={rental.id}>
-                      <TableCell>{formatDate(rental.rental_date)}</TableCell>
-                      <TableCell>{formatDate(rental.return_date)}</TableCell>
-                      <TableCell>{rental.items.join(', ')}</TableCell>
+                      <TableCell>{formatDate(rental.transaction_date)}</TableCell>
+                      <TableCell>{rental.due_date ? formatDate(rental.due_date) : 'N/A'}</TableCell>
                       <TableCell>{formatCurrency(rental.total_amount)}</TableCell>
-                      <TableCell>{formatCurrency(rental.deposit_amount)}</TableCell>
+                      <TableCell>{formatCurrency(rental.deposit_amount || 0)}</TableCell>
                       <TableCell>
                         <Badge className={getStatusColor(rental.status)}>
                           {rental.status}
                         </Badge>
                       </TableCell>
                     </TableRow>
-                  ))}
+                  )))}
                 </TableBody>
               </Table>
             </CardContent>

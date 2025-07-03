@@ -324,7 +324,7 @@ function ReceiveInventoryContent() {
 
 export default function ReceiveInventoryPage() {
   return (
-    <ProtectedRoute requiredPermissions={['INVENTORY_MANAGE']}>
+    <ProtectedRoute requiredPermissions={['INVENTORY_CREATE']}>
       <ReceiveInventoryContent />
     </ProtectedRoute>
   );

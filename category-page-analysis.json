@@ -1,0 +1,58 @@
+{
+  "title": "Rental Manager",
+  "url": "http://localhost:3000/login",
+  "forms": [
+    {
+      "id": "form-0",
+      "action": "http://localhost:3000/login",
+      "method": "get"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "email",
+      "name": "email",
+      "id": "«r0»-form-item",
+      "placeholder": "Enter your email",
+      "value": "",
+      "required": false
+    },
+    {
+      "type": "password",
+      "name": "password",
+      "id": "«r1»-form-item",
+      "placeholder": "Enter your password",
+      "value": "",
+      "required": false
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Login",
+      "type": "submit",
+      "disabled": false
+    },
+    {
+      "text": "Demo as Administrator",
+      "type": "submit",
+      "disabled": false
+    },
+    {
+      "text": "Demo as Manager",
+      "type": "submit",
+      "disabled": false
+    },
+    {
+      "text": "Demo as Staff",
+      "type": "submit",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "type": "button",
+      "disabled": false
+    }
+  ],
+  "selects": [],
+  "errors": []
+}

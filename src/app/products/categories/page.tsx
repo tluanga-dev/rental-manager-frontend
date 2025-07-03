@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -18,172 +18,120 @@ import {
   Eye
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { categoriesApi, type CategoryResponse } from '@/services/api/categories';
+import { useAppStore } from '@/stores/app-store';
+import { Category } from '@/types/api';
+
+interface CategoryTreeNode extends CategoryResponse {
+  children?: CategoryTreeNode[];
+  productCount?: number;
+}
 
 function CategoriesContent() {
   const router = useRouter();
+  const { addNotification } = useAppStore();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [selectedCategory, setSelectedCategory] = useState<CategoryTreeNode | null>(null);
+  const [categories, setCategories] = useState<CategoryTreeNode[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [stats, setStats] = useState({
+    total: 0,
+    rootCategories: 0,
+    leafCategories: 0
+  });
 
-  // Mock category data - replace with API call
-  const categories = [
-    {
-      id: '1',
-      name: 'Cameras',
-      description: 'Photography equipment',
-      parent_id: undefined,
-      is_active: true,
-      created_at: '2024-01-01T00:00:00Z',
-      updated_at: '2024-01-01T00:00:00Z',
-      path: 'Cameras',
-      level: 1,
-      isLeaf: false,
-      productCount: 85,
-      children: [
-        {
-          id: '11',
-          name: 'Digital',
-          description: 'Digital cameras',
-          parent_id: '1',
-          is_active: true,
-          created_at: '2024-01-01T00:00:00Z',
-          updated_at: '2024-01-01T00:00:00Z',
-          path: 'Cameras/Digital',
-          level: 2,
-          isLeaf: false,
-          productCount: 75,
-          children: [
-            {
-              id: '111',
-              name: 'Mirrorless',
-              description: 'Mirrorless cameras',
-              parent_id: '11',
-              is_active: true,
-              created_at: '2024-01-01T00:00:00Z',
-              updated_at: '2024-01-01T00:00:00Z',
-              path: 'Cameras/Digital/Mirrorless',
-              level: 3,
-              isLeaf: true,
-              productCount: 45,
-            },
-            {
-              id: '112',
-              name: 'DSLR',
-              description: 'DSLR cameras',
-              parent_id: '11',
-              is_active: true,
-              created_at: '2024-01-01T00:00:00Z',
-              updated_at: '2024-01-01T00:00:00Z',
-              path: 'Cameras/Digital/DSLR',
-              level: 3,
-              isLeaf: true,
-              productCount: 30,
-            },
-          ],
-        },
-        {
-          id: '12',
-          name: 'Film',
-          description: 'Film cameras',
-          parent_id: '1',
-          is_active: true,
-          created_at: '2024-01-01T00:00:00Z',
-          updated_at: '2024-01-01T00:00:00Z',
-          path: 'Cameras/Film',
-          level: 2,
-          isLeaf: true,
-          productCount: 10,
-        },
-      ],
-    },
-    {
-      id: '2',
-      name: 'Lighting',
-      path: 'Lighting',
-      level: 1,
-      isLeaf: false,
-      productCount: 62,
-      children: [
-        {
-          id: '21',
-          name: 'Studio',
-          path: 'Lighting/Studio',
-          level: 2,
-          isLeaf: false,
-          productCount: 40,
-          children: [
-            {
-              id: '211',
-              name: 'Flash',
-              path: 'Lighting/Studio/Flash',
-              level: 3,
-              isLeaf: true,
-              productCount: 25,
-            },
-            {
-              id: '212',
-              name: 'Continuous',
-              path: 'Lighting/Studio/Continuous',
-              level: 3,
-              isLeaf: true,
-              productCount: 15,
-            },
-          ],
-        },
-        {
-          id: '22',
-          name: 'Portable',
-          path: 'Lighting/Portable',
-          level: 2,
-          isLeaf: true,
-          productCount: 22,
-        },
-      ],
-    },
-    {
-      id: '3',
-      name: 'Audio',
-      path: 'Audio',
-      level: 1,
-      isLeaf: false,
-      productCount: 45,
-      children: [
-        {
-          id: '31',
-          name: 'Microphones',
-          path: 'Audio/Microphones',
-          level: 2,
-          isLeaf: true,
-          productCount: 30,
-        },
-        {
-          id: '32',
-          name: 'Recorders',
-          path: 'Audio/Recorders',
-          level: 2,
-          isLeaf: true,
-          productCount: 15,
-        },
-      ],
-    },
-  ];
+  // Load categories from API
+  useEffect(() => {
+    const loadCategories = async () => {
+      setIsLoading(true);
+      try {
+        const response = await categoriesApi.list({ limit: 1000 });
+        
+        if (!response || !response.items || !Array.isArray(response.items)) {
+          throw new Error('Invalid response structure from categories API');
+        }
 
-  const breadcrumb = selectedCategory?.path?.split('/') || [];
+        // Build category tree from flat list
+        const categoryTree = buildCategoryTree(response.items);
+        setCategories(categoryTree);
+        
+        // Calculate stats
+        const totalCategories = response.items.length;
+        const rootCategories = response.items.filter(cat => !cat.parent_category_id).length;
+        const leafCategories = response.items.filter(cat => cat.is_leaf).length;
+        
+        setStats({
+          total: totalCategories,
+          rootCategories: rootCategories,
+          leafCategories: leafCategories
+        });
+        
+      } catch (error) {
+        console.error('Error loading categories:', error);
+        addNotification({
+          type: 'error',
+          title: 'Error',
+          message: 'Failed to load categories. Please try again.',
+        });
+        setCategories([]);
+        setStats({ total: 0, rootCategories: 0, leafCategories: 0 });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadCategories();
+  }, [addNotification]);
+
+  // Build hierarchical tree from flat category list
+  const buildCategoryTree = (flatCategories: CategoryResponse[]): CategoryTreeNode[] => {
+    const categoryMap = new Map<string, CategoryTreeNode>();
+    const rootCategories: CategoryTreeNode[] = [];
+
+    // First pass: create all category nodes
+    flatCategories.forEach(category => {
+      categoryMap.set(category.id, {
+        ...category,
+        children: [],
+        productCount: 0 // Would need to be calculated from products API
+      });
+    });
+
+    // Second pass: build the tree structure
+    flatCategories.forEach(category => {
+      const node = categoryMap.get(category.id)!;
+      
+      if (category.parent_category_id) {
+        const parent = categoryMap.get(category.parent_category_id);
+        if (parent) {
+          parent.children = parent.children || [];
+          parent.children.push(node);
+        }
+      } else {
+        rootCategories.push(node);
+      }
+    });
+
+    return rootCategories;
+  };
+
+  const breadcrumb = selectedCategory?.category_path?.split('/') || [];
 
   // Function to flatten categories tree into a list
   const getAllCategories = () => {
-    const flatList: any[] = [];
+    const flatList: CategoryTreeNode[] = [];
     
-    const flatten = (categories: any[], parentPath = '') => {
+    const flatten = (categories: CategoryTreeNode[]) => {
       categories.forEach(category => {
         flatList.push(category);
         if (category.children && category.children.length > 0) {
-          flatten(category.children, category.path);
+          flatten(category.children);
         }
       });
     };
     
     flatten(categories);
-    return flatList.sort((a, b) => a.path.localeCompare(b.path));
+    return flatList.sort((a, b) => (a.category_path || '').localeCompare(b.category_path || ''));
   };
 
   return (
@@ -211,7 +159,9 @@ function CategoriesContent() {
             <CardTitle className="text-sm font-medium">Total Categories</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">28</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? '...' : stats.total}
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -219,7 +169,9 @@ function CategoriesContent() {
             <CardTitle className="text-sm font-medium">Root Categories</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">6</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? '...' : stats.rootCategories}
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -227,7 +179,9 @@ function CategoriesContent() {
             <CardTitle className="text-sm font-medium">Leaf Categories</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">12</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? '...' : stats.leafCategories}
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -235,7 +189,9 @@ function CategoriesContent() {
             <CardTitle className="text-sm font-medium">Max Depth</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">3 levels</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? '...' : `${categories.length ? 'Dynamic' : 'No'} levels`}
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -260,11 +216,52 @@ function CategoriesContent() {
           </CardHeader>
           <CardContent>
             <CategoryTree 
-              categories={categories as any}
+              categories={(() => {
+                const transformCategory = (cat: CategoryTreeNode): Category => ({
+                  id: cat.id,
+                  name: cat.category_name,
+                  description: cat.category_name,
+                  parent_id: cat.parent_category_id,
+                  is_active: cat.is_active,
+                  created_at: cat.created_at,
+                  updated_at: cat.updated_at
+                });
+                
+                // Transform all categories including nested ones
+                const flattenCategories = (nodes: CategoryTreeNode[]): Category[] => {
+                  const result: Category[] = [];
+                  nodes.forEach(node => {
+                    result.push(transformCategory(node));
+                    if (node.children) {
+                      result.push(...flattenCategories(node.children));
+                    }
+                  });
+                  return result;
+                };
+                
+                return flattenCategories(categories);
+              })()}
               onCreateCategory={() => {}}
               onUpdateCategory={() => {}}
               onDeleteCategory={() => {}}
-              onSelectCategory={setSelectedCategory}
+              onSelectCategory={(category) => {
+                // Find the matching CategoryTreeNode from our state
+                const findCategoryNode = (nodes: CategoryTreeNode[], targetId: string): CategoryTreeNode | null => {
+                  for (const node of nodes) {
+                    if (node.id === targetId) return node;
+                    if (node.children) {
+                      const found = findCategoryNode(node.children, targetId);
+                      if (found) return found;
+                    }
+                  }
+                  return null;
+                };
+                
+                const categoryNode = findCategoryNode(categories, category.id);
+                if (categoryNode) {
+                  setSelectedCategory(categoryNode);
+                }
+              }}
               selectedCategoryId={selectedCategory?.id}
             />
           </CardContent>
@@ -280,7 +277,7 @@ function CategoriesContent() {
               <div className="space-y-4">
                 {/* Breadcrumb */}
                 <div className="flex items-center text-sm text-gray-600">
-                  {breadcrumb.map((part, index) => (
+                  {breadcrumb.map((part: string, index: number) => (
                     <div key={index} className="flex items-center">
                       {index > 0 && <ChevronRight className="h-4 w-4 mx-1" />}
                       <span>{part}</span>
@@ -292,29 +289,29 @@ function CategoriesContent() {
                 <div className="space-y-3">
                   <div>
                     <label className="text-sm font-medium">Category Name</label>
-                    <p className="text-lg">{selectedCategory.name}</p>
+                    <p className="text-lg">{selectedCategory.category_name}</p>
                   </div>
 
                   <div>
                     <label className="text-sm font-medium">Category Type</label>
                     <p>
-                      <Badge variant={selectedCategory.isLeaf ? 'default' : 'secondary'}>
-                        {selectedCategory.isLeaf ? 'Leaf Category' : 'Parent Category'}
+                      <Badge variant={selectedCategory.is_leaf ? 'default' : 'secondary'}>
+                        {selectedCategory.is_leaf ? 'Leaf Category' : 'Parent Category'}
                       </Badge>
                     </p>
                   </div>
 
                   <div>
                     <label className="text-sm font-medium">Hierarchy Level</label>
-                    <p>Level {selectedCategory.level}</p>
+                    <p>Level {selectedCategory.category_level}</p>
                   </div>
 
                   <div>
                     <label className="text-sm font-medium">Products</label>
-                    <p>{selectedCategory.productCount} products</p>
+                    <p>{selectedCategory.productCount || 0} products</p>
                   </div>
 
-                  {selectedCategory.isLeaf && (
+                  {selectedCategory.is_leaf && (
                     <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                       <p className="text-sm text-blue-700 dark:text-blue-300">
                         This is a leaf category. Products can be assigned to this category.
@@ -329,7 +326,7 @@ function CategoriesContent() {
                     <Edit className="mr-2 h-4 w-4" />
                     Edit Category
                   </Button>
-                  {!selectedCategory.isLeaf && (
+                  {!selectedCategory.is_leaf && (
                     <Button className="w-full" variant="outline">
                       <Plus className="mr-2 h-4 w-4" />
                       Add Subcategory
@@ -340,7 +337,7 @@ function CategoriesContent() {
                     Move Category
                   </Button>
                   {selectedCategory.productCount === 0 && (
-                    <Button className="w-full" variant="outline" className="text-red-600">
+                    <Button className="w-full text-red-600" variant="outline">
                       <Trash2 className="mr-2 h-4 w-4" />
                       Delete Category
                     </Button>
@@ -389,19 +386,19 @@ function CategoriesContent() {
                   <tr key={category.id} className="border-b hover:bg-gray-50 dark:hover:bg-gray-800">
                     <td className="py-2 px-4">
                       <div className="flex items-center">
-                        {category.level > 1 && (
+                        {category.category_level > 1 && (
                           <span className="text-gray-400 mr-2">
-                            {'— '.repeat(category.level - 1)}
+                            {'— '.repeat(category.category_level - 1)}
                           </span>
                         )}
-                        <span className="font-medium">{category.name}</span>
+                        <span className="font-medium">{category.category_name}</span>
                       </div>
                     </td>
-                    <td className="py-2 px-4 text-sm text-gray-600">{category.path}</td>
-                    <td className="py-2 px-4 text-sm">{category.level}</td>
+                    <td className="py-2 px-4 text-sm text-gray-600">{category.category_path}</td>
+                    <td className="py-2 px-4 text-sm">{category.category_level}</td>
                     <td className="py-2 px-4">
-                      <Badge variant={category.isLeaf ? 'default' : 'secondary'}>
-                        {category.isLeaf ? 'Leaf' : 'Parent'}
+                      <Badge variant={category.is_leaf ? 'default' : 'secondary'}>
+                        {category.is_leaf ? 'Leaf' : 'Parent'}
                       </Badge>
                     </td>
                     <td className="py-2 px-4 text-sm">{category.productCount || 0}</td>

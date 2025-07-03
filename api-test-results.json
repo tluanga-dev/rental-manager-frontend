@@ -1,0 +1,145 @@
+{
+  "summary": {
+    "total_tests": 15,
+    "successful": 10,
+    "failed": 5,
+    "success_rate": 66.66666666666666
+  },
+  "results": [
+    {
+      "endpoint": "/",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.012613058090209961,
+      "success": true,
+      "error": null,
+      "response_preview": "{'message': 'Welcome to FastAPI DDD Project'}"
+    },
+    {
+      "endpoint": "/health",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.0025479793548583984,
+      "success": true,
+      "error": null,
+      "response_preview": "{'status': 'healthy', 'service': 'FastAPI DDD Project', 'version': '0.1.0', 'timestamp': '2025-07-02T13:30:00Z'}"
+    },
+    {
+      "endpoint": "/docs",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.002173900604248047,
+      "success": true,
+      "error": null,
+      "response_preview": "{'text': '\\n    <!DOCTYPE html>\\n    <html>\\n    <head>\\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.9.0/swagger-ui.css\">\\n    <link rel=\"shortcut i"
+    },
+    {
+      "endpoint": "/openapi.json",
+      "method": "GET",
+      "status_code": 404,
+      "response_time": 0.0018458366394042969,
+      "success": false,
+      "error": null,
+      "response_preview": "{'detail': 'Not Found'}"
+    },
+    {
+      "endpoint": "/api/v1/auth/demo/admin",
+      "method": "POST",
+      "status_code": 404,
+      "response_time": 0.0020318031311035156,
+      "success": false,
+      "error": null,
+      "response_preview": "{'detail': 'Not Found'}"
+    },
+    {
+      "endpoint": "/api/v1/auth/demo/manager",
+      "method": "POST",
+      "status_code": 404,
+      "response_time": 0.0055391788482666016,
+      "success": false,
+      "error": null,
+      "response_preview": "{'detail': 'Not Found'}"
+    },
+    {
+      "endpoint": "/api/v1/auth/demo/staff",
+      "method": "POST",
+      "status_code": 404,
+      "response_time": 0.0016231536865234375,
+      "success": false,
+      "error": null,
+      "response_preview": "{'detail': 'Not Found'}"
+    },
+    {
+      "endpoint": "/api/v1/users",
+      "method": "POST",
+      "status_code": 422,
+      "response_time": 0.005688190460205078,
+      "success": false,
+      "error": null,
+      "response_preview": "{'detail': [{'type': 'missing', 'loc': ['body'], 'msg': 'Field required', 'input': None, 'url': 'https://errors.pydantic.dev/2.11/v/missing'}]}"
+    },
+    {
+      "endpoint": "/api/v1/categories",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.04926800727844238,
+      "success": true,
+      "error": null,
+      "response_preview": "{'items': [{'category_name': 'Construction', 'parent_category_id': None, 'display_order': 0, 'id': '82bd3bfa-d675-48d9-8f90-c51b631ef52b', 'category_path': 'Construction', 'category_level': 1, 'is_lea"
+    },
+    {
+      "endpoint": "/api/v1/categories",
+      "method": "POST",
+      "status_code": 201,
+      "response_time": 0.009986162185668945,
+      "success": true,
+      "error": null,
+      "response_preview": "{'category_name': 'Test API Category', 'parent_category_id': None, 'display_order': 1, 'id': 'aacce792-9c85-4c94-8303-0a77063e5b5b', 'category_path': 'Test API Category', 'category_level': 1, 'is_leaf"
+    },
+    {
+      "endpoint": "/api/v1/locations",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.0068798065185546875,
+      "success": true,
+      "error": null,
+      "response_preview": "{'items': [{'location_code': 'LOC1751495912321', 'location_name': 'Test Location', 'location_type': 'STORE', 'address': '123 Test St', 'city': 'Test City', 'state': 'TS', 'country': 'USA', 'postal_cod"
+    },
+    {
+      "endpoint": "/api/v1/brands",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.006372690200805664,
+      "success": true,
+      "error": null,
+      "response_preview": "{'items': [{'brand_name': 'Test Brand 1751495912321', 'brand_code': 'TB912321', 'description': 'Test brand description', 'id': 'b07c9c36-7a3f-417e-9d3c-933b179567fd', 'created_at': '2025-07-02T22:38:3"
+    },
+    {
+      "endpoint": "/api/v1/customers",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.010643243789672852,
+      "success": true,
+      "error": null,
+      "response_preview": "{'items': [{'customer_code': 'TEST001', 'customer_type': 'INDIVIDUAL', 'business_name': None, 'first_name': 'Test', 'last_name': 'Customer', 'tax_id': None, 'customer_tier': 'BRONZE', 'credit_limit': "
+    },
+    {
+      "endpoint": "/api/v1/item-masters",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.0051190853118896484,
+      "success": true,
+      "error": null,
+      "response_preview": "{'items': [], 'total': 0, 'skip': 0, 'limit': 100}"
+    },
+    {
+      "endpoint": "/api/v1/skus",
+      "method": "GET",
+      "status_code": 200,
+      "response_time": 0.005825996398925781,
+      "success": true,
+      "error": null,
+      "response_preview": "{'items': [], 'total': 0, 'skip': 0, 'limit': 100}"
+    }
+  ]
+}

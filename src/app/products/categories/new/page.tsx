@@ -9,22 +9,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Combobox } from '@/components/ui/combobox';
 import { 
   ArrowLeft,
   Grid3X3,
   ChevronRight,
   Save,
-  X
+  X,
+  Loader2,
+  CheckCircle
 } from 'lucide-react';
 import { useAppStore } from '@/stores/app-store';
-import { categoriesApi } from '@/services/api/categories';
+import { categoriesApi, type CategoryResponse } from '@/services/api/categories';
 
 interface CategoryOption {
   id: string;
@@ -34,30 +30,98 @@ interface CategoryOption {
   isLeaf: boolean;
 }
 
+// Helper function to convert API response to form options
+const convertToOption = (category: CategoryResponse): CategoryOption => ({
+  id: category.id,
+  name: category.category_name,
+  path: category.category_path,
+  level: category.category_level,
+  isLeaf: category.is_leaf,
+});
+
 function NewCategoryContent() {
   const router = useRouter();
   const { addNotification } = useAppStore();
   
   // Form states
   const [categoryName, setCategoryName] = useState('');
-  const [parentCategory, setParentCategory] = useState<string>('');
+  const [parentCategory, setParentCategory] = useState<string>('root');
   const [isLeaf, setIsLeaf] = useState(false);
   const [description, setDescription] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [isLoadingCategories, setIsLoadingCategories] = useState(true);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Filter out leaf categories from parent options
-  const parentOptions = categories.filter(cat => !cat.isLeaf);
+  // Include all categories as potential parents (leaf categories can become parent categories)
+  const parentOptions = categories;
+
+  // Mount effect
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Load categories on component mount
+  useEffect(() => {
+    if (!isMounted) return;
+    
+    const loadCategories = async () => {
+      setIsLoadingCategories(true);
+      try {
+        console.log('🔄 Loading categories from API...');
+        
+        // Use real API to load categories
+        const response = await categoriesApi.list({ limit: 1000 }); // Get all categories
+        
+        console.log('📨 Raw API response:', response);
+        
+        // Validate response structure
+        if (!response || !response.items || !Array.isArray(response.items)) {
+          console.error('❌ Invalid response structure:', response);
+          throw new Error('Invalid response structure from categories API');
+        }
+        
+        const apiCategories = response.items.map(convertToOption);
+        
+        // Add a root option for top-level categories
+        const categoriesWithRoot: CategoryOption[] = [
+          { id: 'root', name: 'Root Category', path: '', level: 0, isLeaf: false },
+          ...apiCategories
+        ];
+        
+        setCategories(categoriesWithRoot);
+        
+        // Debug logging
+        console.log(`📊 Loaded ${categoriesWithRoot.length} total categories`);
+        console.log(`📋 Categories data:`, categoriesWithRoot);
+        console.log(`📂 All categories available as parents:`, categoriesWithRoot.map(c => ({ id: c.id, name: c.name, isLeaf: c.isLeaf })));
+      } catch (error) {
+        console.error('❌ Error loading categories:', error);
+        console.error('❌ Error details:', JSON.stringify(error, null, 2));
+        
+        // Always set fallback data with root category
+        const fallbackCategories = [
+          { id: 'root', name: 'Root Category', path: '', level: 0, isLeaf: false }
+        ];
+        setCategories(fallbackCategories);
+        console.log('🔄 Set fallback categories:', fallbackCategories);
+        
+        addNotification({
+          type: 'warning',
+          title: 'Warning',
+          message: 'Could not load existing categories. You can still create a root category.',
+        });
+      } finally {
+        setIsLoadingCategories(false);
+      }
+    };
+
+    loadCategories();
+  }, [isMounted, addNotification]);
 
   const getSelectedParent = () => {
     return parentOptions.find(cat => cat.id === parentCategory);
-  };
-
-  const getCategoryPath = () => {
-    const parent = getSelectedParent();
-    if (!parent || parent.id === 'root') return categoryName;
-    return `${parent.path}/${categoryName}`;
   };
 
   const getCategoryLevel = () => {
@@ -78,58 +142,133 @@ function NewCategoryContent() {
       return;
     }
 
+    if (!parentCategory) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Parent category is required',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       // Prepare the API request payload
       const createPayload = {
         category_name: categoryName.trim(),
-        parent_category_id: parentCategory === 'root' || !parentCategory ? null : parentCategory,
+        parent_category_id: (!parentCategory || parentCategory === 'root') ? null : parentCategory,
         display_order: 0,
       };
 
       console.log('Creating category with payload:', createPayload);
+      console.log('Parent category state:', parentCategory);
+      console.log('Available categories:', categories.map(c => ({ id: c.id, name: c.name })));
 
       // Make API call to create category
       const createdCategory = await categoriesApi.create(createPayload);
 
       console.log('Category created successfully:', createdCategory);
 
+      // Show success state
+      setIsSuccess(true);
+
       addNotification({
         type: 'success',
-        title: 'Category Created',
-        message: `Category "${createdCategory.category_name}" has been created successfully at path: ${createdCategory.category_path}`,
+        title: 'Category Created Successfully',
+        message: `Category "${createdCategory.category_name}" has been created at path: ${createdCategory.category_path}`,
       });
 
-      router.push('/products/categories');
-    } catch (error: any) {
+      // Redirect after showing success state
+      setTimeout(() => {
+        router.push('/products/categories');
+      }, 1000);
+    } catch (error: unknown) {
       console.error('Error creating category:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
       
-      const errorMessage = error.response?.data?.detail || 
-                          error.response?.data?.message || 
-                          error.message || 
-                          'Failed to create category. Please try again.';
+      let errorMessage = 'Failed to create category. Please try again.';
+      let errorDetails = '';
+      
+      if (error && typeof error === 'object' && 'response' in error) {
+        const apiError = error as { 
+          response?: { 
+            data?: { detail?: string | Array<any>; message?: string; };
+            status?: number;
+          } 
+        };
+        
+        console.error('API Error Status:', apiError.response?.status);
+        console.error('API Error Data:', apiError.response?.data);
+        
+        if (apiError.response?.data?.detail) {
+          if (Array.isArray(apiError.response.data.detail)) {
+            errorDetails = apiError.response.data.detail.map(d => d.msg || d).join(', ');
+          } else {
+            errorDetails = apiError.response.data.detail;
+          }
+        }
+        
+        errorMessage = errorDetails || apiError.response?.data?.message || errorMessage;
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
       
       addNotification({
         type: 'error',
-        title: 'Error',
+        title: 'Category Creation Failed',
         message: errorMessage,
       });
     } finally {
+      // Always reset submitting state
       setIsSubmitting(false);
     }
   };
 
   const breadcrumbPath = getSelectedParent()?.path?.split('/').filter(Boolean) || [];
 
+  // Don't render until mounted to prevent hydration mismatches
+  if (!isMounted) {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 relative">
+      {/* Loading/Success Overlay */}
+      {(isSubmitting || isSuccess) && (
+        <div className="absolute inset-0 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg flex items-center space-x-3">
+            {isSuccess ? (
+              <CheckCircle className="h-6 w-6 text-green-600" />
+            ) : (
+              <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
+            )}
+            <div>
+              <p className="font-medium">
+                {isSuccess ? 'Category Created!' : 'Creating Category'}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {isSuccess ? 'Redirecting to dashboard...' : 'Please wait...'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
             onClick={() => router.back()}
+            disabled={isSubmitting || isSuccess}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
@@ -161,6 +300,7 @@ function NewCategoryContent() {
                   onChange={(e) => setCategoryName(e.target.value)}
                   placeholder="e.g., Mirrorless, Flash, Microphones"
                   required
+                  disabled={isSubmitting || isSuccess}
                 />
                 <p className="text-sm text-gray-500 mt-1">
                   The name of the category as it will appear in the hierarchy
@@ -169,18 +309,33 @@ function NewCategoryContent() {
 
               <div>
                 <Label htmlFor="parent-category">Parent Category*</Label>
-                <Select value={parentCategory} onValueChange={setParentCategory}>
-                  <SelectTrigger id="parent-category">
-                    <SelectValue placeholder="Select parent category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {parentOptions.map((category) => (
-                      <SelectItem key={category.id} value={category.id}>
-                        {category.level > 0 ? '— '.repeat(category.level) : ''}{category.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                
+                {/* Debug info */}
+                <div className="text-xs text-gray-500 mb-2">
+                  Debug: {parentOptions.length} options, Loading: {isLoadingCategories.toString()}
+                </div>
+                
+                <Combobox
+                  options={(() => {
+                    const options = parentOptions.map(cat => ({
+                      value: cat.id,
+                      label: cat.id === 'root' ? cat.name : `${'—'.repeat(Math.max(0, cat.level - 1))} ${cat.name}`,
+                      level: cat.level
+                    }));
+                    console.log('📤 Combobox options:', options);
+                    return options;
+                  })()}
+                  value={parentCategory}
+                  onValueChange={(value) => {
+                    console.log('📥 Selected parent category:', value);
+                    setParentCategory(value);
+                  }}
+                  placeholder={isLoadingCategories ? "Loading categories..." : "Select parent category"}
+                  searchPlaceholder="Search categories..."
+                  emptyText="No categories found"
+                  className="w-full"
+                  disabled={isLoadingCategories || isSubmitting || isSuccess}
+                />
                 <p className="text-sm text-gray-500 mt-1">
                   Choose where this category should be placed in the hierarchy
                 </p>
@@ -197,6 +352,7 @@ function NewCategoryContent() {
                   id="is-leaf"
                   checked={isLeaf}
                   onCheckedChange={setIsLeaf}
+                  disabled={isSubmitting || isSuccess}
                 />
               </div>
 
@@ -208,6 +364,7 @@ function NewCategoryContent() {
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Optional description of this category..."
                   rows={3}
+                  disabled={isSubmitting || isSuccess}
                 />
               </div>
             </CardContent>
@@ -280,14 +437,18 @@ function NewCategoryContent() {
             type="button"
             variant="outline"
             onClick={() => router.back()}
-            disabled={isSubmitting}
+            disabled={isSubmitting || isSuccess}
           >
             <X className="h-4 w-4 mr-2" />
             Cancel
           </Button>
           <Button type="submit" disabled={isSubmitting}>
-            <Save className="h-4 w-4 mr-2" />
-            {isSubmitting ? 'Creating...' : 'Create Category'}
+            {isSubmitting ? (
+              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+            ) : (
+              <Save className="h-4 w-4 mr-2" />
+            )}
+            {isSubmitting ? 'Creating Category...' : 'Create Category'}
           </Button>
         </div>
       </form>

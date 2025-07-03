@@ -21,7 +21,7 @@ export const useAuthStore = create<AuthStore>()(
       accessToken: null,
       refreshToken: null,
       isAuthenticated: false,
-      isLoading: false,
+      isLoading: true, // Start as true, will be set to false after hydration
       permissions: [],
 
       setUser: (user) => {
@@ -98,6 +98,12 @@ export const useAuthStore = create<AuthStore>()(
         isAuthenticated: state.isAuthenticated,
         permissions: state.permissions,
       }),
+      onRehydrateStorage: () => (state) => {
+        // Set loading to false after hydration completes
+        if (state) {
+          state.setIsLoading(false);
+        }
+      },
     }
   )
 );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -34,6 +34,7 @@ import {
   Grid3X3
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { categoriesApi } from '@/services/api/categories';
 
 interface Product {
   id: string;
@@ -56,66 +57,31 @@ function ProductsContent() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [brandFilter, setBrandFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
+  const [categories, setCategories] = useState<Array<{id: string, name: string}>>([]);
 
-  // Mock data - replace with API call
-  const products: Product[] = [
-    {
-      id: '1',
-      itemCode: 'CAM-001',
-      itemName: 'Canon EOS R5 Mirrorless Camera',
-      category: 'Mirrorless',
-      categoryPath: 'Cameras/Digital/Mirrorless',
-      brand: 'Canon',
-      itemType: 'PRODUCT',
-      isSerialized: true,
-      skuCount: 3,
-      activeSkuCount: 3,
-      isActive: true,
-      createdAt: '2024-01-15',
-    },
-    {
-      id: '2',
-      itemCode: 'LGT-001',
-      itemName: 'Godox AD600 Pro Studio Flash',
-      category: 'Flash',
-      categoryPath: 'Lighting/Studio/Flash',
-      brand: 'Godox',
-      itemType: 'PRODUCT',
-      isSerialized: true,
-      skuCount: 2,
-      activeSkuCount: 2,
-      isActive: true,
-      createdAt: '2024-01-14',
-    },
-    {
-      id: '3',
-      itemCode: 'KIT-001',
-      itemName: 'Professional Photography Bundle',
-      category: 'Bundles',
-      categoryPath: 'Bundles',
-      brand: 'Multiple',
-      itemType: 'BUNDLE',
-      isSerialized: false,
-      skuCount: 1,
-      activeSkuCount: 1,
-      isActive: true,
-      createdAt: '2024-01-13',
-    },
-    {
-      id: '4',
-      itemCode: 'SVC-001',
-      itemName: 'Equipment Setup Service',
-      category: 'Services',
-      categoryPath: 'Services',
-      brand: 'In-House',
-      itemType: 'SERVICE',
-      isSerialized: false,
-      skuCount: 1,
-      activeSkuCount: 1,
-      isActive: true,
-      createdAt: '2024-01-12',
-    },
-  ];
+  // Load categories for filter dropdown
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const response = await categoriesApi.list({ limit: 1000 });
+        if (response?.items) {
+          const categoryOptions = response.items.map(cat => ({
+            id: cat.id,
+            name: cat.category_name
+          }));
+          setCategories(categoryOptions);
+        }
+      } catch (error) {
+        console.error('Error loading categories for filter:', error);
+        setCategories([]);
+      }
+    };
+
+    loadCategories();
+  }, []);
+
+  // TODO: Replace with API call to fetch products
+  const products: Product[] = [];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.itemName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -227,10 +193,11 @@ function ProductsContent() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
-                  <SelectItem value="Mirrorless">Mirrorless</SelectItem>
-                  <SelectItem value="DSLR">DSLR</SelectItem>
-                  <SelectItem value="Flash">Flash</SelectItem>
-                  <SelectItem value="Continuous">Continuous</SelectItem>
+                  {categories.map(category => (
+                    <SelectItem key={category.id} value={category.id}>
+                      {category.name}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>

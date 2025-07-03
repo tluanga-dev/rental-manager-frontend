@@ -8,3 +8,7 @@ export { InventoryDashboard } from './inventory-dashboard';
 export { StockLevelGrid } from './stock-level-grid';
 export { InventoryStatusTracker } from './inventory-status-tracker';
 export { AvailabilityCalendar } from './availability-calendar';
+export { InventoryList } from './inventory-list';
+export { InventoryUnitForm } from './inventory-unit-form';
+export { TransferForm } from './transfer-form';
+export { InspectionForm } from './inspection-form';

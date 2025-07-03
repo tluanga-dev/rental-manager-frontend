@@ -247,6 +247,13 @@ export interface InspectionFormData {
   customer_signature?: string;
 }
 
+export interface ChecklistTemplateItem {
+  category: ChecklistCategory;
+  item: string;
+  required: boolean;
+  photo_required?: boolean;
+}
+
 export interface MobileInspectionState {
   current_inspection?: InspectionItem;
   photos_captured: InspectionPhoto[];
@@ -270,34 +277,19 @@ export const INSPECTION_CONFIG = {
   OFFLINE_STORAGE_LIMIT: 100, // inspections
 };
 
-export const CHECKLIST_TEMPLATES = {
-  ELECTRONICS: [
-    { category: 'PHYSICAL_CONDITION', item: 'No visible damage to housing', required: true },
-    { category: 'PHYSICAL_CONDITION', item: 'Screen/Display intact', required: true },
-    { category: 'FUNCTIONAL_TEST', item: 'Powers on correctly', required: true },
-    { category: 'FUNCTIONAL_TEST', item: 'All buttons/controls working', required: true },
-    { category: 'ACCESSORIES', item: 'All cables included', required: true },
-    { category: 'ACCESSORIES', item: 'Charger/Power adapter present', required: true },
-    { category: 'PACKAGING', item: 'Original box/case available', required: false },
-    { category: 'SERIAL_VERIFICATION', item: 'Serial number matches records', required: true },
-  ],
-  CAMERA_EQUIPMENT: [
-    { category: 'PHYSICAL_CONDITION', item: 'Lens clean and scratch-free', required: true },
-    { category: 'PHYSICAL_CONDITION', item: 'Body free from dents/damage', required: true },
-    { category: 'FUNCTIONAL_TEST', item: 'Camera powers on and operates', required: true },
-    { category: 'FUNCTIONAL_TEST', item: 'Autofocus working correctly', required: true },
-    { category: 'FUNCTIONAL_TEST', item: 'Image stabilization functional', required: true },
-    { category: 'ACCESSORIES', item: 'Battery present and charged', required: true },
-    { category: 'ACCESSORIES', item: 'Memory card slot operational', required: true },
-    { category: 'ACCESSORIES', item: 'Lens caps/covers included', required: true },
-    { category: 'PACKAGING', item: 'Protective case/bag included', required: true },
-  ],
-  FURNITURE: [
-    { category: 'PHYSICAL_CONDITION', item: 'No structural damage', required: true },
-    { category: 'PHYSICAL_CONDITION', item: 'Surface condition acceptable', required: true },
-    { category: 'FUNCTIONAL_TEST', item: 'All moving parts operational', required: true },
-    { category: 'CLEANLINESS', item: 'Item clean and sanitized', required: true },
-    { category: 'ACCESSORIES', item: 'All components/parts present', required: true },
-    { category: 'SAFETY_CHECK', item: 'No sharp edges or hazards', required: true },
-  ],
-} as Record<string, ChecklistTemplateItem[]>;
+// Generic inspection checklist template - can be customized per category in the future
+export const DEFAULT_CHECKLIST_TEMPLATE: ChecklistTemplateItem[] = [
+  { category: 'PHYSICAL_CONDITION', item: 'No visible damage or defects', required: true },
+  { category: 'PHYSICAL_CONDITION', item: 'All components intact', required: true },
+  { category: 'FUNCTIONAL_TEST', item: 'Item powers on/operates correctly', required: true },
+  { category: 'FUNCTIONAL_TEST', item: 'All features working as expected', required: true },
+  { category: 'ACCESSORIES', item: 'All required accessories present', required: true },
+  { category: 'PACKAGING', item: 'Protective packaging included', required: false },
+  { category: 'CLEANLINESS', item: 'Item clean and ready for rental', required: true },
+  { category: 'SERIAL_VERIFICATION', item: 'Serial number matches records', required: true },
+];
+
+// Fallback for backward compatibility - all categories use the same generic template
+export const CHECKLIST_TEMPLATES = new Proxy({}, {
+  get: () => DEFAULT_CHECKLIST_TEMPLATE
+}) as Record<string, ChecklistTemplateItem[]>;

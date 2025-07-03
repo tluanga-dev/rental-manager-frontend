@@ -1,0 +1,782 @@
+[
+  {
+    "name": "Home/Root",
+    "url": "http://localhost:3000/",
+    "path": "/",
+    "timestamp": "2025-07-03T04:04:38.368Z",
+    "requiresAuth": false,
+    "finalUrl": "http://localhost:3000/login",
+    "statusCode": 200,
+    "redirected": true,
+    "redirectedTo": "/login",
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 10444,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 5,
+        "links": 0,
+        "inputs": 2,
+        "tables": 0,
+        "forms": 1
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": false,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Login Page",
+    "url": "http://localhost:3000/login",
+    "path": "/login",
+    "timestamp": "2025-07-03T04:04:41.114Z",
+    "requiresAuth": false,
+    "finalUrl": "http://localhost:3000/login",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12007,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 5,
+        "links": 0,
+        "inputs": 2,
+        "tables": 0,
+        "forms": 1
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": false,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_login.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "path": "/dashboard",
+    "timestamp": "2025-07-03T04:04:48.423Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/dashboard",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 11568,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 11,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_dashboard.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Sales Overview",
+    "url": "http://localhost:3000/sales",
+    "path": "/sales",
+    "timestamp": "2025-07-03T04:04:51.122Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/sales",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 11621,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 13,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_sales.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "New Sale",
+    "url": "http://localhost:3000/sales/new",
+    "path": "/sales/new",
+    "timestamp": "2025-07-03T04:04:53.811Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/sales/new",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12030,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 15,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_sales_new.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Sales History",
+    "url": "http://localhost:3000/sales/history",
+    "path": "/sales/history",
+    "timestamp": "2025-07-03T04:04:58.138Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/sales/history",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12133,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 23,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_sales_history.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Sale Details (Dynamic)",
+    "url": "http://localhost:3000/sales/123",
+    "path": "/sales/123",
+    "timestamp": "2025-07-03T04:05:01.368Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/sales/123",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 11691,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 12,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_sales_123.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Rentals Overview",
+    "url": "http://localhost:3000/rentals",
+    "path": "/rentals",
+    "timestamp": "2025-07-03T04:05:19.594Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/rentals",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 11714,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 12,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_rentals.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "New Rental",
+    "url": "http://localhost:3000/rentals/new",
+    "path": "/rentals/new",
+    "timestamp": "2025-07-03T04:05:25.361Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/rentals/new",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12084,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 15,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_rentals_new.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Active Rentals",
+    "url": "http://localhost:3000/rentals/active",
+    "path": "/rentals/active",
+    "timestamp": "2025-07-03T04:05:30.306Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/rentals/active",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12362,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 20,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_rentals_active.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Rental History",
+    "url": "http://localhost:3000/rentals/history",
+    "path": "/rentals/history",
+    "timestamp": "2025-07-03T04:05:34.716Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/rentals/history",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12378,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 21,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_rentals_history.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Products Overview",
+    "url": "http://localhost:3000/products",
+    "path": "/products",
+    "timestamp": "2025-07-03T04:05:38.462Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/products",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12121,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 14,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_products.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "Product Categories",
+    "url": "http://localhost:3000/products/categories",
+    "path": "/products/categories",
+    "timestamp": "2025-07-03T04:05:41.621Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/products/categories",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12479,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 52,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_products_categories.png",
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      },
+      {
+        "type": "error",
+        "text": "Error loading categories: JSHandle@object"
+      }
+    ],
+    "status": "error"
+  },
+  {
+    "name": "New Category",
+    "url": "http://localhost:3000/products/categories/new",
+    "path": "/products/categories/new",
+    "timestamp": "2025-07-03T04:05:46.503Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/products/categories/new",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12884,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 16,
+        "links": 12,
+        "inputs": 3,
+        "tables": 0,
+        "forms": 1
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_products_categories_new.png",
+    "consoleLogs": [],
+    "status": "error"
+  },
+  {
+    "name": "Brands",
+    "url": "http://localhost:3000/products/brands",
+    "path": "/products/brands",
+    "timestamp": "2025-07-03T04:06:01.694Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/products/brands",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12314,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 22,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_products_brands.png",
+    "consoleLogs": [],
+    "status": "error"
+  },
+  {
+    "name": "Item Masters",
+    "url": "http://localhost:3000/products/items",
+    "path": "/products/items",
+    "timestamp": "2025-07-03T04:06:05.919Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/products/items",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12374,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 34,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_products_items.png",
+    "consoleLogs": [],
+    "status": "error"
+  },
+  {
+    "name": "SKUs",
+    "url": "http://localhost:3000/products/skus",
+    "path": "/products/skus",
+    "timestamp": "2025-07-03T04:06:09.796Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/products/skus",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 12564,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 31,
+        "links": 12,
+        "inputs": 2,
+        "tables": 1,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_products_skus.png",
+    "consoleLogs": [],
+    "status": "error"
+  },
+  {
+    "name": "Purchases Overview",
+    "url": "http://localhost:3000/purchases",
+    "path": "/purchases",
+    "timestamp": "2025-07-03T04:06:13.372Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/purchases",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 11911,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 15,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_purchases.png",
+    "consoleLogs": [],
+    "status": "error"
+  },
+  {
+    "name": "Receive Inventory",
+    "url": "http://localhost:3000/purchases/receive",
+    "path": "/purchases/receive",
+    "timestamp": "2025-07-03T04:06:17.257Z",
+    "requiresAuth": true,
+    "finalUrl": "http://localhost:3000/purchases/receive",
+    "statusCode": 200,
+    "pageTitle": "Rental Manager",
+    "pageContent": {
+      "hasContent": true,
+      "textLength": 11720,
+      "hasError": true,
+      "elementsCount": {
+        "buttons": 12,
+        "links": 12,
+        "inputs": 1,
+        "tables": 0,
+        "forms": 0
+      }
+    },
+    "layout": {
+      "hasSidebar": false,
+      "hasNavbar": true,
+      "hasMainContent": true,
+      "hasFooter": false
+    },
+    "screenshot": "./screenshots_purchases_receive.png",
+    "consoleLogs": [],
+    "status": "error"
+  }
+]

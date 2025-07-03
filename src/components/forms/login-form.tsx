@@ -13,7 +13,6 @@ import { loginSchema, type LoginFormData } from '@/lib/validations';
 import { useAuthStore } from '@/stores/auth-store';
 import { useAppStore } from '@/stores/app-store';
 import { apiClient } from '@/lib/axios';
-import { User, LoginResponse } from '@/types/auth';
 import { Loader2, AlertCircle } from 'lucide-react';
 
 export function LoginForm() {
@@ -36,7 +35,7 @@ export function LoginForm() {
 
     try {
       // Real API call to backend
-      const response = await apiClient.post<LoginResponse>('/auth/login', {
+      const response = await apiClient.post('/auth/login', {
         email: data.email,
         password: data.password,
       });
@@ -56,10 +55,16 @@ export function LoginForm() {
       // Redirect to dashboard
       router.push('/dashboard');
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Login failed:', error);
       
-      const errorMessage = error.response?.data?.message || 'Login failed. Please try again.';
+      let errorMessage = 'Login failed. Please try again.';
+      
+      if (error && typeof error === 'object' && 'response' in error) {
+        const apiError = error as { response?: { data?: { detail?: string; message?: string } } };
+        errorMessage = apiError.response?.data?.detail || apiError.response?.data?.message || errorMessage;
+      }
+      
       setError(errorMessage);
       
       addNotification({
@@ -74,97 +79,63 @@ export function LoginForm() {
 
   // Demo login functionality for development
   const handleDemoLogin = async (role: 'admin' | 'manager' | 'staff') => {
+    console.log('Demo login attempt for role:', role);
     setIsLoading(true);
+    setError('');
     
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const mockUsers = {
-      admin: {
-        id: '1',
-        email: 'admin@example.com',
-        username: 'admin',
-        firstName: 'Admin',
-        lastName: 'User',
-        role: {
-          id: '1',
-          name: 'Administrator',
-          description: 'Full system access',
-          permissions: [
-            { id: '1', code: 'SALE_CREATE', type: 'SALE_CREATE' as const, description: 'Create sales' },
-            { id: '2', code: 'SALE_VIEW', type: 'SALE_VIEW' as const, description: 'View sales' },
-            { id: '3', code: 'RENTAL_CREATE', type: 'RENTAL_CREATE' as const, description: 'Create rentals' },
-            { id: '4', code: 'RENTAL_VIEW', type: 'RENTAL_VIEW' as const, description: 'View rentals' },
-            { id: '5', code: 'CUSTOMER_CREATE', type: 'CUSTOMER_CREATE' as const, description: 'Create customers' },
-            { id: '6', code: 'CUSTOMER_VIEW', type: 'CUSTOMER_VIEW' as const, description: 'View customers' },
-            { id: '7', code: 'INVENTORY_VIEW', type: 'INVENTORY_VIEW' as const, description: 'View inventory' },
-            { id: '8', code: 'REPORT_VIEW', type: 'REPORT_VIEW' as const, description: 'View reports' },
-            { id: '9', code: 'SYSTEM_CONFIG', type: 'SYSTEM_CONFIG' as const, description: 'System configuration' },
-          ],
-        },
-        isActive: true,
-        createdAt: new Date().toISOString(),
-      },
-      manager: {
-        id: '2',
-        email: 'manager@example.com',
-        username: 'manager',
-        firstName: 'Manager',
-        lastName: 'User',
-        role: {
-          id: '2',
-          name: 'Manager',
-          description: 'Management access',
-          permissions: [
-            { id: '1', code: 'SALE_CREATE', type: 'SALE_CREATE' as const, description: 'Create sales' },
-            { id: '2', code: 'SALE_VIEW', type: 'SALE_VIEW' as const, description: 'View sales' },
-            { id: '3', code: 'RENTAL_CREATE', type: 'RENTAL_CREATE' as const, description: 'Create rentals' },
-            { id: '4', code: 'RENTAL_VIEW', type: 'RENTAL_VIEW' as const, description: 'View rentals' },
-            { id: '5', code: 'CUSTOMER_VIEW', type: 'CUSTOMER_VIEW' as const, description: 'View customers' },
-            { id: '6', code: 'INVENTORY_VIEW', type: 'INVENTORY_VIEW' as const, description: 'View inventory' },
-            { id: '7', code: 'REPORT_VIEW', type: 'REPORT_VIEW' as const, description: 'View reports' },
-          ],
-        },
-        isActive: true,
-        createdAt: new Date().toISOString(),
-      },
-      staff: {
-        id: '3',
-        email: 'staff@example.com',
-        username: 'staff',
-        firstName: 'Staff',
-        lastName: 'User',
-        role: {
-          id: '3',
-          name: 'Staff',
-          description: 'Basic access',
-          permissions: [
-            { id: '1', code: 'SALE_CREATE', type: 'SALE_CREATE' as const, description: 'Create sales' },
-            { id: '2', code: 'SALE_VIEW', type: 'SALE_VIEW' as const, description: 'View sales' },
-            { id: '3', code: 'RENTAL_VIEW', type: 'RENTAL_VIEW' as const, description: 'View rentals' },
-            { id: '4', code: 'CUSTOMER_VIEW', type: 'CUSTOMER_VIEW' as const, description: 'View customers' },
-            { id: '5', code: 'INVENTORY_VIEW', type: 'INVENTORY_VIEW' as const, description: 'View inventory' },
-          ],
-        },
-        isActive: true,
-        createdAt: new Date().toISOString(),
-      },
-    };
+    try {
+      const credentials = {
+        admin: { email: 'admin@example.com', password: 'admin123' },
+        manager: { email: 'manager@example.com', password: 'manager123' },
+        staff: { email: 'staff@example.com', password: 'staff123' },
+      };
 
-    const user = mockUsers[role];
-    const accessToken = 'demo-access-token';
-    const refreshToken = 'demo-refresh-token';
+      const { email, password } = credentials[role];
+      
+      console.log('Making API call to:', `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}/auth/login`);
+      console.log('With credentials:', { email, password: '***' });
+      
+      // Use real API call
+      const response = await apiClient.post('/auth/login', {
+        email,
+        password,
+      });
 
-    login(user, accessToken, refreshToken);
-    
-    addNotification({
-      type: 'success',
-      title: 'Demo Login Successful',
-      message: `Logged in as ${user.role.name}`,
-    });
+      console.log('API response:', response.data);
 
-    router.push('/dashboard');
-    setIsLoading(false);
+      const { user, accessToken, refreshToken } = response.data.data;
+      
+      // Update auth store
+      login(user, accessToken, refreshToken);
+      
+      addNotification({
+        type: 'success',
+        title: 'Demo Login Successful',
+        message: `Logged in as ${user.role.name}`,
+      });
+
+      router.push('/dashboard');
+      
+    } catch (error: unknown) {
+      console.error('Demo login failed:', error);
+      
+      let errorMessage = 'Demo login failed. Please try again.';
+      
+      if (error && typeof error === 'object' && 'response' in error) {
+        const apiError = error as { response?: { data?: { detail?: string; message?: string } } };
+        errorMessage = apiError.response?.data?.detail || apiError.response?.data?.message || errorMessage;
+      }
+      
+      setError(errorMessage);
+      
+      addNotification({
+        type: 'error',
+        title: 'Demo Login Failed',
+        message: errorMessage,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const isLoading = useAuthStore(state => state.isLoading);

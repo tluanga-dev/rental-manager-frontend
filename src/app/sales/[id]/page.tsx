@@ -230,14 +230,14 @@ function SaleDetailContent() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Name:</span>
+                  <span className="text-gray-600">Customer ID:</span>
                   <span className="font-medium">
-                    {transaction.customer?.first_name} {transaction.customer?.last_name}
+                    {transaction.customer_id}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Email:</span>
-                  <span>{transaction.customer?.email || 'N/A'}</span>
+                  <span className="text-gray-600">Location ID:</span>
+                  <span>{transaction.location_id}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Phone:</span>

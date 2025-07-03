@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,6 +35,7 @@ import {
   DollarSign
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { categoriesApi } from '@/services/api/categories';
 
 interface SKU {
   id: string;
@@ -62,82 +63,31 @@ function SKUsContent() {
   const [brandFilter, setBrandFilter] = useState('all');
   const [conditionFilter, setConditionFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [categories, setCategories] = useState<Array<{id: string, name: string}>>([]);
 
-  // Mock data - replace with API call
-  const skus: SKU[] = [
-    {
-      id: '1',
-      skuCode: 'CAM-001-001',
-      barcode: '1234567890123',
-      itemMasterName: 'Canon EOS R5 Mirrorless Camera',
-      itemMasterCode: 'CAM-001',
-      category: 'Mirrorless',
-      brand: 'Canon',
-      skuSuffix: '001',
-      variantInfo: 'Body Only, Black',
-      condition: 'NEW',
-      rentalPrice: 150.00,
-      replacementCost: 3800.00,
-      stockQuantity: 5,
-      availableQuantity: 3,
-      isActive: true,
-      createdAt: '2024-01-15',
-    },
-    {
-      id: '2',
-      skuCode: 'CAM-001-002',
-      barcode: '1234567890124',
-      itemMasterName: 'Canon EOS R5 Mirrorless Camera',
-      itemMasterCode: 'CAM-001',
-      category: 'Mirrorless',
-      brand: 'Canon',
-      skuSuffix: '002',
-      variantInfo: 'Kit with RF 24-105mm f/4L',
-      condition: 'NEW',
-      rentalPrice: 200.00,
-      replacementCost: 4800.00,
-      stockQuantity: 3,
-      availableQuantity: 1,
-      isActive: true,
-      createdAt: '2024-01-15',
-    },
-    {
-      id: '3',
-      skuCode: 'CAM-001-003',
-      barcode: '1234567890125',
-      itemMasterName: 'Canon EOS R5 Mirrorless Camera',
-      itemMasterCode: 'CAM-001',
-      category: 'Mirrorless',
-      brand: 'Canon',
-      skuSuffix: '003',
-      variantInfo: 'Body Only, Black',
-      condition: 'GOOD',
-      rentalPrice: 120.00,
-      replacementCost: 3200.00,
-      stockQuantity: 2,
-      availableQuantity: 2,
-      isActive: true,
-      createdAt: '2024-01-16',
-    },
-    {
-      id: '4',
-      skuCode: 'LGT-001-001',
-      barcode: '1234567890126',
-      itemMasterName: 'Godox AD600 Pro Studio Flash',
-      itemMasterCode: 'LGT-001',
-      category: 'Flash',
-      brand: 'Godox',
-      skuSuffix: '001',
-      variantInfo: 'With TTL, Bowens Mount',
-      condition: 'NEW',
-      rentalPrice: 80.00,
-      replacementCost: 1200.00,
-      stockQuantity: 8,
-      availableQuantity: 5,
-      isActive: true,
-      createdAt: '2024-01-14',
-    },
-  ];
+  // Load categories for filter dropdown
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const response = await categoriesApi.list({ limit: 1000 });
+        if (response?.items) {
+          const categoryOptions = response.items.map(cat => ({
+            id: cat.id,
+            name: cat.category_name
+          }));
+          setCategories(categoryOptions);
+        }
+      } catch (error) {
+        console.error('Error loading categories for filter:', error);
+        setCategories([]);
+      }
+    };
+
+    loadCategories();
+  }, []);
+
+  // TODO: Replace with API call to fetch SKUs
+  const skus: SKU[] = [];
 
   const filteredSKUs = skus.filter(sku => {
     const matchesSearch = sku.skuCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -268,10 +218,11 @@ function SKUsContent() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
-                  <SelectItem value="Mirrorless">Mirrorless</SelectItem>
-                  <SelectItem value="DSLR">DSLR</SelectItem>
-                  <SelectItem value="Flash">Flash</SelectItem>
-                  <SelectItem value="Continuous">Continuous</SelectItem>
+                  {categories.map(category => (
+                    <SelectItem key={category.id} value={category.id}>
+                      {category.name}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>

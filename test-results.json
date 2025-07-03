@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Home/Root",
+    "url": "http://localhost:3000/",
+    "path": "/",
+    "timestamp": "2025-07-03T03:59:44.940Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/"
+  },
+  {
+    "name": "Login Page",
+    "url": "http://localhost:3000/login",
+    "path": "/login",
+    "timestamp": "2025-07-03T03:59:45.060Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/login"
+  },
+  {
+    "name": "Dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "path": "/dashboard",
+    "timestamp": "2025-07-03T03:59:45.165Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard"
+  },
+  {
+    "name": "Sales Overview",
+    "url": "http://localhost:3000/sales",
+    "path": "/sales",
+    "timestamp": "2025-07-03T03:59:45.268Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/sales"
+  },
+  {
+    "name": "New Sale",
+    "url": "http://localhost:3000/sales/new",
+    "path": "/sales/new",
+    "timestamp": "2025-07-03T03:59:45.373Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/sales/new"
+  },
+  {
+    "name": "Sales History",
+    "url": "http://localhost:3000/sales/history",
+    "path": "/sales/history",
+    "timestamp": "2025-07-03T03:59:45.475Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/sales/history"
+  },
+  {
+    "name": "Sale Details (Dynamic)",
+    "url": "http://localhost:3000/sales/123",
+    "path": "/sales/123",
+    "timestamp": "2025-07-03T03:59:45.576Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/sales/123"
+  },
+  {
+    "name": "Rentals Overview",
+    "url": "http://localhost:3000/rentals",
+    "path": "/rentals",
+    "timestamp": "2025-07-03T03:59:45.677Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/rentals"
+  },
+  {
+    "name": "New Rental",
+    "url": "http://localhost:3000/rentals/new",
+    "path": "/rentals/new",
+    "timestamp": "2025-07-03T03:59:45.778Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/rentals/new"
+  },
+  {
+    "name": "Active Rentals",
+    "url": "http://localhost:3000/rentals/active",
+    "path": "/rentals/active",
+    "timestamp": "2025-07-03T03:59:45.880Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/rentals/active"
+  },
+  {
+    "name": "Rental History",
+    "url": "http://localhost:3000/rentals/history",
+    "path": "/rentals/history",
+    "timestamp": "2025-07-03T03:59:45.987Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/rentals/history"
+  },
+  {
+    "name": "Products Overview",
+    "url": "http://localhost:3000/products",
+    "path": "/products",
+    "timestamp": "2025-07-03T03:59:46.090Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/products"
+  },
+  {
+    "name": "Product Categories",
+    "url": "http://localhost:3000/products/categories",
+    "path": "/products/categories",
+    "timestamp": "2025-07-03T03:59:46.190Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/products/categories"
+  },
+  {
+    "name": "New Category",
+    "url": "http://localhost:3000/products/categories/new",
+    "path": "/products/categories/new",
+    "timestamp": "2025-07-03T03:59:46.290Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/products/categories/new"
+  },
+  {
+    "name": "Brands",
+    "url": "http://localhost:3000/products/brands",
+    "path": "/products/brands",
+    "timestamp": "2025-07-03T03:59:46.390Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/products/brands"
+  },
+  {
+    "name": "Item Masters",
+    "url": "http://localhost:3000/products/items",
+    "path": "/products/items",
+    "timestamp": "2025-07-03T03:59:46.497Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/products/items"
+  },
+  {
+    "name": "SKUs",
+    "url": "http://localhost:3000/products/skus",
+    "path": "/products/skus",
+    "timestamp": "2025-07-03T03:59:46.611Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/products/skus"
+  },
+  {
+    "name": "Purchases Overview",
+    "url": "http://localhost:3000/purchases",
+    "path": "/purchases",
+    "timestamp": "2025-07-03T03:59:46.716Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/purchases"
+  },
+  {
+    "name": "Receive Inventory",
+    "url": "http://localhost:3000/purchases/receive",
+    "path": "/purchases/receive",
+    "timestamp": "2025-07-03T03:59:46.824Z",
+    "status": "failed",
+    "error": "net::ERR_CONNECTION_REFUSED at http://localhost:3000/purchases/receive"
+  }
+]
