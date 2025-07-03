@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import {
   LayoutDashboard,
   Users,
+  UserPlus,
   Package,
   ShoppingCart,
   RefreshCw,
@@ -25,6 +26,8 @@ import {
   Bell,
   LogOut,
   Menu,
+  Grid3X3,
+  Tag,
 } from 'lucide-react';
 import { MenuItem } from '@/types/auth';
 
@@ -42,6 +45,29 @@ const menuItems: MenuItem[] = [
     icon: 'Users',
     path: '/customers',
     permissions: ['CUSTOMER_VIEW'],
+    children: [
+      {
+        id: 'all-customers',
+        label: 'All Customers',
+        icon: 'Users',
+        path: '/customers',
+        permissions: ['CUSTOMER_VIEW'],
+      },
+      {
+        id: 'new-customer',
+        label: 'Add Customer',
+        icon: 'UserPlus',
+        path: '/customers/new',
+        permissions: ['CUSTOMER_CREATE'],
+      },
+      {
+        id: 'customer-analytics',
+        label: 'Analytics',
+        icon: 'BarChart3',
+        path: '/customers/analytics',
+        permissions: ['CUSTOMER_VIEW'],
+      },
+    ],
   },
   {
     id: 'products',
@@ -164,6 +190,20 @@ const menuItems: MenuItem[] = [
     permissions: ['INVENTORY_VIEW'],
     children: [
       {
+        id: 'suppliers',
+        label: 'Suppliers',
+        icon: 'Users',
+        path: '/purchases/suppliers',
+        permissions: ['INVENTORY_VIEW'],
+      },
+      {
+        id: 'supplier-analytics',
+        label: 'Supplier Analytics',
+        icon: 'BarChart3',
+        path: '/purchases/suppliers/analytics',
+        permissions: ['INVENTORY_VIEW'],
+      },
+      {
         id: 'receive-inventory',
         label: 'Receive Inventory',
         icon: 'Package',
@@ -205,6 +245,7 @@ const menuItems: MenuItem[] = [
 const iconMap = {
   LayoutDashboard,
   Users,
+  UserPlus,
   Package,
   ShoppingCart,
   RefreshCw,
@@ -215,13 +256,15 @@ const iconMap = {
   ClipboardCheck,
   BarChart3,
   Bell,
+  Grid3X3,
+  Tag,
 };
 
 export function Sidebar() {
   const pathname = usePathname();
   const { hasPermission, user, logout } = useAuthStore();
   const { sidebarCollapsed, setSidebarCollapsed, unreadCount } = useAppStore();
-  const [expandedItems, setExpandedItems] = useState<string[]>(['inventory', 'sales', 'rentals', 'purchases']);
+  const [expandedItems, setExpandedItems] = useState<string[]>(['customers', 'inventory', 'sales', 'rentals', 'purchases']);
 
   const toggleSidebar = () => setSidebarCollapsed(!sidebarCollapsed);
 

@@ -199,8 +199,12 @@ export const customersApi = {
   getAnalytics: async (): Promise<CustomerAnalytics> => {
     try {
       const response = await apiClient.get('/analytics/customers');
-      return response.data;
+      // The axios interceptor wraps the response in { success: true, data: actualData }
+      const analytics = response.data.success ? response.data.data : response.data;
+      console.log('Analytics API response:', analytics);
+      return analytics;
     } catch (error) {
+      console.warn('Analytics API failed, using fallback:', error);
       // Fallback - calculate from customer list for now
       const customers = await customersApi.list({ limit: 1000 });
       
@@ -236,7 +240,8 @@ export const customersApi = {
   getTransactionHistory: async (customerId: string): Promise<CustomerTransactionHistory> => {
     try {
       const response = await apiClient.get(`/analytics/customers/${customerId}/transactions`);
-      const data = response.data;
+      // The axios interceptor wraps the response in { success: true, data: actualData }
+      const data = response.data.success ? response.data.data : response.data;
       
       // Ensure the response has the expected structure
       return {
