@@ -221,7 +221,7 @@ function CategoriesContent() {
                   id: cat.id,
                   name: cat.category_name,
                   description: cat.category_name,
-                  parent_id: cat.parent_category_id,
+                  parent_id: cat.parent_category_id || undefined,
                   is_active: cat.is_active,
                   created_at: cat.created_at,
                   updated_at: cat.updated_at
