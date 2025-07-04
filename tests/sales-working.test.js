@@ -46,22 +46,13 @@ describe('Sales Module Working Tests', () => {
     // Set up authentication in localStorage before navigating
     await page.goto(`${BASE_URL}/login`);
     
-    // Mock authentication
+    // Mock authentication - no user data
     await page.evaluate(() => {
       localStorage.setItem('auth-storage', JSON.stringify({
         state: {
-          user: {
-            id: 'test-user-id',
-            email: 'test@example.com',
-            firstName: 'Test',
-            lastName: 'User',
-            role: {
-              name: 'Admin',
-              permissions: ['SALE_VIEW', 'SALE_CREATE', 'SALE_UPDATE', 'SALE_DELETE']
-            }
-          },
-          token: 'mock-jwt-token',
-          isAuthenticated: true
+          user: null,
+          token: null,
+          isAuthenticated: false
         },
         version: 0
       }));

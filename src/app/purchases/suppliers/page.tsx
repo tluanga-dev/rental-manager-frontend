@@ -329,13 +329,13 @@ function SuppliersContent() {
                             <span className="text-gray-600">Quality:</span>
                             <div className="flex items-center">
                               <Star className="h-3 w-3 text-yellow-500 mr-1" />
-                              <span className="font-medium">{supplier.quality_rating.toFixed(1)}</span>
+                              <span className="font-medium">{Number(supplier.quality_rating || 0).toFixed(1)}</span>
                             </div>
                           </div>
                           <div className="text-sm">
                             <span className="text-gray-600">Performance:</span>
                             <div className="font-medium text-blue-600">
-                              {supplier.performance_score.toFixed(0)}%
+                              {Number(supplier.performance_score || 0).toFixed(0)}%
                             </div>
                           </div>
                         </div>

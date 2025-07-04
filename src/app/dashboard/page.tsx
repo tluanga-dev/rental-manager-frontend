@@ -16,29 +16,29 @@ function DashboardContent() {
   const stats = [
     {
       title: 'Total Revenue',
-      value: '$45,231.89',
-      change: '+20.1% from last month',
+      value: '$0.00',
+      change: 'No data available',
       icon: DollarSign,
       color: 'text-green-600',
     },
     {
       title: 'Active Rentals',
-      value: '127',
-      change: '+15% from last month',
+      value: '0',
+      change: 'No data available',
       icon: Package,
       color: 'text-blue-600',
     },
     {
       title: 'Customers',
-      value: '2,350',
-      change: '+5.2% from last month',
+      value: '0',
+      change: 'No data available',
       icon: Users,
       color: 'text-purple-600',
     },
     {
       title: 'Overdue Returns',
-      value: '12',
-      change: '-2 from yesterday',
+      value: '0',
+      change: 'No data available',
       icon: AlertCircle,
       color: 'text-red-600',
     },
@@ -87,48 +87,9 @@ function DashboardContent() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {[
-                {
-                  id: '1',
-                  type: 'Rental',
-                  customer: 'John Doe',
-                  amount: '$299.99',
-                  status: 'Active',
-                  date: '2 hours ago',
-                },
-                {
-                  id: '2',
-                  type: 'Sale',
-                  customer: 'Jane Smith',
-                  amount: '$1,299.99',
-                  status: 'Completed',
-                  date: '4 hours ago',
-                },
-                {
-                  id: '3',
-                  type: 'Return',
-                  customer: 'Bob Johnson',
-                  amount: '$199.99',
-                  status: 'Processing',
-                  date: '6 hours ago',
-                },
-              ].map((transaction) => (
-                <div
-                  key={transaction.id}
-                  className="flex items-center justify-between p-3 border rounded-lg"
-                >
-                  <div>
-                    <p className="font-medium">{transaction.customer}</p>
-                    <p className="text-sm text-gray-600">
-                      {transaction.type} • {transaction.date}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-medium">{transaction.amount}</p>
-                    <p className="text-sm text-gray-600">{transaction.status}</p>
-                  </div>
-                </div>
-              ))}
+              <div className="text-center py-8 text-gray-500">
+                No recent transactions available
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -139,49 +100,9 @@ function DashboardContent() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {[
-                {
-                  item: 'DSLR Camera',
-                  status: 'Low Stock',
-                  count: '3 remaining',
-                  urgency: 'high',
-                },
-                {
-                  item: 'Tripod Stand',
-                  status: 'Out of Stock',
-                  count: '0 remaining',
-                  urgency: 'critical',
-                },
-                {
-                  item: 'LED Light Kit',
-                  status: 'Low Stock',
-                  count: '5 remaining',
-                  urgency: 'medium',
-                },
-              ].map((alert, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-between p-3 border rounded-lg"
-                >
-                  <div>
-                    <p className="font-medium">{alert.item}</p>
-                    <p className="text-sm text-gray-600">{alert.count}</p>
-                  </div>
-                  <div className="text-right">
-                    <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        alert.urgency === 'critical'
-                          ? 'bg-red-100 text-red-800'
-                          : alert.urgency === 'high'
-                          ? 'bg-orange-100 text-orange-800'
-                          : 'bg-yellow-100 text-yellow-800'
-                      }`}
-                    >
-                      {alert.status}
-                    </span>
-                  </div>
-                </div>
-              ))}
+              <div className="text-center py-8 text-gray-500">
+                No inventory alerts available
+              </div>
             </div>
           </CardContent>
         </Card>

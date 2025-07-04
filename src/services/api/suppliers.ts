@@ -208,41 +208,8 @@ export const suppliersApi = {
       console.log('Supplier Analytics API response:', analytics);
       return analytics;
     } catch (error) {
-      console.warn('Supplier Analytics API failed, using fallback:', error);
-      // Fallback - calculate from supplier list for now
-      const suppliers = await suppliersApi.list({ limit: 1000 });
-      
-      const analytics: SupplierAnalytics = {
-        total_suppliers: suppliers.total,
-        active_suppliers: suppliers.items.filter(s => s.is_active).length,
-        supplier_type_distribution: {
-          manufacturer: suppliers.items.filter(s => s.supplier_type === 'MANUFACTURER').length,
-          distributor: suppliers.items.filter(s => s.supplier_type === 'DISTRIBUTOR').length,
-          wholesaler: suppliers.items.filter(s => s.supplier_type === 'WHOLESALER').length,
-          retailer: suppliers.items.filter(s => s.supplier_type === 'RETAILER').length,
-          service_provider: suppliers.items.filter(s => s.supplier_type === 'SERVICE_PROVIDER').length,
-        },
-        supplier_tier_distribution: {
-          preferred: suppliers.items.filter(s => s.supplier_tier === 'PREFERRED').length,
-          standard: suppliers.items.filter(s => s.supplier_tier === 'STANDARD').length,
-          restricted: suppliers.items.filter(s => s.supplier_tier === 'RESTRICTED').length,
-        },
-        payment_terms_distribution: {},
-        monthly_new_suppliers: [], // Would need date grouping
-        top_suppliers_by_spend: suppliers.items
-          .sort((a, b) => b.total_spend - a.total_spend)
-          .slice(0, 10)
-          .map(supplier => ({
-            supplier,
-            total_spend: supplier.total_spend
-          })),
-        total_spend: suppliers.items.reduce((sum, s) => sum + s.total_spend, 0),
-        average_quality_rating: suppliers.items.length > 0 
-          ? suppliers.items.reduce((sum, s) => sum + s.quality_rating, 0) / suppliers.items.length 
-          : 0
-      };
-      
-      return analytics;
+      console.warn('Supplier Analytics API failed:', error);
+      throw error;
     }
   },
 
