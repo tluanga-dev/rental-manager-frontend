@@ -155,35 +155,6 @@ export const customerFilterSchema = z.object({
   max_lifetime_value: z.number().optional(),
 });
 
-// Brand schemas
-export const brandSchema = z.object({
-  name: z.string().min(2, 'Brand name must be at least 2 characters'),
-  description: z.string().optional(),
-});
-
-// Category schemas
-export const categorySchema = z.object({
-  name: z.string().min(2, 'Category name must be at least 2 characters'),
-  description: z.string().optional(),
-  parent_id: z.string().uuid().optional(),
-});
-
-// Item Master schemas
-export const itemMasterSchema = z.object({
-  name: z.string().min(2, 'Item name must be at least 2 characters'),
-  description: z.string().optional(),
-  brand_id: z.string().uuid('Please select a brand'),
-  category_id: z.string().uuid('Please select a category'),
-});
-
-// SKU schemas
-export const skuSchema = z.object({
-  sku_code: z.string().min(3, 'SKU code must be at least 3 characters'),
-  item_master_id: z.string().uuid('Please select an item'),
-  rental_price: z.number().min(0, 'Rental price must be positive'),
-  sale_price: z.number().min(0, 'Sale price must be positive'),
-  deposit_amount: z.number().min(0, 'Deposit amount must be positive'),
-});
 
 // Location schemas
 export const locationSchema = z.object({
@@ -202,8 +173,4 @@ export type CustomerFilterFormData = z.infer<typeof customerFilterSchema>;
 export type ContactMethodFormData = z.infer<typeof contactMethodSchema>;
 export type AddressFormData = z.infer<typeof addressSchema>;
 export type ContactPersonFormData = z.infer<typeof contactPersonSchema>;
-export type BrandFormData = z.infer<typeof brandSchema>;
-export type CategoryFormData = z.infer<typeof categorySchema>;
-export type ItemMasterFormData = z.infer<typeof itemMasterSchema>;
-export type SKUFormData = z.infer<typeof skuSchema>;
 export type LocationFormData = z.infer<typeof locationSchema>;

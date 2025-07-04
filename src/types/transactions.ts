@@ -23,8 +23,7 @@ export interface TransactionHeader {
 export interface TransactionLine {
   id: string;
   transaction_id: string;
-  sku_id: string;
-  inventory_unit_id?: string;
+  item_id: string;
   quantity: number;
   unit_price: number;
   discount_percentage: number;
@@ -65,7 +64,7 @@ export interface RentalAgreement {
 export interface PreRentalInspection {
   id: string;
   transaction_line_id: string;
-  inventory_unit_id: string;
+  item_id: string;
   inspector_id: string;
   inspection_date: string;
   condition_before: ConditionGrade;
@@ -138,60 +137,6 @@ export type ChecklistItemType =
 
 export type ChecklistStatus = 'PASS' | 'FAIL' | 'NOT_APPLICABLE';
 
-// Cart and wizard types
-export interface CartItem {
-  sku_id: string;
-  quantity: number;
-  unit_price: number;
-  rental_days?: number;
-  rental_start_date?: string;
-  rental_end_date?: string;
-  deposit_per_unit: number;
-  discount_percentage: number;
-  notes?: string;
-}
-
-export interface TransactionWizardData {
-  transaction_type: TransactionType;
-  customer_id?: string;
-  location_id: string;
-  cart_items: CartItem[];
-  discount_amount: number;
-  payment_method?: PaymentMethod;
-  payment_reference?: string;
-  notes?: string;
-  rental_agreement_accepted?: boolean;
-  digital_signature?: string;
-}
-
-export interface PricingBreakdown {
-  subtotal: number;
-  discount_amount: number;
-  tax_amount: number;
-  deposit_total: number;
-  total_amount: number;
-  payment_due: number;
-}
-
-export interface AvailabilityCheck {
-  sku_id: string;
-  location_id: string;
-  start_date: string;
-  end_date: string;
-  quantity_requested: number;
-  quantity_available: number;
-  is_available: boolean;
-  conflicts?: string[];
-}
-
-// Form data types
-export interface ProductSelectorData {
-  sku_id: string;
-  quantity: number;
-  rental_days?: number;
-  rental_start_date?: string;
-  rental_end_date?: string;
-}
 
 export interface CustomerSelectorData {
   customer_id: string;

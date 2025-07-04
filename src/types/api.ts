@@ -35,7 +35,7 @@ export interface CreateSaleRequest {
 }
 
 export interface SaleLineItem {
-  sku_id: string;
+  item_id: string;
   quantity: number;
   unit_price: number;
   discount_percentage?: number;
@@ -48,12 +48,11 @@ export interface CreateRentalRequest {
   rental_end_date: string;
   items: RentalLineItem[];
   deposit_amount?: number;
-  auto_reserve_inventory?: boolean;
   notes?: string;
 }
 
 export interface RentalLineItem {
-  sku_id: string;
+  item_id: string;
   quantity: number;
   unit_price: number;
   discount_percentage?: number;
@@ -217,51 +216,6 @@ export interface CustomerSummary {
   last_transaction_date?: string;
 }
 
-// Item Master types
-export interface ItemMaster {
-  id: string;
-  name: string;
-  description?: string;
-  brand_id: string;
-  category_id: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
-// Brand types
-export interface Brand {
-  id: string;
-  name: string;
-  description?: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
-// Category types
-export interface Category {
-  id: string;
-  name: string;
-  description?: string;
-  parent_id?: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
-// SKU types
-export interface SKU {
-  id: string;
-  sku_code: string;
-  item_master_id: string;
-  rental_price: number;
-  sale_price: number;
-  deposit_amount: number;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-}
 
 // Location types
 export interface Location {
