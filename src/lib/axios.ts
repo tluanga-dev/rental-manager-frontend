@@ -89,15 +89,15 @@ api.interceptors.response.use(
       
       if (refreshToken) {
         try {
-          const response = await axios.post('/auth/refresh', {
-            refreshToken
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}/auth/refresh`, {
+            refresh_token: refreshToken
           });
           
-          const { accessToken } = response.data;
-          useAuthStore.getState().refreshAuth(accessToken);
+          const { access_token } = response.data;
+          useAuthStore.getState().refreshAuth(access_token);
           
-          processQueue(null, accessToken);
-          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+          processQueue(null, access_token);
+          originalRequest.headers.Authorization = `Bearer ${access_token}`;
           
           return api(originalRequest);
         } catch (refreshError) {

@@ -40,16 +40,17 @@ export function LoginForm() {
         password: data.password,
       });
 
-      const { user, accessToken, refreshToken } = response.data.data;
+      const responseData = response.data.data || response.data;
+      const { user, access_token, refresh_token } = responseData;
       
       // Update auth store
-      login(user, accessToken, refreshToken);
+      login(user, access_token, refresh_token);
       
       // Add success notification
       addNotification({
         type: 'success',
         title: 'Login Successful',
-        message: `Welcome back, ${user.firstName}!`,
+        message: `Welcome back, ${user.first_name || user.name}!`,
       });
 
       // Redirect to dashboard
@@ -103,15 +104,16 @@ export function LoginForm() {
 
       console.log('API response:', response.data);
 
-      const { user, accessToken, refreshToken } = response.data.data;
+      const responseData = response.data.data || response.data;
+      const { user, access_token, refresh_token } = responseData;
       
       // Update auth store
-      login(user, accessToken, refreshToken);
+      login(user, access_token, refresh_token);
       
       addNotification({
         type: 'success',
         title: 'Demo Login Successful',
-        message: `Logged in as ${user.role.name}`,
+        message: `Logged in as ${user.role?.name || 'Admin'}`,
       });
 
       router.push('/dashboard');

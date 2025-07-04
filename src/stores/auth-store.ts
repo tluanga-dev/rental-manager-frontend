@@ -37,7 +37,7 @@ export const useAuthStore = create<AuthStore>()(
       setIsLoading: (isLoading) => set({ isLoading }),
 
       login: (user, accessToken, refreshToken) => {
-        const permissions = user.role.permissions.map(p => p.code);
+        const permissions = user.role?.permissions?.map(p => p.code) || [];
         set({ 
           user, 
           accessToken, 
@@ -78,13 +78,13 @@ export const useAuthStore = create<AuthStore>()(
 
       hasRole: (roleName) => {
         const { user } = get();
-        return user?.role.name === roleName;
+        return user?.role?.name === roleName;
       },
 
       updatePermissions: () => {
         const { user } = get();
-        if (user) {
-          const permissions = user.role.permissions.map(p => p.code);
+        if (user && user.role) {
+          const permissions = user.role.permissions?.map(p => p.code) || [];
           set({ permissions });
         }
       },
