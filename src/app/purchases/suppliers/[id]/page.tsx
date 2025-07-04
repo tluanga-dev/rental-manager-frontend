@@ -256,14 +256,14 @@ function SupplierDetailContent() {
                 <div className="flex items-center justify-center space-x-1">
                   <Star className="h-4 w-4 text-yellow-500" />
                   <span className="text-2xl font-bold text-yellow-600">
-                    {parseFloat(supplier.quality_rating).toFixed(1)}
+                    {parseFloat(supplier.quality_rating?.toString() || '0').toFixed(1)}
                   </span>
                 </div>
                 <div className="text-sm text-gray-600">Quality Rating</div>
               </div>
               <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div className="text-2xl font-bold text-purple-600">
-                  {parseFloat(supplier.performance_score).toFixed(0)}%
+                  {parseFloat(supplier.performance_score?.toString() || '0').toFixed(0)}%
                 </div>
                 <div className="text-sm text-gray-600">Performance</div>
               </div>

@@ -1,5 +1,6 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { useAuthStore } from '@/stores/auth-store';
+import { generateUUID } from '@/lib/uuid';
 
 // API Response wrapper
 interface ApiResponse<T = any> {
@@ -42,7 +43,7 @@ api.interceptors.request.use(
     }
     
     // Add correlation ID for request tracking
-    config.headers['X-Request-ID'] = crypto.randomUUID();
+    config.headers['X-Request-ID'] = generateUUID();
     
     return config;
   },

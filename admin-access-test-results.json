@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-07-04T10:25:44.149Z",
+  "totalMenuItems": 11,
+  "expectedItems": 31,
+  "missingItems": [
+    "Add Customer",
+    "Analytics",
+    "Stock Levels",
+    "Locations",
+    "New Sale",
+    "New Rental",
+    "Rental History",
+    "Returns",
+    "Process Returns",
+    "Return Queue",
+    "Return Analytics",
+    "Suppliers",
+    "Supplier Analytics",
+    "Inspections",
+    "Settings"
+  ],
+  "visibleMenuItems": [
+    {
+      "text": "Dashboard",
+      "href": "/dashboard",
+      "isVisible": true
+    },
+    {
+      "text": "Customers",
+      "href": "",
+      "isVisible": true
+    },
+    {
+      "text": "Products",
+      "href": "/products/items",
+      "isVisible": true
+    },
+    {
+      "text": "Categories",
+      "href": "/products/categories",
+      "isVisible": true
+    },
+    {
+      "text": "Brands",
+      "href": "/products/brands",
+      "isVisible": true
+    },
+    {
+      "text": "SKUs",
+      "href": "/products/skus",
+      "isVisible": true
+    },
+    {
+      "text": "Inventory",
+      "href": "",
+      "isVisible": true
+    },
+    {
+      "text": "Sales",
+      "href": "",
+      "isVisible": true
+    },
+    {
+      "text": "Rentals",
+      "href": "",
+      "isVisible": true
+    },
+    {
+      "text": "Purchases",
+      "href": "",
+      "isVisible": true
+    },
+    {
+      "text": "Reports",
+      "href": "/reports",
+      "isVisible": true
+    }
+  ],
+  "success": false
+}

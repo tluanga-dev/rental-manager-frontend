@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { generateUUID } from '@/lib/uuid';
 
 interface Notification {
   id: string;
@@ -79,7 +80,7 @@ export const useAppStore = create<AppState>()(
       addNotification: (notification) => {
         const newNotification: Notification = {
           ...notification,
-          id: crypto.randomUUID(),
+          id: generateUUID(),
           timestamp: new Date(),
           read: false,
         };

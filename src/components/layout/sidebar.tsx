@@ -28,6 +28,10 @@ import {
   Menu,
   Grid3X3,
   Tag,
+  RotateCcw,
+  Eye,
+  Calculator,
+  TrendingUp,
 } from 'lucide-react';
 import { MenuItem } from '@/types/auth';
 
@@ -180,6 +184,36 @@ const menuItems: MenuItem[] = [
         path: '/rentals/history',
         permissions: ['RENTAL_VIEW'],
       },
+      {
+        id: 'returns',
+        label: 'Returns',
+        icon: 'RotateCcw',
+        path: '/rentals/returns',
+        permissions: ['RETURN_VIEW'],
+        children: [
+          {
+            id: 'process-returns',
+            label: 'Process Returns',
+            icon: 'RotateCcw',
+            path: '/rentals/returns/wizard',
+            permissions: ['RETURN_PROCESS'],
+          },
+          {
+            id: 'return-queue',
+            label: 'Return Queue',
+            icon: 'Eye',
+            path: '/rentals/returns/process',
+            permissions: ['RETURN_VIEW'],
+          },
+          {
+            id: 'return-analytics',
+            label: 'Return Analytics',
+            icon: 'TrendingUp',
+            path: '/rentals/returns/analytics',
+            permissions: ['RETURN_VIEW'],
+          },
+        ],
+      },
     ],
   },
   {
@@ -211,13 +245,6 @@ const menuItems: MenuItem[] = [
         permissions: ['INVENTORY_VIEW'],
       },
     ],
-  },
-  {
-    id: 'returns',
-    label: 'Returns',
-    icon: 'RefreshCw',
-    path: '/returns',
-    permissions: ['RETURN_VIEW'],
   },
   {
     id: 'inspections',
@@ -258,13 +285,17 @@ const iconMap = {
   Bell,
   Grid3X3,
   Tag,
+  RotateCcw,
+  Eye,
+  Calculator,
+  TrendingUp,
 };
 
 export function Sidebar() {
   const pathname = usePathname();
   const { hasPermission, user, logout } = useAuthStore();
   const { sidebarCollapsed, setSidebarCollapsed, unreadCount } = useAppStore();
-  const [expandedItems, setExpandedItems] = useState<string[]>(['customers', 'inventory', 'sales', 'rentals', 'purchases']);
+  const [expandedItems, setExpandedItems] = useState<string[]>(['customers', 'inventory', 'sales', 'rentals', 'purchases', 'returns']);
 
   const toggleSidebar = () => setSidebarCollapsed(!sidebarCollapsed);
 
@@ -279,6 +310,11 @@ export function Sidebar() {
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
 
   const hasItemPermission = (item: MenuItem) => {
+    // Admin users have access to everything
+    const roleName = user?.role?.name?.toLowerCase();
+    if (roleName === 'admin' || roleName === 'administrator') {
+      return true;
+    }
     return item.permissions.length === 0 || hasPermission(item.permissions as any);
   };
 
@@ -286,7 +322,9 @@ export function Sidebar() {
     if (!hasItemPermission(item)) return null;
 
     const Icon = iconMap[item.icon as keyof typeof iconMap];
-    const hasChildren = item.children && item.children.length > 0;
+    // Check if any children have permissions (for showing expand/collapse)
+    const visibleChildren = item.children?.filter(child => hasItemPermission(child)) || [];
+    const hasChildren = visibleChildren.length > 0;
     const isExpanded = expandedItems.includes(item.id);
     const itemIsActive = isActive(item.path);
 
@@ -347,7 +385,7 @@ export function Sidebar() {
         
         {hasChildren && isExpanded && !sidebarCollapsed && (
           <div className="ml-2 mt-1 space-y-1">
-            {item.children?.map(child => renderMenuItem(child, depth + 1))}
+            {visibleChildren.map(child => renderMenuItem(child, depth + 1))}
           </div>
         )}
       </div>
