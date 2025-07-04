@@ -177,12 +177,56 @@ export const itemMasterSchema = z.object({
 });
 
 // SKU schemas
-export const skuSchema = z.object({
-  sku_code: z.string().min(3, 'SKU code must be at least 3 characters'),
-  item_master_id: z.string().uuid('Please select an item'),
-  rental_price: z.number().min(0, 'Rental price must be positive'),
-  sale_price: z.number().min(0, 'Sale price must be positive'),
-  deposit_amount: z.number().min(0, 'Deposit amount must be positive'),
+export const skuCreateSchema = z.object({
+  sku_code: z.string().min(1, 'SKU code is required').max(50, 'SKU code must be at most 50 characters'),
+  sku_name: z.string().min(1, 'SKU name is required').max(200, 'SKU name must be at most 200 characters'),
+  item_id: z.string().uuid('Please select an item'),
+  barcode: z.string().max(50, 'Barcode must be at most 50 characters').optional(),
+  model_number: z.string().max(100, 'Model number must be at most 100 characters').optional(),
+  weight: z.number().min(0, 'Weight must be positive').optional(),
+  dimensions: z.record(z.string(), z.number().min(0, 'Dimensions must be positive')).optional(),
+  is_rentable: z.boolean().default(false),
+  is_saleable: z.boolean().default(true),
+  min_rental_days: z.number().int().min(1, 'Minimum rental days must be at least 1').default(1),
+  max_rental_days: z.number().int().min(1, 'Maximum rental days must be at least 1').optional(),
+  rental_base_price: z.number().min(0, 'Rental price must be positive').optional(),
+  sale_base_price: z.number().min(0, 'Sale price must be positive').optional(),
+}).refine((data) => {
+  if (data.max_rental_days && data.max_rental_days < data.min_rental_days) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Maximum rental days must be >= minimum rental days",
+  path: ['max_rental_days'],
+});
+
+export const skuUpdateSchema = z.object({
+  sku_name: z.string().min(1, 'SKU name is required').max(200, 'SKU name must be at most 200 characters').optional(),
+  barcode: z.string().max(50, 'Barcode must be at most 50 characters').optional(),
+  model_number: z.string().max(100, 'Model number must be at most 100 characters').optional(),
+  weight: z.number().min(0, 'Weight must be positive').optional(),
+  dimensions: z.record(z.string(), z.number().min(0, 'Dimensions must be positive')).optional(),
+});
+
+export const skuRentalUpdateSchema = z.object({
+  is_rentable: z.boolean().optional(),
+  min_rental_days: z.number().int().min(1, 'Minimum rental days must be at least 1').optional(),
+  max_rental_days: z.number().int().min(1, 'Maximum rental days must be at least 1').optional(),
+  rental_base_price: z.number().min(0, 'Rental price must be positive').optional(),
+}).refine((data) => {
+  if (data.max_rental_days && data.min_rental_days && data.max_rental_days < data.min_rental_days) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Maximum rental days must be >= minimum rental days",
+  path: ['max_rental_days'],
+});
+
+export const skuSaleUpdateSchema = z.object({
+  is_saleable: z.boolean().optional(),
+  sale_base_price: z.number().min(0, 'Sale price must be positive').optional(),
 });
 
 // Location schemas
@@ -205,5 +249,8 @@ export type ContactPersonFormData = z.infer<typeof contactPersonSchema>;
 export type BrandFormData = z.infer<typeof brandSchema>;
 export type CategoryFormData = z.infer<typeof categorySchema>;
 export type ItemMasterFormData = z.infer<typeof itemMasterSchema>;
-export type SKUFormData = z.infer<typeof skuSchema>;
+export type SKUCreateFormData = z.infer<typeof skuCreateSchema>;
+export type SKUUpdateFormData = z.infer<typeof skuUpdateSchema>;
+export type SKURentalUpdateFormData = z.infer<typeof skuRentalUpdateSchema>;
+export type SKUSaleUpdateFormData = z.infer<typeof skuSaleUpdateSchema>;
 export type LocationFormData = z.infer<typeof locationSchema>;
