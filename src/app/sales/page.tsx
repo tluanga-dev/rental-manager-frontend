@@ -12,29 +12,29 @@ function SalesContent() {
   const stats = [
     {
       title: 'Today\'s Sales',
-      value: '$2,450.00',
-      change: '+12% from yesterday',
+      value: '$0.00',
+      change: 'No data available',
       icon: DollarSign,
       color: 'text-green-600',
     },
     {
       title: 'Monthly Sales',
-      value: '$45,231.89',
-      change: '+20.1% from last month',
+      value: '$0.00',
+      change: 'No data available',
       icon: TrendingUp,
       color: 'text-blue-600',
     },
     {
       title: 'Total Transactions',
-      value: '156',
-      change: '+8% from last month',
+      value: '0',
+      change: 'No data available',
       icon: FileText,
       color: 'text-purple-600',
     },
     {
       title: 'Average Sale',
-      value: '$290.07',
-      change: '+5% from last month',
+      value: '$0.00',
+      change: 'No data available',
       icon: DollarSign,
       color: 'text-orange-600',
     },
@@ -142,49 +142,9 @@ function SalesContent() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {[
-              {
-                id: 'TRX001',
-                customer: 'John Doe',
-                items: '3 items',
-                amount: '$299.99',
-                time: '2 hours ago',
-                status: 'Completed',
-              },
-              {
-                id: 'TRX002',
-                customer: 'Jane Smith',
-                items: '1 item',
-                amount: '$1,299.99',
-                time: '4 hours ago',
-                status: 'Completed',
-              },
-              {
-                id: 'TRX003',
-                customer: 'Bob Johnson',
-                items: '5 items',
-                amount: '$599.99',
-                time: '6 hours ago',
-                status: 'Completed',
-              },
-            ].map((sale) => (
-              <div
-                key={sale.id}
-                className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
-                onClick={() => router.push(`/sales/${sale.id}`)}
-              >
-                <div>
-                  <p className="font-medium">{sale.customer}</p>
-                  <p className="text-sm text-gray-600">
-                    {sale.id} • {sale.items} • {sale.time}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <p className="font-bold">{sale.amount}</p>
-                  <p className="text-sm text-green-600">{sale.status}</p>
-                </div>
-              </div>
-            ))}
+            <div className="text-center py-8 text-gray-500">
+              No recent sales available
+            </div>
           </div>
           <div className="mt-4 text-center">
             <Button 

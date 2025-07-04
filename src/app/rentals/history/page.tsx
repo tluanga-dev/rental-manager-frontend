@@ -31,57 +31,7 @@ function RentalHistoryContent() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('all');
 
-  // Mock data - replace with actual API call
-  const rentalHistory = [
-    {
-      id: 'RNT005',
-      customer: 'Michael Chen',
-      items: 'Canon EOS R5 Camera Kit',
-      startDate: '2024-01-01',
-      endDate: '2024-01-07',
-      returnDate: '2024-01-07',
-      duration: '7 days',
-      totalAmount: '$350.00',
-      status: 'Completed',
-      lateFees: '$0.00',
-    },
-    {
-      id: 'RNT006',
-      customer: 'Sarah Johnson',
-      items: 'Studio Lighting Set',
-      startDate: '2023-12-25',
-      endDate: '2023-12-30',
-      returnDate: '2024-01-02',
-      duration: '8 days',
-      totalAmount: '$200.00',
-      status: 'Completed',
-      lateFees: '$60.00',
-    },
-    {
-      id: 'RNT007',
-      customer: 'David Lee',
-      items: 'DJI Mavic Pro 3',
-      startDate: '2023-12-20',
-      endDate: '2023-12-27',
-      returnDate: '2023-12-26',
-      duration: '6 days',
-      totalAmount: '$180.00',
-      status: 'Completed',
-      lateFees: '$0.00',
-    },
-    {
-      id: 'RNT008',
-      customer: 'Emma Wilson',
-      items: 'Sony A7S III + Lenses',
-      startDate: '2023-12-15',
-      endDate: '2023-12-22',
-      returnDate: null,
-      duration: '7 days',
-      totalAmount: '$500.00',
-      status: 'Cancelled',
-      lateFees: '$0.00',
-    },
-  ];
+  const rentalHistory: any[] = [];
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -123,7 +73,7 @@ function RentalHistoryContent() {
             <CardTitle className="text-sm font-medium">Total Rentals</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,234</div>
+            <div className="text-2xl font-bold">0</div>
             <p className="text-xs text-muted-foreground">All time</p>
           </CardContent>
         </Card>
@@ -132,8 +82,8 @@ function RentalHistoryContent() {
             <CardTitle className="text-sm font-medium">Completed</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">1,156</div>
-            <p className="text-xs text-muted-foreground">93.7% success rate</p>
+            <div className="text-2xl font-bold text-green-600">0</div>
+            <p className="text-xs text-muted-foreground">No data available</p>
           </CardContent>
         </Card>
         <Card>
@@ -141,8 +91,8 @@ function RentalHistoryContent() {
             <CardTitle className="text-sm font-medium">Late Returns</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-orange-600">45</div>
-            <p className="text-xs text-muted-foreground">3.6% of total</p>
+            <div className="text-2xl font-bold text-orange-600">0</div>
+            <p className="text-xs text-muted-foreground">No data available</p>
           </CardContent>
         </Card>
         <Card>
@@ -150,8 +100,8 @@ function RentalHistoryContent() {
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$125,450</div>
-            <p className="text-xs text-muted-foreground">+$4,200 late fees</p>
+            <div className="text-2xl font-bold">$0.00</div>
+            <p className="text-xs text-muted-foreground">No data available</p>
           </CardContent>
         </Card>
       </div>
@@ -240,52 +190,61 @@ function RentalHistoryContent() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {rentalHistory.map((rental) => (
-                <TableRow key={rental.id}>
-                  <TableCell className="font-medium">{rental.id}</TableCell>
-                  <TableCell>{rental.customer}</TableCell>
-                  <TableCell className="max-w-xs truncate">{rental.items}</TableCell>
-                  <TableCell>
-                    <div className="text-sm">
-                      <div>{rental.startDate}</div>
-                      <div className="text-gray-500">to {rental.endDate}</div>
-                    </div>
-                  </TableCell>
-                  <TableCell>{rental.returnDate || '-'}</TableCell>
-                  <TableCell>{rental.duration}</TableCell>
-                  <TableCell className="font-bold">{rental.totalAmount}</TableCell>
-                  <TableCell className={rental.lateFees !== '$0.00' ? 'text-orange-600 font-medium' : ''}>
-                    {rental.lateFees}
-                  </TableCell>
-                  <TableCell>{getStatusBadge(rental.status)}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => router.push(`/rentals/${rental.id}`)}
-                    >
-                      <Eye className="h-4 w-4" />
-                    </Button>
+              {rentalHistory.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={10} className="text-center py-8 text-gray-500">
+                    No rental history found
                   </TableCell>
                 </TableRow>
-              ))}
+              ) : (
+                rentalHistory.map((rental) => (
+                  <TableRow key={rental.id}>
+                    <TableCell className="font-medium">{rental.id}</TableCell>
+                    <TableCell>{rental.customer}</TableCell>
+                    <TableCell className="max-w-xs truncate">{rental.items}</TableCell>
+                    <TableCell>
+                      <div className="text-sm">
+                        <div>{rental.startDate}</div>
+                        <div className="text-gray-500">to {rental.endDate}</div>
+                      </div>
+                    </TableCell>
+                    <TableCell>{rental.returnDate || '-'}</TableCell>
+                    <TableCell>{rental.duration}</TableCell>
+                    <TableCell className="font-bold">{rental.totalAmount}</TableCell>
+                    <TableCell className={rental.lateFees !== '$0.00' ? 'text-orange-600 font-medium' : ''}>
+                      {rental.lateFees}
+                    </TableCell>
+                    <TableCell>{getStatusBadge(rental.status)}</TableCell>
+                    <TableCell>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => router.push(`/rentals/${rental.id}`)}
+                      >
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
             </TableBody>
           </Table>
           
-          {/* Pagination */}
-          <div className="mt-4 flex items-center justify-between">
-            <p className="text-sm text-gray-600">
-              Showing 1 to 4 of 1,234 results
-            </p>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" disabled>
-                Previous
-              </Button>
-              <Button variant="outline" size="sm">
-                Next
-              </Button>
+          {rentalHistory.length > 0 && (
+            <div className="mt-4 flex items-center justify-between">
+              <p className="text-sm text-gray-600">
+                Showing 0 to 0 of 0 results
+              </p>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" disabled>
+                  Previous
+                </Button>
+                <Button variant="outline" size="sm" disabled>
+                  Next
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </CardContent>
       </Card>
     </div>

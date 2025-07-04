@@ -304,37 +304,8 @@ export const returnsApi = {
       });
       return response.data.success ? response.data.data : response.data;
     } catch (error) {
-      console.warn('Return analytics API failed, using fallback:', error);
-      // Fallback mock data for analytics
-      return {
-        total_returns: 1247,
-        total_fees_collected: 23580.50,
-        average_processing_time: 4.2,
-        damage_rate: 12.3,
-        on_time_return_rate: 87.5,
-        customer_satisfaction: 4.1,
-        monthly_trends: {
-          returns_this_month: 156,
-          returns_last_month: 142,
-          fees_this_month: 3420.75,
-          fees_last_month: 3180.20,
-          avg_time_this_month: 3.8,
-          avg_time_last_month: 4.5
-        },
-        top_damage_types: [
-          { type: 'Surface Scratches', count: 45, percentage: 32.1, avg_cost: 125.50 },
-          { type: 'Missing Accessories', count: 38, percentage: 27.1, avg_cost: 89.25 },
-          { type: 'Functional Issues', count: 29, percentage: 20.7, avg_cost: 285.75 },
-          { type: 'Wear and Tear', count: 18, percentage: 12.9, avg_cost: 65.00 },
-          { type: 'Water Damage', count: 10, percentage: 7.1, avg_cost: 450.00 }
-        ],
-        top_customers_by_returns: [
-          { customer_name: 'ABC Construction', returns_count: 23, total_fees: 1250.75, avg_rating: 3.2 },
-          { customer_name: 'XYZ Events', returns_count: 19, total_fees: 890.50, avg_rating: 4.1 },
-          { customer_name: 'Smith Industries', returns_count: 15, total_fees: 2150.25, avg_rating: 2.8 },
-          { customer_name: 'Johnson Rentals', returns_count: 12, total_fees: 456.00, avg_rating: 4.5 }
-        ]
-      };
+      console.warn('Return analytics API failed:', error);
+      throw error;
     }
   },
 

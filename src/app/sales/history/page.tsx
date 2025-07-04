@@ -31,59 +31,7 @@ function SalesHistoryContent() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('all');
 
-  // Mock data - replace with actual API call
-  const sales = [
-    {
-      id: 'TRX001',
-      date: '2024-01-15',
-      time: '10:30 AM',
-      customer: 'John Doe',
-      items: 3,
-      total: '$299.99',
-      paymentMethod: 'Credit Card',
-      status: 'Completed',
-    },
-    {
-      id: 'TRX002',
-      date: '2024-01-15',
-      time: '11:45 AM',
-      customer: 'Jane Smith',
-      items: 1,
-      total: '$1,299.99',
-      paymentMethod: 'Cash',
-      status: 'Completed',
-    },
-    {
-      id: 'TRX003',
-      date: '2024-01-14',
-      time: '02:30 PM',
-      customer: 'Bob Johnson',
-      items: 5,
-      total: '$599.99',
-      paymentMethod: 'Debit Card',
-      status: 'Completed',
-    },
-    {
-      id: 'TRX004',
-      date: '2024-01-14',
-      time: '04:15 PM',
-      customer: 'Alice Brown',
-      items: 2,
-      total: '$149.99',
-      paymentMethod: 'Cash',
-      status: 'Refunded',
-    },
-    {
-      id: 'TRX005',
-      date: '2024-01-13',
-      time: '09:00 AM',
-      customer: 'Charlie Wilson',
-      items: 4,
-      total: '$450.00',
-      paymentMethod: 'Credit Card',
-      status: 'Completed',
-    },
-  ];
+  const sales: any[] = [];
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -203,48 +151,57 @@ function SalesHistoryContent() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {sales.map((sale) => (
-                <TableRow key={sale.id}>
-                  <TableCell className="font-medium">{sale.id}</TableCell>
-                  <TableCell>
-                    <div>
-                      <div>{sale.date}</div>
-                      <div className="text-sm text-gray-500">{sale.time}</div>
-                    </div>
-                  </TableCell>
-                  <TableCell>{sale.customer}</TableCell>
-                  <TableCell>{sale.items}</TableCell>
-                  <TableCell className="font-bold">{sale.total}</TableCell>
-                  <TableCell>{sale.paymentMethod}</TableCell>
-                  <TableCell>{getStatusBadge(sale.status)}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => router.push(`/sales/${sale.id}`)}
-                    >
-                      <Eye className="h-4 w-4" />
-                    </Button>
+              {sales.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={8} className="text-center py-8 text-gray-500">
+                    No sales transactions found
                   </TableCell>
                 </TableRow>
-              ))}
+              ) : (
+                sales.map((sale) => (
+                  <TableRow key={sale.id}>
+                    <TableCell className="font-medium">{sale.id}</TableCell>
+                    <TableCell>
+                      <div>
+                        <div>{sale.date}</div>
+                        <div className="text-sm text-gray-500">{sale.time}</div>
+                      </div>
+                    </TableCell>
+                    <TableCell>{sale.customer}</TableCell>
+                    <TableCell>{sale.items}</TableCell>
+                    <TableCell className="font-bold">{sale.total}</TableCell>
+                    <TableCell>{sale.paymentMethod}</TableCell>
+                    <TableCell>{getStatusBadge(sale.status)}</TableCell>
+                    <TableCell>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => router.push(`/sales/${sale.id}`)}
+                      >
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
             </TableBody>
           </Table>
           
-          {/* Pagination */}
-          <div className="mt-4 flex items-center justify-between">
-            <p className="text-sm text-gray-600">
-              Showing 1 to 5 of 50 results
-            </p>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" disabled>
-                Previous
-              </Button>
-              <Button variant="outline" size="sm">
-                Next
-              </Button>
+          {sales.length > 0 && (
+            <div className="mt-4 flex items-center justify-between">
+              <p className="text-sm text-gray-600">
+                Showing 0 to 0 of 0 results
+              </p>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" disabled>
+                  Previous
+                </Button>
+                <Button variant="outline" size="sm" disabled>
+                  Next
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </CardContent>
       </Card>
     </div>
