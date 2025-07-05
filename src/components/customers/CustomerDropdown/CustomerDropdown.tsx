@@ -284,6 +284,7 @@ export function CustomerDropdown({
             disabled && 'cursor-not-allowed bg-gray-50 opacity-60',
             !searchable && 'cursor-pointer'
           )}
+          aria-expanded={isOpen}
           aria-haspopup="listbox"
           aria-controls="customer-dropdown-list"
           aria-invalid={hasError}
