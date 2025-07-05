@@ -1,6 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { User, AuthState, PermissionType } from '@/types/auth';
+import { 
+  User, 
+  AuthState, 
+  PermissionType, 
+  UserType, 
+  USER_TYPE_HIERARCHY,
+  canManageUserType 
+} from '@/types/auth';
 
 interface AuthStore extends AuthState {
   setUser: (user: User | null) => void;
@@ -11,7 +18,16 @@ interface AuthStore extends AuthState {
   refreshAuth: (accessToken: string) => void;
   hasPermission: (permission: PermissionType | PermissionType[]) => boolean;
   hasRole: (roleName: string) => boolean;
+  hasUserType: (userType: UserType) => boolean;
+  canManageUser: (targetUserType: UserType) => boolean;
+  isSuperuser: () => boolean;
+  isAdmin: () => boolean;
+  isCustomer: () => boolean;
+  getEffectivePermissions: () => string[];
   updatePermissions: () => void;
+  // Session management
+  setSessionInfo: (sessionId: string, deviceId: string) => void;
+  clearSession: () => void;
 }
 
 export const useAuthStore = create<AuthStore>()(
@@ -23,6 +39,8 @@ export const useAuthStore = create<AuthStore>()(
       isAuthenticated: false,
       isLoading: true, // Start as true, will be set to false after hydration
       permissions: [],
+      sessionId: undefined,
+      deviceId: undefined,
 
       setUser: (user) => {
         set({ user, isAuthenticated: !!user });
@@ -37,7 +55,8 @@ export const useAuthStore = create<AuthStore>()(
       setIsLoading: (isLoading) => set({ isLoading }),
 
       login: (user, accessToken, refreshToken) => {
-        const permissions = user.role?.permissions?.map(p => p.code) || [];
+        // Get effective permissions from user object
+        const permissions = user.effectivePermissions?.allPermissions || [];
         set({ 
           user, 
           accessToken, 
@@ -57,7 +76,9 @@ export const useAuthStore = create<AuthStore>()(
           refreshToken: null, 
           isAuthenticated: false, 
           isLoading: false,
-          permissions: []
+          permissions: [],
+          sessionId: undefined,
+          deviceId: undefined,
         });
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
@@ -69,7 +90,13 @@ export const useAuthStore = create<AuthStore>()(
       },
 
       hasPermission: (permission) => {
-        const { permissions } = get();
+        const { user, permissions } = get();
+        
+        // Superuser has all permissions
+        if (user?.isSuperuser || user?.userType === 'SUPERADMIN') {
+          return true;
+        }
+        
         if (Array.isArray(permission)) {
           return permission.some(p => permissions.includes(p));
         }
@@ -81,12 +108,59 @@ export const useAuthStore = create<AuthStore>()(
         return user?.role?.name === roleName;
       },
 
+      hasUserType: (userType) => {
+        const { user } = get();
+        return user?.userType === userType;
+      },
+
+      canManageUser: (targetUserType) => {
+        const { user } = get();
+        if (!user) return false;
+        return canManageUserType(user.userType, targetUserType);
+      },
+
+      isSuperuser: () => {
+        const { user } = get();
+        return user?.isSuperuser === true || user?.userType === 'SUPERADMIN';
+      },
+
+      isAdmin: () => {
+        const { user } = get();
+        return user?.userType === 'SUPERADMIN' || user?.userType === 'ADMIN';
+      },
+
+      isCustomer: () => {
+        const { user } = get();
+        return user?.userType === 'CUSTOMER';
+      },
+
+      getEffectivePermissions: () => {
+        const { user, permissions } = get();
+        if (!user) return [];
+        
+        // Superuser gets all permissions conceptually
+        if (user.isSuperuser || user.userType === 'SUPERADMIN') {
+          return permissions; // In practice, we still use the stored permissions
+        }
+        
+        return permissions;
+      },
+
       updatePermissions: () => {
         const { user } = get();
-        if (user && user.role) {
-          const permissions = user.role.permissions?.map(p => p.code) || [];
+        if (user) {
+          // Use effective permissions from user object
+          const permissions = user.effectivePermissions?.allPermissions || [];
           set({ permissions });
         }
+      },
+
+      setSessionInfo: (sessionId, deviceId) => {
+        set({ sessionId, deviceId });
+      },
+
+      clearSession: () => {
+        set({ sessionId: undefined, deviceId: undefined });
       },
     }),
     {
@@ -97,6 +171,8 @@ export const useAuthStore = create<AuthStore>()(
         refreshToken: state.refreshToken,
         isAuthenticated: state.isAuthenticated,
         permissions: state.permissions,
+        sessionId: state.sessionId,
+        deviceId: state.deviceId,
       }),
       onRehydrateStorage: () => (state) => {
         // Set loading to false after hydration completes

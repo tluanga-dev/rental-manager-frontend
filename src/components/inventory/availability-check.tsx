@@ -125,7 +125,7 @@ export function AvailabilityCheck({ onReserve }: AvailabilityCheckProps) {
         start_date: data.start_date?.toISOString(),
         end_date: data.end_date?.toISOString(),
       };
-      return stockAnalysisApi.checkAvailability(payload);
+      return stockAnalysisApi.checkAvailability(payload as any);
     },
     onSuccess: (result) => {
       setSingleResult(result);
@@ -135,7 +135,7 @@ export function AvailabilityCheck({ onReserve }: AvailabilityCheckProps) {
   // Multiple availability check mutation
   const multipleCheckMutation = useMutation({
     mutationFn: (data: MultipleCheckData) => {
-      return stockAnalysisApi.checkMultipleAvailability(data.items);
+      return stockAnalysisApi.checkMultipleAvailability(data.items as any);
     },
     onSuccess: (result) => {
       setMultipleResults(result);

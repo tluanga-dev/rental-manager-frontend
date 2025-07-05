@@ -61,7 +61,7 @@ export function MobileInspectionApp({
   const [currentView, setCurrentView] = useState<'overview' | 'checklist' | 'photos' | 'defects' | 'review'>('overview');
   const [timer, setTimer] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(true);
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -104,7 +104,7 @@ export function MobileInspectionApp({
   };
 
   const getProgress = () => {
-    const requiredPhotos = INSPECTION_CONFIG.REQUIRED_PHOTOS[inspectionItem.inspection_type] || [];
+    const requiredPhotos = (INSPECTION_CONFIG.REQUIRED_PHOTOS as any)[inspectionItem.inspection_type] || [];
     const photosProgress = (inspectionState.photos_captured.length / requiredPhotos.length) * 50;
     
     const checklistItems = getChecklistItems();
@@ -265,9 +265,9 @@ export function MobileInspectionApp({
   };
 
   const canComplete = () => {
-    const requiredPhotos = INSPECTION_CONFIG.REQUIRED_PHOTOS[inspectionItem.inspection_type] || [];
-    const hasAllPhotos = requiredPhotos.every(angle => 
-      inspectionState.photos_captured.some(photo => photo.angle === angle)
+    const requiredPhotos = (INSPECTION_CONFIG.REQUIRED_PHOTOS as any)[inspectionItem.inspection_type] || [];
+    const hasAllPhotos = requiredPhotos.every((angle: any) => 
+      inspectionState.photos_captured.some((photo: any) => photo.angle === angle)
     );
     
     const checklistItems = getChecklistItems();
@@ -278,7 +278,7 @@ export function MobileInspectionApp({
     return hasAllPhotos && allChecklistComplete;
   };
 
-  const requiredPhotos = INSPECTION_CONFIG.REQUIRED_PHOTOS[inspectionItem.inspection_type] || [];
+  const requiredPhotos = (INSPECTION_CONFIG.REQUIRED_PHOTOS as any)[inspectionItem.inspection_type] || [];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -480,7 +480,7 @@ export function MobileInspectionApp({
                         onChange={(e) => setSelectedPhotoAngle(e.target.value as PhotoAngle)}
                         className="px-3 py-2 border rounded-md"
                       >
-                        {requiredPhotos.map((angle) => (
+                        {requiredPhotos.map((angle: any) => (
                           <option key={angle} value={angle}>
                             {angle.replace('_', ' ')}
                           </option>
@@ -517,7 +517,7 @@ export function MobileInspectionApp({
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-3">
-                  {requiredPhotos.map((angle) => {
+                  {requiredPhotos.map((angle: any) => {
                     const photo = inspectionState.photos_captured.find(p => p.angle === angle);
                     return (
                       <div

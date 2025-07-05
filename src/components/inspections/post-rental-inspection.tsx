@@ -9,7 +9,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Camera, 
-  Compare, 
+  // Compare, 
   ArrowRight,
   AlertTriangle,
   CheckCircle,
@@ -331,7 +331,7 @@ export function PostRentalInspection({
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center space-x-2">
-                        <Compare className="h-5 w-5" />
+                        <Eye className="h-5 w-5" />
                         <span>Side-by-Side Comparison</span>
                       </CardTitle>
                     </CardHeader>

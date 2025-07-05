@@ -32,8 +32,14 @@ import {
   Eye,
   Calculator,
   TrendingUp,
+  Shield,
+  UserCog,
+  Activity,
+  Crown,
+  Lock,
+  History,
 } from 'lucide-react';
-import { MenuItem } from '@/types/auth';
+import { MenuItem, getUserTypeDisplayName } from '@/types/auth';
 
 const menuItems: MenuItem[] = [
   {
@@ -171,6 +177,13 @@ const menuItems: MenuItem[] = [
         permissions: ['RENTAL_CREATE'],
       },
       {
+        id: 'due-today',
+        label: 'Due Today',
+        icon: 'Bell',
+        path: '/rentals/due-today',
+        permissions: ['RENTAL_VIEW'],
+      },
+      {
         id: 'active-rentals',
         label: 'Active Rentals',
         icon: 'FileText',
@@ -224,6 +237,27 @@ const menuItems: MenuItem[] = [
     permissions: ['INVENTORY_VIEW'],
     children: [
       {
+        id: 'record-purchase',
+        label: 'Record Purchase',
+        icon: 'Package',
+        path: '/purchases/record',
+        permissions: ['INVENTORY_CREATE'],
+      },
+      {
+        id: 'purchase-history',
+        label: 'Purchase History',
+        icon: 'FileText',
+        path: '/purchases/history',
+        permissions: ['INVENTORY_VIEW'],
+      },
+      {
+        id: 'purchase-returns',
+        label: 'Purchase Returns',
+        icon: 'RotateCcw',
+        path: '/purchases/returns',
+        permissions: ['INVENTORY_VIEW'],
+      },
+      {
         id: 'suppliers',
         label: 'Suppliers',
         icon: 'Users',
@@ -235,13 +269,6 @@ const menuItems: MenuItem[] = [
         label: 'Supplier Analytics',
         icon: 'BarChart3',
         path: '/purchases/suppliers/analytics',
-        permissions: ['INVENTORY_VIEW'],
-      },
-      {
-        id: 'receive-inventory',
-        label: 'Receive Inventory',
-        icon: 'Package',
-        path: '/purchases/receive',
         permissions: ['INVENTORY_VIEW'],
       },
     ],
@@ -259,6 +286,50 @@ const menuItems: MenuItem[] = [
     icon: 'BarChart3',
     path: '/reports',
     permissions: ['REPORT_VIEW'],
+  },
+  {
+    id: 'admin',
+    label: 'Administration',
+    icon: 'Crown',
+    path: '/admin',
+    permissions: ['USER_VIEW', 'ROLE_VIEW', 'AUDIT_VIEW'],
+    children: [
+      {
+        id: 'user-management',
+        label: 'User Management',
+        icon: 'UserCog',
+        path: '/admin/users',
+        permissions: ['USER_VIEW'],
+      },
+      {
+        id: 'role-management',
+        label: 'Role Management',
+        icon: 'Shield',
+        path: '/admin/roles',
+        permissions: ['ROLE_VIEW'],
+      },
+      {
+        id: 'audit-logs',
+        label: 'Audit Logs',
+        icon: 'History',
+        path: '/admin/audit',
+        permissions: ['AUDIT_VIEW'],
+      },
+      {
+        id: 'security-monitor',
+        label: 'Security Monitor',
+        icon: 'Activity',
+        path: '/admin/security',
+        permissions: ['AUDIT_VIEW'],
+      },
+      {
+        id: 'system-settings',
+        label: 'System Settings',
+        icon: 'Lock',
+        path: '/admin/settings',
+        permissions: ['SYSTEM_CONFIG'],
+      },
+    ],
   },
   {
     id: 'settings',
@@ -289,13 +360,19 @@ const iconMap = {
   Eye,
   Calculator,
   TrendingUp,
+  Shield,
+  UserCog,
+  Activity,
+  Crown,
+  Lock,
+  History,
 };
 
 export function Sidebar() {
   const pathname = usePathname();
   const { hasPermission, user, logout } = useAuthStore();
   const { sidebarCollapsed, setSidebarCollapsed, unreadCount } = useAppStore();
-  const [expandedItems, setExpandedItems] = useState<string[]>(['customers', 'inventory', 'sales', 'rentals', 'purchases', 'returns']);
+  const [expandedItems, setExpandedItems] = useState<string[]>(['customers', 'inventory', 'sales', 'rentals', 'purchases', 'returns', 'admin']);
 
   const toggleSidebar = () => setSidebarCollapsed(!sidebarCollapsed);
 
@@ -310,9 +387,8 @@ export function Sidebar() {
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
 
   const hasItemPermission = (item: MenuItem) => {
-    // Admin users have access to everything
-    const roleName = user?.role?.name?.toLowerCase();
-    if (roleName === 'admin' || roleName === 'administrator') {
+    // Superusers and superadmins have access to everything
+    if (user?.isSuperuser || user?.userType === 'SUPERADMIN') {
       return true;
     }
     return item.permissions.length === 0 || hasPermission(item.permissions as any);
@@ -425,11 +501,16 @@ export function Sidebar() {
           {!sidebarCollapsed && (
             <div className="mb-4">
               <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                {user?.firstName} {user?.lastName}
+                {user?.name || `${user?.firstName} ${user?.lastName}`}
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {user?.role?.name || 'User'}
+                {user?.userType ? getUserTypeDisplayName(user.userType) : user?.role?.name || 'User'}
               </p>
+              {user?.isSuperuser && (
+                <p className="text-xs text-yellow-600 dark:text-yellow-400">
+                  Superuser
+                </p>
+              )}
             </div>
           )}
           

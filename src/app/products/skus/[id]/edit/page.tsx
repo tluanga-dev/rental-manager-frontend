@@ -18,12 +18,13 @@ interface ItemMaster {
 }
 
 interface EditSKUProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-function EditSKUContent({ params }: EditSKUProps) {
+async function EditSKUContent({ params }: EditSKUProps) {
+  const { id } = await params;
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
@@ -38,7 +39,7 @@ function EditSKUContent({ params }: EditSKUProps) {
         setIsInitialLoading(true);
         
         // Load SKU data
-        const skuData = await skusApi.get(params.id);
+        const skuData = await skusApi.get(id);
         setSKU(skuData);
 
         // Load item masters for the form
@@ -57,7 +58,7 @@ function EditSKUContent({ params }: EditSKUProps) {
     };
 
     loadData();
-  }, [params.id]);
+  }, [id]);
 
   const handleSubmit = async (data: SKUCreateFormData) => {
     if (!sku) return;
@@ -200,7 +201,7 @@ function EditSKUContent({ params }: EditSKUProps) {
   );
 }
 
-export default function EditSKUPage({ params }: EditSKUProps) {
+export default async function EditSKUPage({ params }: EditSKUProps) {
   return (
     <ProtectedRoute requiredPermissions={['INVENTORY_UPDATE']}>
       <EditSKUContent params={params} />

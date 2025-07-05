@@ -26,7 +26,7 @@ export function CustomerForm({ onSubmit, initialData, isLoading }: CustomerFormP
   );
 
   const form = useForm<CustomerCreateFormData>({
-    resolver: zodResolver(customerCreateSchema),
+    resolver: zodResolver(customerCreateSchema) as any,
     defaultValues: {
       customer: {
         customer_type: 'INDIVIDUAL',

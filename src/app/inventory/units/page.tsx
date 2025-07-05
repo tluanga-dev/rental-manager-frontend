@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { InventoryList } from '@/components/inventory/inventory-list';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import type { InventoryUnit } from '@/types/inventory';
 
-export default function InventoryUnitsPage() {
+function InventoryUnitsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [editDialog, setEditDialog] = useState(false);
@@ -86,5 +86,13 @@ export default function InventoryUnitsPage() {
         </DialogContent>
       </Dialog>
     </div>
+  );
+}
+
+export default function InventoryUnitsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <InventoryUnitsContent />
+    </Suspense>
   );
 }

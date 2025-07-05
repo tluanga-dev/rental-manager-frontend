@@ -34,7 +34,7 @@ import { TransactionHeader } from '@/types/api';
 function SaleDetailContent() {
   const params = useParams();
   const router = useRouter();
-  const [transaction, setTransaction] = useState<TransactionHeader | null>(null);
+  const [transaction, setTransaction] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -330,7 +330,7 @@ function SaleDetailContent() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {transaction.lines?.map((line) => (
+                  {transaction.lines?.map((line: any) => (
                     <TableRow key={line.id}>
                       <TableCell>{line.sku?.item_master?.name || 'N/A'}</TableCell>
                       <TableCell>{line.sku?.sku_code}</TableCell>

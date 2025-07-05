@@ -15,7 +15,11 @@ function NewSaleContent() {
         </p>
       </div>
       
-      <TransactionWizard transactionType="SALE" />
+      <TransactionWizard 
+        transactionType="SALE" 
+        onComplete={() => {}}
+        onCancel={() => {}}
+      />
     </div>
   );
 }

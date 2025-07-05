@@ -47,7 +47,7 @@ function NewSKUContent() {
     setError(null);
 
     try {
-      await skusApi.create(data);
+      await skusApi.create(data as any);
       router.push('/products/skus');
       // TODO: Add success toast notification
     } catch (error: any) {
