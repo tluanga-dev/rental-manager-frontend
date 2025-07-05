@@ -243,7 +243,7 @@ export function StockLevelGrid({
                       <SelectValue placeholder="All locations" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All locations</SelectItem>
+                      <SelectItem value="all">All locations</SelectItem>
                       {locations.map((location) => (
                         <SelectItem key={location.id} value={location.id}>
                           {location.name}
@@ -260,7 +260,7 @@ export function StockLevelGrid({
                       <SelectValue placeholder="All statuses" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All statuses</SelectItem>
+                      <SelectItem value="all">All statuses</SelectItem>
                       <SelectItem value="good-stock">Good Stock</SelectItem>
                       <SelectItem value="medium-stock">Medium Stock</SelectItem>
                       <SelectItem value="low-stock">Low Stock</SelectItem>

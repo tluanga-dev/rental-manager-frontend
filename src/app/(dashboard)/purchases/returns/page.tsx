@@ -143,7 +143,7 @@ export default function PurchaseReturnsPage() {
                 <SelectValue placeholder="All statuses" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All statuses</SelectItem>
+                <SelectItem value="all">All statuses</SelectItem>
                 {RETURN_STATUSES.map((status) => (
                   <SelectItem key={status.value} value={status.value}>
                     {status.label}
@@ -162,7 +162,7 @@ export default function PurchaseReturnsPage() {
                 <SelectValue placeholder="All reasons" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All reasons</SelectItem>
+                <SelectItem value="all">All reasons</SelectItem>
                 {RETURN_REASONS.map((reason) => (
                   <SelectItem key={reason.value} value={reason.value}>
                     {reason.label}

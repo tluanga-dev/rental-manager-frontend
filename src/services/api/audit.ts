@@ -2,7 +2,7 @@
  * Audit and compliance API service
  */
 
-import { api } from '@/lib/axios';
+import { apiClient } from '@/lib/api-client';
 import { AuditLog, AuditLogFilter } from '@/types/auth';
 
 export const auditApi = {
@@ -18,7 +18,7 @@ export const auditApi = {
     page: number;
     limit: number;
   }> {
-    const response = await api.get('/audit/logs', { params: filters });
+    const response = await apiClient.get('/audit/logs', { params: filters });
     return response.data;
   },
 

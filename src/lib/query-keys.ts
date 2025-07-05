@@ -1,4 +1,5 @@
 import { SupplierQueryParams } from '@/components/suppliers/SupplierDropdown/SupplierDropdown.types';
+import { CustomerQueryParams } from '@/types/customer';
 
 export const supplierKeys = {
   all: ['suppliers'] as const,
@@ -14,8 +15,12 @@ export const supplierKeys = {
 export const customerKeys = {
   all: ['customers'] as const,
   lists: () => [...customerKeys.all, 'list'] as const,
-  list: (params?: any) => [...customerKeys.lists(), params] as const,
-  detail: (id: string) => [...customerKeys.all, 'detail', id] as const,
+  list: (params?: CustomerQueryParams) => 
+    [...customerKeys.lists(), params] as const,
+  search: (term: string) => 
+    [...customerKeys.all, 'search', term] as const,
+  detail: (id: string) => 
+    [...customerKeys.all, 'detail', id] as const,
 };
 
 export const transactionKeys = {

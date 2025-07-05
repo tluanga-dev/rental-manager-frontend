@@ -429,7 +429,7 @@ export function ProductCatalog({
                       <SelectValue placeholder="All brands" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All brands</SelectItem>
+                      <SelectItem value="all">All brands</SelectItem>
                       {brands.map((brand) => (
                         <SelectItem key={brand.id} value={brand.id}>
                           {brand.name}
@@ -449,7 +449,7 @@ export function ProductCatalog({
                       <SelectValue placeholder="All categories" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All categories</SelectItem>
+                      <SelectItem value="all">All categories</SelectItem>
                       {categories.map((category) => (
                         <SelectItem key={category.id} value={category.id}>
                           {category.name}
@@ -478,7 +478,7 @@ export function ProductCatalog({
                       <SelectValue placeholder="All statuses" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All statuses</SelectItem>
+                      <SelectItem value="all">All statuses</SelectItem>
                       <SelectItem value="true">Active</SelectItem>
                       <SelectItem value="false">Inactive</SelectItem>
                     </SelectContent>

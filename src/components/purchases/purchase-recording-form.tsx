@@ -21,6 +21,7 @@ import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 import { SupplierDropdown } from '@/components/suppliers/SupplierDropdown/SupplierDropdown';
+import { LocationSelector } from '@/components/locations/location-selector';
 import { SimpleSkuSelector } from './simple-sku-selector';
 import { useCreatePurchase } from '@/hooks/use-purchases';
 import { skusApi } from '@/services/api/skus';
@@ -62,7 +63,7 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
 
   // State for options
   const [skus, setSkus] = useState<SkuSummary[]>([]);
-  const [locations, setLocations] = useState<LocationSummary[]>([]);
+  const [locations, setLocations] = useState<Location[]>([]);
   const [loadingOptions, setLoadingOptions] = useState(true);
   
   // State for validation
@@ -126,16 +127,9 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
         }));
         setSkus(skuSummaries);
 
-        // Convert Location data to LocationSummary format (handle both array and paginated response)
+        // Handle both array and paginated response for locations
         const locationsArray = Array.isArray(locationsData) ? locationsData : locationsData?.items || [];
-        const locationSummaries: LocationSummary[] = locationsArray.map((location: Location) => ({
-          id: location.id,
-          name: location.location_name,
-          location_code: location.location_code,
-          location_type: location.location_type,
-          is_active: location.is_active
-        }));
-        setLocations(locationSummaries);
+        setLocations(locationsArray);
       } catch (error) {
         console.error('Failed to load options:', error);
       } finally {
@@ -552,21 +546,24 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Location</FormLabel>
-                          <Select onValueChange={(value) => field.onChange(value === "none" ? "" : value)} value={field.value || "none"}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select location (optional)" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="none">No specific location</SelectItem>
-                              {locations.map((location) => (
-                                <SelectItem key={location.id} value={location.id}>
-                                  {location.name} ({location.location_code})
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <FormControl>
+                            <LocationSelector
+                              locations={locations}
+                              selectedLocationId={field.value || ''}
+                              onSelect={(location) => {
+                                field.onChange(location.id);
+                              }}
+                              placeholder="Select location (optional)"
+                              allowedTypes={['WAREHOUSE', 'STORE']} // Prefer warehouses and stores for inventory
+                              showActiveOnly={true}
+                              compact={true}
+                              className={cn(
+                                "w-full",
+                                form.formState.errors.items?.[index]?.location_id && "border-red-500"
+                              )}
+                              error={form.formState.errors.items?.[index]?.location_id?.message}
+                            />
+                          </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}

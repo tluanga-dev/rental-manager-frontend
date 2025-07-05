@@ -8,7 +8,7 @@ export default function InventoryPage() {
   const router = useRouter();
 
   const handleViewLocation = (locationId: string) => {
-    router.push(`/inventory/units?location=${locationId}`);
+    router.push(`/inventory/locations/${locationId}`);
   };
 
   const handleViewAlert = (alert: any) => {

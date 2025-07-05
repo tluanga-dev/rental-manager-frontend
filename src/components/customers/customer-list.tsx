@@ -184,7 +184,7 @@ export function CustomerList({
                         <SelectValue placeholder="All types" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">All types</SelectItem>
+                        <SelectItem value="all">All types</SelectItem>
                         <SelectItem value="INDIVIDUAL">Individual</SelectItem>
                         <SelectItem value="BUSINESS">Business</SelectItem>
                       </SelectContent>
@@ -203,7 +203,7 @@ export function CustomerList({
                         <SelectValue placeholder="All tiers" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">All tiers</SelectItem>
+                        <SelectItem value="all">All tiers</SelectItem>
                         <SelectItem value="BRONZE">Bronze</SelectItem>
                         <SelectItem value="SILVER">Silver</SelectItem>
                         <SelectItem value="GOLD">Gold</SelectItem>
@@ -231,7 +231,7 @@ export function CustomerList({
                         <SelectValue placeholder="All statuses" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">All statuses</SelectItem>
+                        <SelectItem value="all">All statuses</SelectItem>
                         <SelectItem value="true">Active</SelectItem>
                         <SelectItem value="false">Inactive</SelectItem>
                       </SelectContent>
@@ -252,7 +252,7 @@ export function CustomerList({
                         <SelectValue placeholder="All statuses" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">All statuses</SelectItem>
+                        <SelectItem value="all">All statuses</SelectItem>
                         <SelectItem value="CLEAR">Clear</SelectItem>
                         <SelectItem value="BLACKLISTED">Blacklisted</SelectItem>
                       </SelectContent>

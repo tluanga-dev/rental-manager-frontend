@@ -91,7 +91,7 @@ export function CategoryForm({
                 <SelectValue placeholder="Select parent category (optional)" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">None (Root Category)</SelectItem>
+                <SelectItem value="none">None (Root Category)</SelectItem>
                 {availableParents.map((category) => (
                   <SelectItem key={category.id} value={category.id}>
                     {category.displayName}

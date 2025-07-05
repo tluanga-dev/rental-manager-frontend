@@ -21,8 +21,49 @@ interface SKUListParams {
 export const skusApi = {
   // List SKUs with pagination and filters
   list: async (params: SKUListParams = {}): Promise<SKUListResponse> => {
-    const response = await apiClient.get<SKUListResponse>('/skus', { params });
-    return response.data;
+    try {
+      const response = await apiClient.get<SKUListResponse>('/skus', { params });
+      const data = response.data;
+      
+      // Handle different response structures
+      // 1. Check if response has success/data wrapper
+      if (data && typeof data === 'object' && 'success' in data && 'data' in data) {
+        return (data as any).data;
+      }
+      
+      // 2. Check if response is already in the expected format
+      if (data && typeof data === 'object' && 'items' in data) {
+        return data;
+      }
+      
+      // 3. If it's an array, wrap it in the expected format
+      if (Array.isArray(data)) {
+        return {
+          items: data,
+          total: data.length,
+          skip: params.skip || 0,
+          limit: params.limit || data.length
+        };
+      }
+      
+      // 4. Default fallback - return empty list
+      console.warn('Unexpected SKU response format:', data);
+      return {
+        items: [],
+        total: 0,
+        skip: params.skip || 0,
+        limit: params.limit || 20
+      };
+    } catch (error) {
+      console.error('Error fetching SKUs:', error);
+      // Return empty list on error
+      return {
+        items: [],
+        total: 0,
+        skip: params.skip || 0,
+        limit: params.limit || 20
+      };
+    }
   },
 
   // Get SKU by ID

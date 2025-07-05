@@ -163,7 +163,7 @@ export function PurchaseHistoryTable({
                   <SelectValue placeholder="All statuses" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All statuses</SelectItem>
+                  <SelectItem value="all">All statuses</SelectItem>
                   {PURCHASE_STATUSES.map((status) => (
                     <SelectItem key={status.value} value={status.value}>
                       {status.label}

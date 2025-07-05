@@ -90,7 +90,7 @@ export function SimpleSkuSelector({
           </SelectItem>
         ))}
         {skus.length === 0 && (
-          <SelectItem value="" disabled>
+          <SelectItem value="no-skus" disabled>
             No SKUs found
           </SelectItem>
         )}

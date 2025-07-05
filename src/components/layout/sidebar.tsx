@@ -38,6 +38,8 @@ import {
   Crown,
   Lock,
   History,
+  PackagePlus,
+  Wand2,
 } from 'lucide-react';
 import { MenuItem, getUserTypeDisplayName } from '@/types/auth';
 
@@ -244,6 +246,13 @@ const menuItems: MenuItem[] = [
         permissions: ['INVENTORY_CREATE'],
       },
       {
+        id: 'batch-purchase',
+        label: 'Purchase with Items',
+        icon: 'Wand2',
+        path: '/purchases/batch',
+        permissions: ['INVENTORY_CREATE'],
+      },
+      {
         id: 'purchase-history',
         label: 'Purchase History',
         icon: 'FileText',
@@ -366,6 +375,8 @@ const iconMap = {
   Crown,
   Lock,
   History,
+  PackagePlus,
+  Wand2,
 };
 
 export function Sidebar() {

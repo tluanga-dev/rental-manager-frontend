@@ -1,14 +1,14 @@
-export type LocationType = 'WAREHOUSE' | 'STORE' | 'SERVICE_CENTER' | 'OTHER';
+export type LocationType = 'WAREHOUSE' | 'STORE' | 'SERVICE_CENTER';
 
 export interface Location {
   id: string;
   location_code: string;
   location_name: string;
   location_type: LocationType;
-  address?: string;
-  city?: string;
-  state?: string;
-  country?: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
   postal_code?: string;
   contact_number?: string;
   email?: string;

@@ -16,6 +16,26 @@ interface LocationListResponse {
   limit: number;
 }
 
+interface CreateLocationData {
+  location_code: string;
+  location_name: string;
+  location_type: 'WAREHOUSE' | 'STORE' | 'SERVICE_CENTER' | 'OTHER';
+  address?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  postal_code?: string;
+  contact_number?: string;
+  email?: string;
+  manager_user_id?: string;
+}
+
+interface UpdateLocationData extends Partial<CreateLocationData> {}
+
+interface AssignManagerData {
+  manager_user_id: string;
+}
+
 export const locationsApi = {
   // List locations with pagination and filters
   list: async (params: LocationListParams = {}): Promise<Location[]> => {
@@ -55,6 +75,47 @@ export const locationsApi = {
   // Get location by ID
   getById: async (id: string): Promise<Location> => {
     const response = await apiClient.get<Location>(`/locations/${id}`);
+    return response.data;
+  },
+
+  // Create a new location
+  create: async (data: CreateLocationData): Promise<Location> => {
+    const response = await apiClient.post<Location>('/locations', data);
+    return response.data;
+  },
+
+  // Update an existing location
+  update: async (id: string, data: UpdateLocationData): Promise<Location> => {
+    const response = await apiClient.put<Location>(`/locations/${id}`, data);
+    return response.data;
+  },
+
+  // Delete a location (soft delete)
+  delete: async (id: string): Promise<void> => {
+    await apiClient.delete(`/locations/${id}`);
+  },
+
+  // Activate a location
+  activate: async (id: string): Promise<Location> => {
+    const response = await apiClient.post<Location>(`/locations/${id}/activate`);
+    return response.data;
+  },
+
+  // Deactivate a location
+  deactivate: async (id: string): Promise<Location> => {
+    const response = await apiClient.post<Location>(`/locations/${id}/deactivate`);
+    return response.data;
+  },
+
+  // Assign manager to location
+  assignManager: async (id: string, data: AssignManagerData): Promise<Location> => {
+    const response = await apiClient.post<Location>(`/locations/${id}/assign-manager`, data);
+    return response.data;
+  },
+
+  // Remove manager from location
+  removeManager: async (id: string): Promise<Location> => {
+    const response = await apiClient.post<Location>(`/locations/${id}/remove-manager`);
     return response.data;
   },
 

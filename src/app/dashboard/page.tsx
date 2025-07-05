@@ -17,6 +17,7 @@ import { useAuthStore } from '@/stores/auth-store';
 import { useRouter } from 'next/navigation';
 import { rentalsDueTodayApi } from '@/services/api/rentals-due-today';
 import { RentalDueToday, RentalDueTodaySummary } from '@/types/rentals-due-today';
+import { SupplierSelector } from '@/components/supplier-selector';
 import {
   DollarSign,
   Package,
@@ -132,6 +133,7 @@ function DashboardContent() {
   const [rentalsDueToday, setRentalsDueToday] = useState<RentalDueToday[]>(mockRentalsDueToday);
   const [rentalsSummary, setRentalsSummary] = useState<RentalDueTodaySummary>(mockSummary);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedSupplier, setSelectedSupplier] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchRentalsDueToday = async () => {
@@ -260,6 +262,56 @@ function DashboardContent() {
           );
         })}
       </div>
+
+      {/* Demo: New Supplier Selector Component */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Package className="w-5 h-5" />
+            Supplier Selector Demo
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              This demonstrates the new searchable supplier selector component with async loading.
+            </p>
+            <div className="max-w-md">
+              <label className="text-sm font-medium mb-2 block">Select a Supplier:</label>
+              <SupplierSelector
+                value={selectedSupplier}
+                onValueChange={setSelectedSupplier}
+                placeholder="Search and select supplier..."
+                showCreateButton={true}
+                onCreateNew={() => router.push('/purchases/suppliers/new')}
+              />
+            </div>
+            {selectedSupplier && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                <p className="text-sm text-green-800">
+                  ✅ Selected supplier ID: <code className="font-mono">{selectedSupplier}</code>
+                </p>
+              </div>
+            )}
+            <div className="flex gap-2">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => router.push('/purchases/batch')}
+              >
+                Use in Batch Purchase
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => setSelectedSupplier(null)}
+              >
+                Clear Selection
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Rentals Due Today Section */}
       <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-3">

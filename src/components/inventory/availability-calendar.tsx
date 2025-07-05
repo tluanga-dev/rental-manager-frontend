@@ -198,7 +198,7 @@ export function AvailabilityCalendar({
                   <SelectValue placeholder="All SKUs" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All SKUs</SelectItem>
+                  <SelectItem value="all">All SKUs</SelectItem>
                   {skus.map((sku) => (
                     <SelectItem key={sku.id} value={sku.id}>
                       {sku.sku_code}
@@ -215,7 +215,7 @@ export function AvailabilityCalendar({
                   <SelectValue placeholder="All locations" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All locations</SelectItem>
+                  <SelectItem value="all">All locations</SelectItem>
                   {locations.map((location) => (
                     <SelectItem key={location.id} value={location.id}>
                       {location.name}

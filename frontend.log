@@ -2,108 +2,1922 @@
 > rental-frontend@0.1.0 dev
 > next dev
 
- ⚠ Port 3000 is in use, using available port 3001 instead.
    ▲ Next.js 15.3.4
-   - Local:        http://localhost:3001
-   - Network:      http://192.168.29.190:3001
+   - Local:        http://localhost:3000
+   - Network:      http://172.20.10.3:3000
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 1785ms
+ ✓ Ready in 1830ms
  ○ Compiling / ...
- ✓ Compiled / in 962ms (1109 modules)
- GET / 200 in 1220ms
- ✓ Compiled in 950ms (514 modules)
- ✓ Compiled in 151ms (514 modules)
- ✓ Compiled in 276ms (514 modules)
- ✓ Compiled in 112ms (514 modules)
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/cache/webpack/client-development/0.pack.gz_' -> '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/cache/webpack/client-development/0.pack.gz'
- ✓ Compiled in 134ms (514 modules)
- ✓ Compiled in 115ms (514 modules)
- ✓ Compiled in 124ms (500 modules)
- ✓ Compiled in 126ms (514 modules)
- ✓ Compiled in 91ms (514 modules)
- ✓ Compiled in 135ms (514 modules)
- ✓ Compiled in 182ms (514 modules)
- ✓ Compiled in 193ms (514 modules)
- ✓ Compiled in 67ms (500 modules)
- ✓ Compiled in 180ms (514 modules)
- ✓ Compiled in 85ms (514 modules)
- ✓ Compiled in 66ms (500 modules)
- ✓ Compiled in 96ms (514 modules)
- ✓ Compiled in 40ms (500 modules)
- ✓ Compiled in 132ms (514 modules)
- ✓ Compiled in 88ms (514 modules)
- ✓ Compiled in 125ms (514 modules)
- ✓ Compiled in 130ms (514 modules)
- ✓ Compiled in 131ms (514 modules)
- ✓ Compiled in 140ms (514 modules)
- ✓ Compiled in 89ms (514 modules)
- ✓ Compiled in 176ms (514 modules)
- ✓ Compiled in 88ms (514 modules)
- ✓ Compiled in 130ms (514 modules)
- ✓ Compiled in 96ms (514 modules)
- ✓ Compiled in 94ms (514 modules)
- ✓ Compiled in 121ms (514 modules)
- ✓ Compiled in 77ms (514 modules)
- ✓ Compiled in 141ms (514 modules)
- ✓ Compiled in 93ms (514 modules)
- ✓ Compiled in 85ms (514 modules)
- ✓ Compiled in 93ms (514 modules)
- ✓ Compiled in 130ms (514 modules)
- ✓ Compiled in 94ms (514 modules)
- ✓ Compiled in 184ms (514 modules)
- ✓ Compiled in 176ms (514 modules)
- ✓ Compiled in 113ms (514 modules)
- ✓ Compiled in 108ms (514 modules)
- ✓ Compiled in 91ms (514 modules)
- ✓ Compiled in 163ms (514 modules)
- ✓ Compiled in 74ms (514 modules)
- ✓ Compiled in 89ms (514 modules)
- ✓ Compiled in 81ms (514 modules)
- ✓ Compiled in 77ms (514 modules)
- ✓ Compiled in 93ms (514 modules)
- ✓ Compiled in 103ms (514 modules)
- ✓ Compiled in 85ms (514 modules)
- ✓ Compiled in 156ms (514 modules)
- ✓ Compiled in 94ms (514 modules)
- ✓ Compiled in 139ms (514 modules)
- ✓ Compiled in 82ms (514 modules)
- ✓ Compiled in 89ms (514 modules)
- ✓ Compiled in 71ms (514 modules)
- ✓ Compiled in 87ms (514 modules)
- ✓ Compiled in 82ms (514 modules)
- ✓ Compiled in 96ms (514 modules)
- ✓ Compiled in 86ms (514 modules)
- ✓ Compiled in 74ms (514 modules)
- ✓ Compiled in 72ms (514 modules)
- ✓ Compiled in 74ms (514 modules)
- ✓ Compiled in 75ms (514 modules)
- ✓ Compiled in 84ms (514 modules)
- ✓ Compiled in 70ms (514 modules)
- ✓ Compiled in 93ms (514 modules)
- ✓ Compiled in 84ms (514 modules)
- ✓ Compiled in 80ms (514 modules)
- ✓ Compiled in 77ms (514 modules)
- ✓ Compiled in 84ms (514 modules)
- ✓ Compiled in 83ms (514 modules)
- ✓ Compiled in 82ms (514 modules)
- ✓ Compiled in 80ms (514 modules)
- ✓ Compiled in 87ms (514 modules)
- ✓ Compiled in 88ms (514 modules)
- ✓ Compiled in 77ms (514 modules)
- ✓ Compiled in 39ms (500 modules)
- ✓ Compiled in 81ms (514 modules)
- ✓ Compiled in 90ms (514 modules)
- ✓ Compiled in 92ms (514 modules)
- ✓ Compiled in 126ms (514 modules)
- ✓ Compiled in 83ms (514 modules)
- ⚠ Found a change in next.config.js. Restarting the server to apply the changes...
-   ▲ Next.js 15.3.4
-   - Local:        http://localhost:3001
-   - Network:      http://172.20.10.3:3001
-   - Environments: .env.local
+ ✓ Compiled / in 3.8s (1155 modules)
+ GET / 200 in 4106ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1616ms (1481 modules)
+ GET /login 200 in 1749ms
+ GET /login 200 in 20ms
+ GET /login 200 in 147ms
+ GET /login 200 in 39ms
+ GET /login 200 in 40ms
+ ✓ Compiled /_not-found in 291ms (1471 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 361ms
+ GET /login 200 in 103ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 32ms
+ GET /login 200 in 43ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 33ms
+ GET /login 200 in 45ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 28ms
+ GET /login 200 in 56ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 31ms
+ GET / 200 in 173ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 70ms
+ GET /login 200 in 11ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1104ms (1805 modules)
+ GET /login 200 in 721ms
+ GET /login 200 in 726ms
+ GET /login 200 in 31ms
+ GET /login 200 in 48ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 2012ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 222ms
+ GET /favicon.ico 500 in 220ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ GET / 200 in 241ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 61ms
+ GET /login 200 in 18ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 219ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ GET /login 200 in 110ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 44ms
+ GET / 200 in 53ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 31ms
+ GET /login 200 in 18ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 221ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 216ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 817ms (1836 modules)
+ GET /dashboard 200 in 923ms
+ GET /login 200 in 230ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 66ms
+ GET /login 200 in 38ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 39ms
+ ✓ Compiled in 546ms (1785 modules)
+ GET /login 200 in 109ms
+   Reload env: .env.local
+ ✓ Compiled in 156ms (1771 modules)
+ GET /login 200 in 62ms
+ GET /login 200 in 503ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 48ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 637ms (1814 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 1000ms
+ GET /login 200 in 732ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 105ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 213ms
+ ✓ Compiled /dashboard in 339ms (929 modules)
+ GET /dashboard 200 in 422ms
+ GET /login 200 in 322ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 77ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 228ms
+ GET /dashboard 200 in 17ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1615ms (891 modules)
+ GET / 200 in 2069ms
+ GET /login 200 in 115ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3s (1832 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 3521ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 224ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 971ms
+ GET /dashboard 200 in 257ms
+ ✓ Compiled in 1010ms (1798 modules)
+ ✓ Compiled in 531ms (1798 modules)
+ ✓ Compiled in 913ms (912 modules)
+ ✓ Compiled in 310ms (912 modules)
+ GET /login 200 in 610ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1314ms (1788 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1572ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1260ms (1831 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 1733ms
+ GET /dashboard 200 in 522ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 201ms
+ GET /login 200 in 116ms
+ ✓ Compiled in 617ms (1845 modules)
+ ✓ Compiled in 210ms (1845 modules)
+ ✓ Compiled / in 454ms (891 modules)
+ GET / 200 in 746ms
+ ✓ Compiled /_not-found in 410ms (1793 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 562ms
+ GET /login 200 in 105ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 47ms
+ ✓ Compiled /_error in 297ms (1836 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 601ms
+ GET /dashboard 200 in 121ms
+ GET / 200 in 261ms
+ GET /dashboard 200 in 105ms
+ GET /dashboard 200 in 94ms
+ GET /login 200 in 32ms
+ GET /login 200 in 64ms
+ GET /dashboard 200 in 111ms
+ ○ Compiling /purchases/suppliers ...
+ ✓ Compiled /purchases/suppliers in 893ms (1806 modules)
+ GET /purchases/suppliers 200 in 1105ms
+ ✓ Compiled /_error in 267ms (1849 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 674ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 257ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 224ms
+ ○ Compiling /purchases/suppliers/new ...
+ ✓ Compiled /purchases/suppliers/new in 578ms (1874 modules)
+ GET /purchases/suppliers/new 200 in 665ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 422ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 372ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 333ms
+ ✓ Compiled /purchases/suppliers/[id] in 279ms (1891 modules)
+ GET /purchases/suppliers/8ec94984-fe44-42dd-8adc-25bb86c9a664 200 in 796ms
+ ○ Compiling /purchases/record ...
+ ✓ Compiled /purchases/record in 1437ms (2773 modules)
+ GET /purchases/record 200 in 1540ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 372ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 215ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 310ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1526ms (2736 modules)
+ GET /purchases/record 200 in 838ms
+ ○ Compiling /_error ...
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_error in 1904ms (2765 modules)
+ GET /purchases/record 200 in 2212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1242ms (2779 modules)
+ GET /purchases/record 200 in 2542ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 1614ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 2.7s (2779 modules)
+ GET /purchases/record 200 in 1041ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 275ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1591ms (2779 modules)
+ GET /purchases/record 200 in 600ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 225ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 909ms (2779 modules)
+ GET /purchases/record 200 in 471ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 226ms
+ GET /purchases/record 200 in 851ms
+ ○ Compiling /purchases ...
+ ✓ Compiled /purchases in 1193ms (2790 modules)
+ GET /purchases 200 in 1657ms
+ GET /purchases/record 200 in 47ms
+ ✓ Compiled in 612ms (2754 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /purchases/record 200 in 440ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_error in 471ms (2783 modules)
+ GET /purchases/record 200 in 474ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 752ms (2797 modules)
+ GET /purchases/record 200 in 800ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 232ms
+ ✓ Compiled in 472ms (2797 modules)
+ GET /purchases/record 200 in 216ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 254ms
+ ✓ Compiled in 654ms (2754 modules)
+ GET /purchases/record 200 in 259ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_error in 327ms (2783 modules)
+ GET /purchases/record 200 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /purchases/record 200 in 390ms
+ GET /purchases/record 200 in 47ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 987ms (2754 modules)
+ GET /purchases/record 200 in 921ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 605ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 2919ms
+ GET /purchases/record 200 in 2560ms
+ GET /purchases/record 200 in 82ms
+ GET /purchases 200 in 147ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1456ms (2787 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1549ms
+ ✓ Compiled in 1210ms (1390 modules)
+ GET /purchases 200 in 46ms
+ ✓ Compiled in 1228ms (2754 modules)
+ GET /purchases 200 in 98ms
+ ✓ Compiled in 675ms (2754 modules)
+ GET /purchases 200 in 62ms
+ GET /purchases 200 in 383ms
+ ✓ Compiled /_not-found in 488ms (2744 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 590ms
+ ✓ Compiled in 310ms (1393 modules)
+ GET /purchases 200 in 29ms
+ GET /purchases/record 200 in 16ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1223ms (2754 modules)
+ GET /purchases/record 200 in 861ms
+ ○ Compiling /_error ...
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_error in 1326ms (2783 modules)
+ GET /purchases/record 200 in 992ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ✓ Compiled in 303ms (1391 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /purchases/record 200 in 307ms
+ ✓ Compiled in 333ms (1391 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 224ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 2.6s (2754 modules)
+ GET /purchases/record 200 in 2019ms
+ ○ Compiling /_error ...
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_error in 819ms (2783 modules)
+ GET /purchases/record 200 in 692ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 1020ms (2797 modules)
+ GET /purchases/record 200 in 635ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 233ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 5.8s (2797 modules)
+ GET /purchases/record 200 in 516ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 251ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 405ms (2797 modules)
+ GET /purchases/record 200 in 401ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 218ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 998ms (2754 modules)
+ GET /purchases/record 200 in 682ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1675ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 2106ms
+ ✓ Compiled in 459ms (1391 modules)
+ GET /purchases/record 200 in 912ms
+ ✓ Compiled in 3.7s (2797 modules)
+ GET /purchases/record 200 in 64ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 2367ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 318ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 221ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 366ms (1391 modules)
+ GET /purchases/record 200 in 27ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 216ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ✓ Compiled in 232ms (1391 modules)
+ GET /purchases/record 200 in 19ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 256ms (1391 modules)
+ GET /purchases/record 200 in 112ms
+ ✓ Compiled in 197ms (1391 modules)
+ GET /purchases/record 200 in 18ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 225ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ✓ Compiled in 125ms (1391 modules)
+ GET /purchases/record 200 in 16ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ✓ Compiled in 211ms (1391 modules)
+ GET /purchases/record 200 in 75ms
+ ✓ Compiled in 147ms (1391 modules)
+ GET /purchases/record 200 in 12ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 215ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 265ms
+ ✓ Compiled in 356ms (1391 modules)
+ GET /purchases/record 200 in 28ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 225ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 262ms
+ ✓ Compiled in 679ms (1391 modules)
+ GET /purchases/record 200 in 14ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 249ms (1391 modules)
+ GET /purchases/record 200 in 20ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 216ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 276ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 406ms (1391 modules)
+ GET /purchases/record 200 in 58ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 215ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 213ms
+ ✓ Compiled in 433ms (1391 modules)
+ GET /purchases/record 200 in 84ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 226ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ✓ Compiled in 5s (1391 modules)
+ GET /purchases/record 200 in 800ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 333ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 222ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 222ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 386ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 236ms
+ ✓ Compiled in 276ms (1391 modules)
+ GET /purchases/record 200 in 18ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 207ms (1391 modules)
+ GET /purchases/record 200 in 41ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 234ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ✓ Compiled in 144ms (1391 modules)
+ GET /purchases/record 200 in 79ms
+ ✓ Compiled in 143ms (1391 modules)
+ GET /purchases/record 200 in 12ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 130ms (1391 modules)
+ GET /purchases/record 200 in 20ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ✓ Compiled in 117ms (1391 modules)
+ GET /purchases/record 200 in 17ms
+ ✓ Compiled in 577ms (2783 modules)
+ GET /purchases/record 200 in 50ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 673ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ✓ Compiled in 322ms (1390 modules)
+ GET /purchases/record 200 in 41ms
+ ✓ Compiled /_error in 279ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 516ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 140ms (1391 modules)
+ GET /purchases/record 200 in 32ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ✓ Compiled in 611ms (1391 modules)
+ GET /purchases/record 200 in 37ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 273ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 146ms (1391 modules)
+ GET /purchases/record 200 in 79ms
+ ✓ Compiled in 436ms (2783 modules)
+ GET /purchases/record 200 in 39ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 516ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 217ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 130ms (1391 modules)
+ GET /purchases/record 200 in 11ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 138ms (1391 modules)
+ GET /purchases/record 200 in 12ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ✓ Compiled in 125ms (1391 modules)
+ GET /purchases/record 200 in 12ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 219ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 223ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 206ms (1391 modules)
+ GET /purchases/record 200 in 13ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 127ms (1391 modules)
+ GET /purchases/record 200 in 67ms
+ ✓ Compiled in 133ms (1391 modules)
+ GET /purchases/record 200 in 15ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 224ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 223ms
+ ✓ Compiled in 212ms (1391 modules)
+ GET /purchases/record 200 in 56ms
+ ✓ Compiled in 446ms (2783 modules)
+ GET /purchases/record 200 in 30ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 463ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 220ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 217ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 1257ms (1390 modules)
+ GET /purchases/record 200 in 147ms
+ ✓ Compiled in 250ms (1390 modules)
+ GET /purchases/record 200 in 79ms
+ ✓ Compiled /_error in 220ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 440ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ✓ Compiled in 747ms (1390 modules)
+ GET /purchases/record 200 in 33ms
+ ✓ Compiled /_error in 265ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 484ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 254ms (1391 modules)
+ GET /purchases/record 200 in 42ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 225ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 315ms (1391 modules)
+ GET /purchases/record 200 in 26ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 475ms (1391 modules)
+ GET /purchases/record 200 in 21ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 213ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ✓ Compiled in 151ms (1391 modules)
+ GET /purchases/record 200 in 12ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 213ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 218ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ✓ Compiled in 260ms (1391 modules)
+ GET /purchases/record 200 in 21ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 272ms (1391 modules)
+ GET /purchases/record 200 in 18ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 294ms (1391 modules)
+ GET /purchases/record 200 in 19ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ✓ Compiled in 623ms (1390 modules)
+ GET /purchases/record 200 in 96ms
+ ✓ Compiled in 175ms (1390 modules)
+ GET /purchases/record 200 in 17ms
+ ✓ Compiled /_error in 209ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 426ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 244ms (1390 modules)
+ GET /purchases/record 200 in 61ms
+ ✓ Compiled /_error in 229ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 446ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ✓ Compiled in 503ms (1390 modules)
+ GET /purchases/record 200 in 33ms
+ ✓ Compiled /_error in 255ms (2783 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 474ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ GET /purchases/record 200 in 227ms
+ ○ Compiling /products/skus ...
+ ✓ Compiled /products/skus in 1343ms (2755 modules)
+ GET /products/skus 200 in 1566ms
+ ✓ Compiled /_error in 363ms (2798 modules)
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 665ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ✓ Compiled in 540ms (2806 modules)
+ GET /products/skus 200 in 73ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 231ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ✓ Compiled in 811ms (2806 modules)
+ GET /products/skus 200 in 95ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 216ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 208ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 273ms
+ ✓ Compiled in 459ms (2810 modules)
+ GET /products/skus 200 in 34ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 216ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 796ms
+ ✓ Compiled in 1121ms (2796 modules)
+ GET /products/skus 200 in 872ms
+ GET /products/skus 200 in 11ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 217ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 213ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 212ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ✓ Compiled in 279ms (1399 modules)
+ GET /products/skus 200 in 17ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 211ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 210ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ✓ Compiled in 367ms (1399 modules)
+ GET /products/skus 200 in 22ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 209ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ✓ Compiled in 256ms (1399 modules)
+ GET /products/skus 200 in 19ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 214ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 207ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 205ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 206ms
+ ○ Compiling /purchases/batch ...
+ ⨯ ./src/components/batch-purchase/steps/purchase-details-step.tsx:16:1
+Module not found: Can't resolve '@/components/ui/command'
+  14 | import { Calendar } from '@/components/ui/calendar';
+  15 | import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+> 16 | import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+     | ^
+  17 | import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+  18 | import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+  19 | import { Card, CardContent } from '@/components/ui/card';
 
- ✓ Starting...
- ✓ Ready in 2.2s
-<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/cache/webpack/client-development/0.pack.gz_' -> '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/cache/webpack/client-development/0.pack.gz'
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ⨯ ./src/components/batch-purchase/steps/purchase-details-step.tsx:16:1
+Module not found: Can't resolve '@/components/ui/command'
+  14 | import { Calendar } from '@/components/ui/calendar';
+  15 | import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+> 16 | import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+     | ^
+  17 | import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+  18 | import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+  19 | import { Card, CardContent } from '@/components/ui/card';
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ⨯ ./src/components/batch-purchase/steps/purchase-details-step.tsx:16:1
+Module not found: Can't resolve '@/components/ui/command'
+  14 | import { Calendar } from '@/components/ui/calendar';
+  15 | import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+> 16 | import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+     | ^
+  17 | import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+  18 | import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+  19 | import { Card, CardContent } from '@/components/ui/card';
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ GET /purchases/batch 500 in 4189ms
+ GET /purchases/batch 500 in 8ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 4ms
+ ⨯ ./src/stores/batch-purchase-store.ts:4:1
+Module not found: Can't resolve 'immer'
+  2 | import { create } from 'zustand';
+  3 | import { devtools, persist } from 'zustand/middleware';
+> 4 | import { produce } from 'immer';
+    | ^
+  5 | import { v4 as uuidv4 } from 'uuid';
+  6 | import { z } from 'zod';
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ⨯ ./src/stores/batch-purchase-store.ts:4:1
+Module not found: Can't resolve 'immer'
+  2 | import { create } from 'zustand';
+  3 | import { devtools, persist } from 'zustand/middleware';
+> 4 | import { produce } from 'immer';
+    | ^
+  5 | import { v4 as uuidv4 } from 'uuid';
+  6 | import { z } from 'zod';
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ⨯ ./src/stores/batch-purchase-store.ts:4:1
+Module not found: Can't resolve 'immer'
+  2 | import { create } from 'zustand';
+  3 | import { devtools, persist } from 'zustand/middleware';
+> 4 | import { produce } from 'immer';
+    | ^
+  5 | import { v4 as uuidv4 } from 'uuid';
+  6 | import { z } from 'zod';
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ⨯ ./src/stores/batch-purchase-store.ts:4:1
+Module not found: Can't resolve 'immer'
+  2 | import { create } from 'zustand';
+  3 | import { devtools, persist } from 'zustand/middleware';
+> 4 | import { produce } from 'immer';
+    | ^
+  5 | import { v4 as uuidv4 } from 'uuid';
+  6 | import { z } from 'zod';
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ⨯ ./src/stores/batch-purchase-store.ts:4:1
+Module not found: Can't resolve 'immer'
+  2 | import { create } from 'zustand';
+  3 | import { devtools, persist } from 'zustand/middleware';
+> 4 | import { produce } from 'immer';
+    | ^
+  5 | import { v4 as uuidv4 } from 'uuid';
+  6 | import { z } from 'zod';
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/batch-purchase/batch-purchase-wizard.tsx
+ ✓ Compiled /_error in 1088ms (2854 modules)
+ ✓ Compiled /purchases/batch in 400ms (2892 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /purchases/batch 200 in 1128ms
+ GET /_next/static/webpack/ff014a5956b42d8d.webpack.hot-update.json 404 in 1132ms
+ GET /purchases/batch 200 in 115ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 321ms
+ ✓ Compiled in 261ms (1443 modules)
+ GET /purchases/batch 200 in 36ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 529ms (2882 modules)
+ ⨯ Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:1829)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:1882) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/(dashboard)/purchases/page.js:1:16526)
+    at Object.<anonymous> (.next/server/app/(dashboard)/purchases/page.js:1:16614) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/purchases'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/(dashboard)/purchases/page.js:1:16526)
+    at Object.<anonymous> (.next/server/app/(dashboard)/purchases/page.js:1:16614) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/purchases'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ GET /purchases 500 in 480ms
+ GET /purchases 500 in 225ms
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ✓ Compiled / in 457ms (1455 modules)
+ GET / 200 in 597ms
+ ⨯ Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:1829)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:1882) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:1829)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:1882) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:1829)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:1882) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './4447.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:1829)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:1882) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './8548.js'
+Require stack:
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/webpack-runtime.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/page.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/require.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/load-components.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/utils.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/options.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/swc/index.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:384) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ✓ Compiled in 436ms (1443 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 731ms (2887 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/app/_not-found/page.js'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ GET / 500 in 1660ms
+ GET / 500 in 229ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/server/pages/_document.js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/fallback-build-manifest.json'
+}
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ ✓ Compiled in 272ms (1446 modules)
+ ✓ Compiled in 927ms (1443 modules)
+ ✓ Compiled in 135ms (1443 modules)
+ ✓ Compiled in 326ms (1443 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/cache/webpack/client-development/10.pack.gz_' -> '/Users/tluanga/Dev/code/current-work/rental-manager/rental-frontend/.next/cache/webpack/client-development/10.pack.gz'
+   Reload env: .env.local
+ ✓ Compiled in 2.3s (2878 modules)
+[?25h

@@ -167,8 +167,19 @@ export const purchasesApi = {
     status?: string;
     search?: string;
   }): Promise<PurchaseListResponse> => {
-    const response = await apiClient.get('/transactions/purchases', { params });
-    return response.data.success ? response.data.data : response.data;
+    try {
+      const response = await apiClient.get('/transactions/purchases', { params });
+      return response.data.success ? response.data.data : response.data;
+    } catch (error) {
+      console.error('Failed to fetch purchases:', error);
+      // Return empty list as fallback
+      return {
+        items: [],
+        total: 0,
+        skip: params?.skip || 0,
+        limit: params?.limit || 20
+      };
+    }
   },
 
   getPurchaseById: async (id: string): Promise<PurchaseResponse> => {
@@ -285,7 +296,26 @@ export const purchasesApi = {
       }>;
     };
   }> => {
-    const response = await apiClient.get('/analytics/purchases', { params });
-    return response.data.success ? response.data.data : response.data;
+    try {
+      const response = await apiClient.get('/analytics/purchases', { params });
+      return response.data.success ? response.data.data : response.data;
+    } catch (error) {
+      console.error('Failed to fetch purchase analytics:', error);
+      // Return empty analytics as fallback
+      return {
+        total_purchases: 0,
+        total_amount: 0,
+        total_items: 0,
+        average_order_value: 0,
+        top_suppliers: [],
+        monthly_trends: [],
+        return_statistics: {
+          total_returns: 0,
+          total_refund_amount: 0,
+          return_rate: 0,
+          top_return_reasons: []
+        }
+      };
+    }
   }
 };
