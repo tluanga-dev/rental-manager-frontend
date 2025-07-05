@@ -86,9 +86,9 @@ export function LoginForm() {
     
     try {
       const credentials = {
-        admin: { email: 'admin@example.com', password: 'admin123' },
-        manager: { email: 'manager@example.com', password: 'manager123' },
-        staff: { email: 'staff@example.com', password: 'staff123' },
+        admin: { email: 'admin@rental.com', password: 'admin123' },
+        manager: { email: 'manager@rental.com', password: 'manager123' },
+        staff: { email: 'staff@rental.com', password: 'staff123' },
       };
 
       const { email, password } = credentials[role];

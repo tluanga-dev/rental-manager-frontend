@@ -55,8 +55,9 @@ export const useAuthStore = create<AuthStore>()(
       setIsLoading: (isLoading) => set({ isLoading }),
 
       login: (user, accessToken, refreshToken) => {
-        // Get effective permissions from user object
-        const permissions = user.effectivePermissions?.allPermissions || [];
+        // Get effective permissions from user object (handle both camelCase and snake_case)
+        const effectivePermissions = user.effectivePermissions || (user as any).effective_permissions;
+        const permissions = effectivePermissions?.all_permissions || effectivePermissions?.allPermissions || [];
         set({ 
           user, 
           accessToken, 
@@ -98,7 +99,8 @@ export const useAuthStore = create<AuthStore>()(
         }
         
         if (Array.isArray(permission)) {
-          return permission.some(p => permissions.includes(p));
+          // Require ALL permissions when an array is passed
+          return permission.every(p => permissions.includes(p));
         }
         return permissions.includes(permission);
       },
@@ -149,8 +151,9 @@ export const useAuthStore = create<AuthStore>()(
       updatePermissions: () => {
         const { user } = get();
         if (user) {
-          // Use effective permissions from user object
-          const permissions = user.effectivePermissions?.allPermissions || [];
+          // Use effective permissions from user object (handle both camelCase and snake_case)
+          const effectivePermissions = user.effectivePermissions || (user as any).effective_permissions;
+          const permissions = effectivePermissions?.all_permissions || effectivePermissions?.allPermissions || [];
           set({ permissions });
         }
       },
