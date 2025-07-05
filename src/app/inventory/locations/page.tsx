@@ -45,6 +45,16 @@ export default function LocationsPage() {
   // Ensure locations is always an array
   const locations = Array.isArray(locationsData) ? locationsData : [];
 
+  // Debug logging
+  console.log('📊 LocationsPage render:', {
+    locationsData,
+    locations,
+    locationsLength: locations.length,
+    isLoading,
+    error: error?.message,
+    hasError: !!error
+  });
+
   // Activate location mutation
   const activateMutation = useMutation({
     mutationFn: (locationId: string) => locationsApi.activate(locationId),

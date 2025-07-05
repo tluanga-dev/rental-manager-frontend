@@ -42,23 +42,35 @@ export const locationsApi = {
     try {
       console.log('📡 Calling locations API with params:', params);
       
-      // Ensure trailing slash for consistent API endpoint
-      const response = await apiClient.get<LocationListResponse>('/locations/', { params });
+      // Use trailing slash and configure axios to follow redirects properly
+      const response = await apiClient.get<LocationListResponse>('/locations/', { 
+        params,
+        maxRedirects: 5 // Allow following redirects
+      });
       
+      console.log('📡 Raw API response status:', response.status);
       console.log('📡 Raw API response:', response);
       console.log('📡 Response data:', response.data);
       
       // Handle the wrapped response format from axios interceptor
-      const responseData = response.data.data || response.data;
+      let responseData = response.data;
+      
+      // Check if it's wrapped in our API response format {success: true, data: {...}}
+      if (responseData && typeof responseData === 'object' && 'success' in responseData && responseData.success) {
+        console.log('📡 Found wrapped response, unwrapping...');
+        responseData = responseData.data;
+      }
       
       console.log('📡 Extracted response data:', responseData);
       
-      if (responseData && responseData.items) {
-        console.log('📡 Found items:', responseData.items.length);
+      // Handle LocationListResponse format: {items: [], total: number, skip: number, limit: number}
+      if (responseData && typeof responseData === 'object' && 'items' in responseData && Array.isArray(responseData.items)) {
+        console.log('📡 Found paginated items:', responseData.items.length);
+        console.log('📡 Total items available:', responseData.total);
         return responseData.items;
       }
       
-      // Handle direct array response
+      // Handle direct array response (fallback)
       if (Array.isArray(responseData)) {
         console.log('📡 Direct array response:', responseData.length);
         return responseData;
@@ -69,37 +81,7 @@ export const locationsApi = {
       
     } catch (error) {
       console.error('📡 Locations API error:', error);
-      
-      // Try fallback without trailing slash
-      try {
-        console.log('📡 Trying fallback endpoint...');
-        const response = await apiClient.get<Location[]>('/locations');
-        const responseData = response.data.data || response.data;
-        const locations = Array.isArray(responseData) ? responseData : [];
-        
-        console.log('📡 Fallback response:', locations.length, 'locations');
-        
-        // Apply client-side filtering if needed
-        let filteredLocations = locations;
-        if (params.is_active !== undefined) {
-          filteredLocations = filteredLocations.filter(loc => loc.is_active === params.is_active);
-        }
-        if (params.location_type) {
-          filteredLocations = filteredLocations.filter(loc => loc.location_type === params.location_type);
-        }
-        if (params.search) {
-          const searchLower = params.search.toLowerCase();
-          filteredLocations = filteredLocations.filter(loc => 
-            loc.location_name.toLowerCase().includes(searchLower) ||
-            loc.location_code.toLowerCase().includes(searchLower)
-          );
-        }
-        
-        return filteredLocations;
-      } catch (fallbackError) {
-        console.error('📡 Fallback API also failed:', fallbackError);
-        return [];
-      }
+      throw error; // Re-throw to trigger React Query error handling
     }
   },
 
