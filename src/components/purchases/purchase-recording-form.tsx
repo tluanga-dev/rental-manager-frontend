@@ -20,18 +20,16 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-import { SimpleSupplierSelector } from './simple-supplier-selector';
+import { SupplierDropdown } from '@/components/suppliers/SupplierDropdown/SupplierDropdown';
 import { SimpleSkuSelector } from './simple-sku-selector';
 import { useCreatePurchase } from '@/hooks/use-purchases';
-import { suppliersApi } from '@/services/api/suppliers';
 import { skusApi } from '@/services/api/skus';
 import { locationsApi } from '@/services/api/locations';
 import { PurchaseValidator, PurchaseBusinessLogic } from '@/lib/purchase-validation';
 import { cn } from '@/lib/utils';
-import type { SupplierSummary, SkuSummary, LocationSummary, ItemCondition, PurchaseFormData } from '@/types/purchases';
+import type { SkuSummary, LocationSummary, ItemCondition, PurchaseFormData } from '@/types/purchases';
 import type { SKU } from '@/types/sku';
 import type { Location } from '@/types/location';
-import type { SupplierResponse } from '@/services/api/suppliers';
 import { ITEM_CONDITIONS } from '@/types/purchases';
 
 const purchaseItemSchema = z.object({
@@ -63,7 +61,6 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
   const createPurchase = useCreatePurchase();
 
   // State for options
-  const [suppliers, setSuppliers] = useState<SupplierSummary[]>([]);
   const [skus, setSkus] = useState<SkuSummary[]>([]);
   const [locations, setLocations] = useState<LocationSummary[]>([]);
   const [loadingOptions, setLoadingOptions] = useState(true);
@@ -77,7 +74,7 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
   
   // Enhanced data for validation
   const [fullSkus, setFullSkus] = useState<SKU[]>([]);
-  const [selectedSupplier, setSelectedSupplier] = useState<SupplierResponse | undefined>();
+  const [selectedSupplier, setSelectedSupplier] = useState<any>();
 
   const form = useForm<PurchaseFormValues>({
     resolver: zodResolver(purchaseFormSchema),
@@ -109,14 +106,11 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
     async function loadOptions() {
       try {
         setLoadingOptions(true);
-        const [suppliersData, skusData, locationsData] = await Promise.all([
-          suppliersApi.list({ is_active: true, limit: 1000 }),
+        const [skusData, locationsData] = await Promise.all([
           skusApi.list({ is_active: true, limit: 1000 }),
           locationsApi.list({ is_active: true }),
         ]);
 
-        setSuppliers(suppliersData.items);
-        
         // Store full SKU data for validation
         setFullSkus(skusData.items);
         
@@ -132,8 +126,9 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
         }));
         setSkus(skuSummaries);
 
-        // Convert Location data to LocationSummary format
-        const locationSummaries: LocationSummary[] = locationsData.map((location: Location) => ({
+        // Convert Location data to LocationSummary format (handle both array and paginated response)
+        const locationsArray = Array.isArray(locationsData) ? locationsData : locationsData?.items || [];
+        const locationSummaries: LocationSummary[] = locationsArray.map((location: Location) => ({
           id: location.id,
           name: location.location_name,
           location_code: location.location_code,
@@ -151,17 +146,7 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
     loadOptions();
   }, []);
 
-  // Update selected supplier when supplier_id changes
-  useEffect(() => {
-    const supplierId = form.watch('supplier_id');
-    if (supplierId) {
-      const supplier = suppliers.find(s => s.id === supplierId);
-      if (supplier) {
-        // Convert to SupplierResponse format for validation
-        setSelectedSupplier(supplier as any);
-      }
-    }
-  }, [form.watch('supplier_id'), suppliers]);
+  // Selected supplier is now managed directly in SupplierDropdown onChange handler
 
   // Real-time form validation
   useEffect(() => {
@@ -294,14 +279,22 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
                     <FormItem>
                       <FormLabel>Supplier *</FormLabel>
                       <FormControl>
-                        <SimpleSupplierSelector
+                        <SupplierDropdown
                           value={field.value}
-                          onValueChange={field.onChange}
-                          placeholder="Select supplier"
-                          allowCreate={false}
+                          onChange={(supplierId, supplier) => {
+                            field.onChange(supplierId);
+                            // Update selected supplier for validation
+                            setSelectedSupplier(supplier as any);
+                          }}
+                          placeholder="Search or select supplier"
+                          fullWidth
+                          searchable
+                          clearable
+                          showCode
+                          error={!!form.formState.errors.supplier_id}
+                          helperText={form.formState.errors.supplier_id?.message}
                         />
                       </FormControl>
-                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -559,14 +552,14 @@ export function PurchaseRecordingForm({ onSuccess, onCancel }: PurchaseRecording
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Location</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value || ''}>
+                          <Select onValueChange={(value) => field.onChange(value === "none" ? "" : value)} value={field.value || "none"}>
                             <FormControl>
                               <SelectTrigger>
                                 <SelectValue placeholder="Select location (optional)" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="">No specific location</SelectItem>
+                              <SelectItem value="none">No specific location</SelectItem>
                               {locations.map((location) => (
                                 <SelectItem key={location.id} value={location.id}>
                                   {location.name} ({location.location_code})

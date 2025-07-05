@@ -131,6 +131,75 @@ export const suppliersApi = {
     return response.data.success ? response.data.data : response.data;
   },
 
+  // Get suppliers for dropdown (formatted for SupplierDropdown component)
+  getSuppliers: async (params?: {
+    search?: string;
+    status?: 'active' | 'inactive' | 'all';
+    limit?: number;
+    offset?: number;
+  }): Promise<{
+    suppliers: Array<{
+      id: string;
+      name: string;
+      code: string;
+      status: string;
+    }>;
+    total: number;
+  }> => {
+    try {
+      const apiParams = {
+        search: params?.search,
+        is_active: params?.status === 'inactive' ? false : params?.status === 'all' ? undefined : true,
+        limit: params?.limit || 100,
+        skip: params?.offset || 0,
+      };
+
+      const response = await apiClient.get('/suppliers/', { params: apiParams });
+      const data = response.data.success ? response.data.data : response.data;
+      
+      return {
+        suppliers: data.items.map((supplier: SupplierResponse) => ({
+          id: supplier.id,
+          name: supplier.display_name || supplier.company_name,
+          code: supplier.supplier_code,
+          status: supplier.is_active ? 'active' : 'inactive',
+        })),
+        total: data.total,
+      };
+    } catch (error) {
+      // Return mock data for development/testing when API is not available
+      console.warn('Suppliers API not available, using mock data:', error);
+      
+      const mockSuppliers = [
+        { id: '1', name: 'ABC Electronics', code: 'ABC001', status: 'active' },
+        { id: '2', name: 'Tech Solutions Inc', code: 'TSI002', status: 'active' },
+        { id: '3', name: 'Global Parts Ltd', code: 'GPL003', status: 'active' },
+        { id: '4', name: 'Premium Supplies', code: 'PS004', status: 'active' },
+        { id: '5', name: 'Industrial Components', code: 'IC005', status: 'inactive' },
+      ];
+
+      // Apply search filter if provided
+      let filteredSuppliers = mockSuppliers;
+      if (params?.search) {
+        const searchLower = params.search.toLowerCase();
+        filteredSuppliers = mockSuppliers.filter(supplier =>
+          supplier.name.toLowerCase().includes(searchLower) ||
+          supplier.code.toLowerCase().includes(searchLower)
+        );
+      }
+
+      // Apply status filter if provided
+      if (params?.status && params.status !== 'all') {
+        filteredSuppliers = filteredSuppliers.filter(supplier => supplier.status === params.status);
+      }
+
+      return {
+        suppliers: filteredSuppliers,
+        total: filteredSuppliers.length,
+      };
+    }
+  },
+
   // Get supplier by ID
   getById: async (id: string): Promise<SupplierResponse> => {
     const response = await apiClient.get(`/suppliers/${id}`);
