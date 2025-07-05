@@ -40,35 +40,66 @@ export const locationsApi = {
   // List locations with pagination and filters
   list: async (params: LocationListParams = {}): Promise<Location[]> => {
     try {
-      // Try the paginated endpoint first
-      const response = await apiClient.get<LocationListResponse>('/locations', { params });
-      if (response.data.items) {
-        return response.data.items;
+      console.log('📡 Calling locations API with params:', params);
+      
+      // Ensure trailing slash for consistent API endpoint
+      const response = await apiClient.get<LocationListResponse>('/locations/', { params });
+      
+      console.log('📡 Raw API response:', response);
+      console.log('📡 Response data:', response.data);
+      
+      // Handle the wrapped response format from axios interceptor
+      const responseData = response.data.data || response.data;
+      
+      console.log('📡 Extracted response data:', responseData);
+      
+      if (responseData && responseData.items) {
+        console.log('📡 Found items:', responseData.items.length);
+        return responseData.items;
       }
-      // Fallback for non-paginated response
-      return response.data as any;
+      
+      // Handle direct array response
+      if (Array.isArray(responseData)) {
+        console.log('📡 Direct array response:', responseData.length);
+        return responseData;
+      }
+      
+      console.warn('📡 Unexpected response format:', responseData);
+      return [];
+      
     } catch (error) {
-      // Fallback to simple list if paginated endpoint doesn't exist
-      const response = await apiClient.get<Location[]>('/locations');
-      const locations = Array.isArray(response.data) ? response.data : [];
+      console.error('📡 Locations API error:', error);
       
-      // Apply client-side filtering if needed
-      let filteredLocations = locations;
-      if (params.is_active !== undefined) {
-        filteredLocations = filteredLocations.filter(loc => loc.is_active === params.is_active);
+      // Try fallback without trailing slash
+      try {
+        console.log('📡 Trying fallback endpoint...');
+        const response = await apiClient.get<Location[]>('/locations');
+        const responseData = response.data.data || response.data;
+        const locations = Array.isArray(responseData) ? responseData : [];
+        
+        console.log('📡 Fallback response:', locations.length, 'locations');
+        
+        // Apply client-side filtering if needed
+        let filteredLocations = locations;
+        if (params.is_active !== undefined) {
+          filteredLocations = filteredLocations.filter(loc => loc.is_active === params.is_active);
+        }
+        if (params.location_type) {
+          filteredLocations = filteredLocations.filter(loc => loc.location_type === params.location_type);
+        }
+        if (params.search) {
+          const searchLower = params.search.toLowerCase();
+          filteredLocations = filteredLocations.filter(loc => 
+            loc.location_name.toLowerCase().includes(searchLower) ||
+            loc.location_code.toLowerCase().includes(searchLower)
+          );
+        }
+        
+        return filteredLocations;
+      } catch (fallbackError) {
+        console.error('📡 Fallback API also failed:', fallbackError);
+        return [];
       }
-      if (params.location_type) {
-        filteredLocations = filteredLocations.filter(loc => loc.location_type === params.location_type);
-      }
-      if (params.search) {
-        const searchLower = params.search.toLowerCase();
-        filteredLocations = filteredLocations.filter(loc => 
-          loc.location_name.toLowerCase().includes(searchLower) ||
-          loc.location_code.toLowerCase().includes(searchLower)
-        );
-      }
-      
-      return filteredLocations;
     }
   },
 
